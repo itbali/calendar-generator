@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор Календарей</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f7;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #ffffff;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1d1d1f;
+            font-size: 14px;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .control-group select,
+        .control-group input[type="number"],
+        .control-group input[type="date"],
+        .control-group input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #d2d2d7;
+            border-radius: 10px;
+            font-size: 14px;
+            background: white;
+            transition: all 0.2s;
+            min-width: 150px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .control-group select:focus,
+        .control-group input[type="number"]:focus,
+        .control-group input[type="date"]:focus,
+        .control-group input[type="text"]:focus {
+            outline: none;
+            border-color: #007AFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .color-themes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.2s;
+            width: 44px;
+            height: 44px;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.1);
+            border-color: #007AFF;
+        }
+
+        .theme-option.active {
+            border-color: #007AFF;
+            transform: scale(1.15);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .theme-option input[type="radio"] {
+            display: none;
+        }
+
+        .theme-preview {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .setting-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #d2d2d7;
+        }
+        
+        .setting-item label {
+            margin: 0;
+            font-weight: 600;
+            color: #1d1d1f;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .setting-item select,
+        .setting-item input[type="number"] {
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .btn-primary {
+            background: #007AFF;
+            color: white;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #0051D5;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #007AFF;
+            border: 1px solid #007AFF;
+        }
+
+        .btn-secondary:hover {
+            background: #007AFF;
+            color: white;
+        }
+
+        .calendar-preview {
+            padding: 30px;
+            background: white;
+        }
+
+        .no-preview {
+            text-align: center;
+            padding: 60px 20px;
+            color: #86868b;
+            font-style: italic;
+        }
+
+        /* Стили для печати */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .app-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .header,
+            .controls {
+                display: none !important;
+            }
+
+            .calendar-preview {
+                padding: 0;
+                margin: 0;
+                width: 100vw;
+                height: 100vh;
+                display: flex;
+                align-items: stretch;
+                justify-content: stretch;
+            }
+
+            @page {
+                margin: 8mm;
+            }
+            
+            body.orientation-portrait @page {
+                size: A4 portrait;
+            }
+            
+            body.orientation-landscape @page {
+                size: A4 landscape;
+            }
+            
+            /* Динамическое масштабирование контента */
+            .calendar-wrapper {
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                max-height: 100%;
+                display: flex;
+                flex-direction: column;
+                page-break-inside: avoid;
+            }
+            
+            .calendar-header {
+                flex-shrink: 0;
+            }
+            
+            .calendar-footer {
+                flex-shrink: 0;
+            }
+            
+            .calendar-table,
+            .year-grid,
+            .week-view,
+            .day-view {
+                flex: 1;
+                min-height: 0;
+            }
+            
+            /* Динамическая высота ячеек таблицы */
+            .calendar-table {
+                height: 100%;
+            }
+            
+            .calendar-table tbody {
+                height: 100%;
+            }
+            
+            .calendar-table tr {
+                height: calc(100% / 6); /* 6 недель максимум */
+            }
+            
+            .calendar-table td {
+                height: 100%;
+                font-size: clamp(8px, 1.2vw, 14px);
+            }
+            
+            .date-number {
+                font-size: clamp(10px, 1.5vw, 16px);
+            }
+            
+            .weekday {
+                font-size: clamp(7px, 1vw, 11px);
+            }
+            
+            .task-line {
+                height: auto;
+                min-height: 10px;
+                font-size: clamp(7px, 1vw, 12px);
+            }
+            
+            /* Год - динамическая сетка */
+            .year-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: clamp(8px, 1.5vw, 15px);
+                height: 100%;
+            }
+            
+            .month-mini {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                min-height: 0;
+            }
+            
+            .month-mini .month-title {
+                font-size: clamp(12px, 1.8vw, 18px);
+                flex-shrink: 0;
+            }
+            
+            .month-mini .goal-lines {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+            
+            .month-mini .goal-line {
+                flex: 1;
+                min-height: 12px;
+                font-size: clamp(8px, 1.2vw, 12px);
+            }
+            
+            /* Неделя - динамическая высота */
+            .week-view {
+                display: flex;
+                height: 100%;
+            }
+            
+            .week-column {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .week-column-header {
+                font-size: clamp(10px, 1.5vw, 14px);
+                flex-shrink: 0;
+            }
+            
+            .week-column-date {
+                font-size: clamp(14px, 2vw, 20px);
+                flex-shrink: 0;
+            }
+            
+            .week-column-content {
+                flex: 1;
+                min-height: 0;
+                padding: clamp(5px, 1vw, 10px);
+            }
+            
+            .week-column-content .task-lines {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+            
+            .week-column-content .task-line {
+                flex: 1;
+                min-height: 10px;
+            }
+            
+            /* День - динамические временные слоты */
+            .day-view {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
+            
+            .day-header {
+                flex-shrink: 0;
+            }
+            
+            .day-header .date {
+                font-size: clamp(24px, 4vw, 42px);
+            }
+            
+            .day-header .weekday-full {
+                font-size: clamp(14px, 2.5vw, 22px);
+            }
+            
+            .time-slots {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                padding: clamp(8px, 1.5vw, 15px);
+            }
+            
+            .time-slot {
+                flex: 1;
+                min-height: 0;
+            }
+            
+            .time-label {
+                font-size: clamp(10px, 1.5vw, 16px);
+                width: clamp(50px, 8vw, 80px);
+            }
+            
+            .time-content {
+                font-size: clamp(9px, 1.2vw, 14px);
+            }
+            
+            .time-content.with-checkbox:before {
+                font-size: clamp(12px, 1.8vw, 18px);
+            }
+            
+            /* Заголовки */
+            .calendar-header h2 {
+                font-size: clamp(20px, 3vw, 32px);
+            }
+            
+            .calendar-header .year {
+                font-size: clamp(14px, 2vw, 18px);
+            }
+            
+            .calendar-footer {
+                font-size: clamp(8px, 1.2vw, 11px);
+            }
+        }
+
+        /* Стили календаря - будут динамически применяться */
+        .calendar-wrapper {
+            width: 100%;
+            max-width: 210mm;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Адаптивность для альбомной ориентации */
+        body.orientation-landscape .calendar-wrapper {
+            max-width: 287mm;
+        }
+        
+        /* Гибкость для экрана */
+        @media screen {
+            .calendar-wrapper {
+                min-height: 600px;
+            }
+            
+            .day-view {
+                min-height: 600px;
+            }
+        }
+
+        .calendar-header {
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 3px double var(--primary-color);
+        }
+        
+        .calendar-header.align-left {
+            text-align: left;
+        }
+        
+        .calendar-header.align-right {
+            text-align: right;
+        }
+        
+        .calendar-header.hidden {
+            display: none;
+        }
+
+        .calendar-header h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .calendar-header .year {
+            font-size: 16px;
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .calendar-table td {
+            border: 2px solid var(--border-color);
+            padding: 6px;
+            vertical-align: top;
+            height: auto;
+            min-height: 80px;
+            background: white;
+            position: relative;
+        }
+
+        .date-number {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+            padding: 2px 6px;
+            background: var(--date-bg);
+            border-radius: 4px;
+            display: inline-block;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .weekday {
+            font-size: 10px;
+            font-weight: normal;
+            color: var(--secondary-color);
+            margin-left: 4px;
+            font-style: italic;
+        }
+
+        .task-lines {
+            margin-top: 6px;
+        }
+
+        .task-line {
+            border-bottom: 1px solid var(--line-color);
+            height: 14px;
+            margin-bottom: 2px;
+            position: relative;
+        }
+
+        .task-line.with-checkbox:before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--secondary-color);
+            font-size: 11px;
+        }
+
+        .task-line:nth-child(odd) {
+            background: var(--task-bg);
+        }
+
+        .empty-cell {
+            background: #f0f0f0;
+            border-color: #d0d0d0;
+        }
+
+        .weekend {
+            background: var(--weekend-bg);
+        }
+
+        .weekend .date-number {
+            background: var(--weekend-date-bg);
+            color: var(--weekend-color);
+        }
+        
+        .weekend .weekday {
+            color: var(--weekend-color);
+        }
+
+        .calendar-footer {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 10px;
+            color: var(--secondary-color);
+            font-style: italic;
+            padding-top: 6px;
+            border-top: 2px solid var(--date-bg);
+        }
+
+        /* Стили для режима "Год" */
+        .year-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .month-mini {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            background: white;
+            min-height: 150px;
+        }
+
+        .month-mini .month-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .month-mini .goal-lines {
+            margin-top: 8px;
+        }
+
+        .month-mini .goal-line {
+            border-bottom: 1px solid var(--line-color);
+            height: 18px;
+            margin-bottom: 6px;
+            position: relative;
+        }
+
+        .month-mini .goal-line.with-checkbox:before {
+            content: "□";
+            position: absolute;
+            left: 0;
+            top: -2px;
+            color: var(--secondary-color);
+            font-size: 12px;
+        }
+
+        /* Стили для режима "Неделя" */
+        .week-view {
+            display: flex;
+            gap: 0;
+            flex: 1;
+            min-height: 0;
+        }
+
+        .week-column {
+            flex: 1;
+            border: 2px solid var(--border-color);
+            border-right: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .week-column:last-child {
+            border-right: 2px solid var(--border-color);
+        }
+
+        .week-column-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .week-column-date {
+            background: var(--date-bg);
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .week-column-content {
+            padding: 8px;
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .week-column-content .task-lines {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        
+        .week-column-content .task-line {
+            flex: 1;
+            min-height: 14px;
+        }
+
+        /* Стили для режима "День" */
+        .day-view {
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .day-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .day-header .date {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .day-header .weekday-full {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        .time-slots {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .time-slot {
+            display: flex;
+            border-bottom: 2px solid var(--line-color);
+            min-height: 25px;
+            padding: 4px 0;
+            flex: 1;
+        }
+
+        .time-slot:last-child {
+            border-bottom: none;
+        }
+
+        .time-label {
+            width: 80px;
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 16px;
+            padding-right: 15px;
+            border-right: 2px solid var(--border-color);
+            text-align: right;
+        }
+
+        .time-content {
+            flex: 1;
+            padding-left: 15px;
+            background: var(--task-bg);
+            position: relative;
+        }
+        
+        .time-content.with-checkbox:before {
+            content: "□";
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            font-size: 16px;
+        }
+        
+        .time-content.with-checkbox {
+            padding-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>✦ Генератор Календарей ✦</h1>
+            <p>Создайте идеальный календарь для планирования</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-row">
+                <div class="control-group">
+                    <label>Режим отображения</label>
+                    <select id="viewMode">
+                        <option value="year">Год</option>
+                        <option value="month" selected>Месяц</option>
+                        <option value="week">Неделя</option>
+                        <option value="day">День</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label>Год</label>
+                    <input type="number" id="year" value="2025" min="2020" max="2030">
+                </div>
+
+                <div class="control-group" id="monthControl">
+                    <label>Месяц</label>
+                    <select id="month">
+                        <option value="0">Январь</option>
+                        <option value="1">Февраль</option>
+                        <option value="2">Март</option>
+                        <option value="3">Апрель</option>
+                        <option value="4">Май</option>
+                        <option value="5">Июнь</option>
+                        <option value="6">Июль</option>
+                        <option value="7">Август</option>
+                        <option value="8">Сентябрь</option>
+                        <option value="9">Октябрь</option>
+                        <option value="10" selected>Ноябрь</option>
+                        <option value="11">Декабрь</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="weekControl" style="display: none;">
+                    <label>Неделя (начало)</label>
+                    <input type="date" id="weekStart">
+                </div>
+
+                <div class="control-group" id="dayControl" style="display: none;">
+                    <label>День</label>
+                    <input type="date" id="dayDate">
+                </div>
+
+                <div class="control-group" id="dayStartControl" style="display: none;">
+                    <label>Начало дня</label>
+                    <select id="dayStart">
+                        <option value="0">00:00</option>
+                        <option value="1">01:00</option>
+                        <option value="2">02:00</option>
+                        <option value="3">03:00</option>
+                        <option value="4">04:00</option>
+                        <option value="5">05:00</option>
+                        <option value="6">06:00</option>
+                        <option value="7">07:00</option>
+                        <option value="8" selected>08:00</option>
+                        <option value="9">09:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                    </select>
+                </div>
+
+                <div class="control-group" id="dayEndControl" style="display: none;">
+                    <label>Конец дня</label>
+                    <select id="dayEnd">
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
+                        <option value="18">18:00</option>
+                        <option value="19">19:00</option>
+                        <option value="20">20:00</option>
+                        <option value="21">21:00</option>
+                        <option value="22" selected>22:00</option>
+                        <option value="23">23:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Цветовая тема</label>
+                <div class="color-themes">
+                    <label class="theme-option active">
+                        <input type="radio" name="theme" value="blue" checked>
+                        <div class="theme-preview" style="background: linear-gradient(135deg, #2c5f7c, #4a7c95);"></div>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="green">
+                        <div class="theme-preview" style="background: linear-gradient(135deg, #2d7c4f, #4a9d6a);"></div>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="purple">
+                        <div class="theme-preview" style="background: linear-gradient(135deg, #6b4c9a, #8b6bb7);"></div>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="warm">
+                        <div class="theme-preview" style="background: linear-gradient(135deg, #c67a3e, #d4954f);"></div>
+                    </label>
+                    <label class="theme-option">
+                        <input type="radio" name="theme" value="mono">
+                        <div class="theme-preview" style="background: linear-gradient(135deg, #4a4a4a, #6a6a6a);"></div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Заголовок календаря</label>
+                <div class="control-row">
+                    <select id="headerAlignment">
+                        <option value="left">Слева</option>
+                        <option value="center" selected>По центру</option>
+                        <option value="right">Справа</option>
+                        <option value="hidden">Скрыт</option>
+                    </select>
+                    <input type="text" id="customSubtitle" placeholder="Текст под заголовком (необязательно)" style="flex: 1; min-width: 200px;">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Дополнительные настройки</label>
+                <div class="settings-grid">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="showCheckboxes" checked>
+                        <label for="showCheckboxes">Чекбоксы перед строками</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="contrastWeekends" checked>
+                        <label for="contrastWeekends">Контрастные выходные</label>
+                    </div>
+                    <div class="setting-item">
+                        <label for="orientation">Ориентация:</label>
+                        <select id="orientation">
+                            <option value="portrait" selected>Книжная</option>
+                            <option value="landscape">Альбомная</option>
+                        </select>
+                    </div>
+                    <div class="setting-item" id="taskLinesControl">
+                        <label for="taskLines">Строк для дел:</label>
+                        <input type="number" id="taskLines" value="5" min="1" max="20">
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="window.print()">🖨️ Печать</button>
+            </div>
+        </div>
+
+        <div class="calendar-preview" id="calendarPreview">
+            <div class="no-preview">
+                <h3>👆 Настройте параметры и нажмите "Создать календарь"</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Цветовые темы
+        const themes = {
+            blue: {
+                primary: '#2c5f7c',
+                secondary: '#6b8e9f',
+                border: '#4a7c95',
+                dateBg: 'linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%)',
+                taskBg: 'linear-gradient(to right, #f8fbfd 0%, white 100%)',
+                line: '#a8c5d4',
+                weekendBg: 'linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)',
+                weekendDateBg: 'linear-gradient(135deg, #ffd9a8 0%, #ffcc80 100%)',
+                weekendColor: '#d67a00'
+            },
+            green: {
+                primary: '#2d7c4f',
+                secondary: '#5a9d73',
+                border: '#4a9d6a',
+                dateBg: 'linear-gradient(135deg, #e8f8f0 0%, #d4f0e0 100%)',
+                taskBg: 'linear-gradient(to right, #f8fdfb 0%, white 100%)',
+                line: '#a8d4b8',
+                weekendBg: 'linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%)',
+                weekendDateBg: 'linear-gradient(135deg, #ffc4d6 0%, #ffaac7 100%)',
+                weekendColor: '#c7366b'
+            },
+            purple: {
+                primary: '#6b4c9a',
+                secondary: '#8b6bb7',
+                border: '#8b6bb7',
+                dateBg: 'linear-gradient(135deg, #f3eff8 0%, #e8dff5 100%)',
+                taskBg: 'linear-gradient(to right, #faf8fd 0%, white 100%)',
+                line: '#c4b4d9',
+                weekendBg: 'linear-gradient(135deg, #fff8e6 0%, #ffedb3 100%)',
+                weekendDateBg: 'linear-gradient(135deg, #ffe699 0%, #ffd966 100%)',
+                weekendColor: '#cc9900'
+            },
+            warm: {
+                primary: '#c67a3e',
+                secondary: '#d4954f',
+                border: '#d4954f',
+                dateBg: 'linear-gradient(135deg, #fdf5ef 0%, #faeadb 100%)',
+                taskBg: 'linear-gradient(to right, #fdfaf8 0%, white 100%)',
+                line: '#e8c9a8',
+                weekendBg: 'linear-gradient(135deg, #f0e8ff 0%, #e4d4ff 100%)',
+                weekendDateBg: 'linear-gradient(135deg, #d4b3ff 0%, #c299ff 100%)',
+                weekendColor: '#7a3bcc'
+            },
+            mono: {
+                primary: '#4a4a4a',
+                secondary: '#6a6a6a',
+                border: '#6a6a6a',
+                dateBg: 'linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%)',
+                taskBg: 'linear-gradient(to right, #fafafa 0%, white 100%)',
+                line: '#b8b8b8',
+                weekendBg: 'linear-gradient(135deg, #333333 0%, #4d4d4d 100%)',
+                weekendDateBg: 'linear-gradient(135deg, #5a5a5a 0%, #707070 100%)',
+                weekendColor: '#ffffff'
+            }
+        };
+
+        const monthNames = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 
+                           'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'];
+        
+        const dayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+        const dayNamesFull = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+
+        // Обработчики событий
+        let isLoadingFromURL = false;
+        
+        document.getElementById('viewMode').addEventListener('change', function() {
+            const mode = this.value;
+            document.getElementById('monthControl').style.display = 
+                (mode === 'month' || mode === 'week') ? 'block' : 'none';
+            document.getElementById('weekControl').style.display = 
+                mode === 'week' ? 'block' : 'none';
+            document.getElementById('dayControl').style.display = 
+                mode === 'day' ? 'block' : 'none';
+            document.getElementById('dayStartControl').style.display = 
+                mode === 'day' ? 'block' : 'none';
+            document.getElementById('dayEndControl').style.display = 
+                mode === 'day' ? 'block' : 'none';
+            document.getElementById('taskLinesControl').style.display = 
+                mode === 'day' ? 'none' : 'block';
+            
+            // Установка текущей даты для недели и дня
+            if (mode === 'week' || mode === 'day') {
+                const today = new Date();
+                const dateStr = today.toISOString().split('T')[0];
+                if (mode === 'week' && !document.getElementById('weekStart').value) {
+                    document.getElementById('weekStart').value = dateStr;
+                } else if (mode === 'day' && !document.getElementById('dayDate').value) {
+                    document.getElementById('dayDate').value = dateStr;
+                }
+            }
+            
+            // Автоматическая генерация при изменении (не во время загрузки из URL)
+            if (!isLoadingFromURL) {
+                generateCalendar();
+            }
+        });
+
+        // Автогенерация при изменении других параметров
+        document.getElementById('orientation').addEventListener('change', generateCalendar);
+        document.getElementById('year').addEventListener('change', generateCalendar);
+        document.getElementById('month').addEventListener('change', generateCalendar);
+        document.getElementById('weekStart').addEventListener('change', generateCalendar);
+        document.getElementById('dayDate').addEventListener('change', generateCalendar);
+        document.getElementById('dayStart').addEventListener('change', generateCalendar);
+        document.getElementById('dayEnd').addEventListener('change', generateCalendar);
+        document.getElementById('taskLines').addEventListener('change', generateCalendar);
+        document.getElementById('showCheckboxes').addEventListener('change', generateCalendar);
+        document.getElementById('contrastWeekends').addEventListener('change', generateCalendar);
+        document.getElementById('headerAlignment').addEventListener('change', generateCalendar);
+        document.getElementById('customSubtitle').addEventListener('input', generateCalendar);
+
+        // Переключение тем
+        document.querySelectorAll('.theme-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                this.classList.add('active');
+                // Автоматическая генерация при изменении темы
+                generateCalendar();
+            });
+        });
+
+        function applyTheme(themeName, contrastWeekends = true) {
+            const theme = themes[themeName];
+            const root = document.documentElement;
+            
+            root.style.setProperty('--primary-color', theme.primary);
+            root.style.setProperty('--secondary-color', theme.secondary);
+            root.style.setProperty('--border-color', theme.border);
+            root.style.setProperty('--date-bg', theme.dateBg);
+            root.style.setProperty('--task-bg', theme.taskBg);
+            root.style.setProperty('--line-color', theme.line);
+            
+            // Применяем контрастные выходные или обычные
+            if (contrastWeekends) {
+                root.style.setProperty('--weekend-bg', theme.weekendBg);
+                root.style.setProperty('--weekend-date-bg', theme.weekendDateBg);
+                root.style.setProperty('--weekend-color', theme.weekendColor);
+            } else {
+                // Используем обычные цвета для выходных
+                root.style.setProperty('--weekend-bg', 'white');
+                root.style.setProperty('--weekend-date-bg', theme.dateBg);
+                root.style.setProperty('--weekend-color', theme.primary);
+            }
+        }
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month + 1, 0).getDate();
+        }
+
+        function getFirstDayOfMonth(year, month) {
+            return new Date(year, month, 1).getDay();
+        }
+
+        function generateTaskLines(count, showCheckbox) {
+            let html = '<div class="task-lines">';
+            for (let i = 0; i < count; i++) {
+                html += `<div class="task-line ${showCheckbox ? 'with-checkbox' : ''}"></div>`;
+            }
+            html += '</div>';
+            return html;
+        }
+
+        function generateMonthCalendar(year, month, taskLines, showCheckbox, isMini = false) {
+            const daysInMonth = getDaysInMonth(year, month);
+            let firstDay = getFirstDayOfMonth(year, month);
+            
+            // Преобразуем воскресенье (0) в 7 для понедельника как первого дня
+            firstDay = firstDay === 0 ? 6 : firstDay - 1;
+            
+            const totalRows = Math.ceil((firstDay + daysInMonth) / 7);
+            
+            let html = '<table class="calendar-table">';
+            html += '<tbody>';
+            
+            let day = 1;
+            
+            for (let row = 0; row < totalRows; row++) {
+                html += '<tr>';
+                
+                for (let col = 0; col < 7; col++) {
+                    const cellIndex = row * 7 + col;
+                    
+                    if (cellIndex < firstDay || day > daysInMonth) {
+                        html += '<td class="empty-cell"></td>';
+                    } else {
+                        const date = new Date(year, month, day);
+                        const dayOfWeek = date.getDay();
+                        const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                        
+                        html += `<td class="${isWeekend ? 'weekend' : ''}">`;
+                        html += `<div class="date-number">${day} <span class="weekday">${dayNames[dayOfWeek]}</span></div>`;
+                        
+                        if (!isMini) {
+                            html += generateTaskLines(taskLines, showCheckbox);
+                        } else {
+                            html += generateTaskLines(1, false);
+                        }
+                        
+                        html += '</td>';
+                        day++;
+                    }
+                }
+                
+                html += '</tr>';
+            }
+            
+            html += '</tbody></table>';
+            return html;
+        }
+
+        function generateYearCalendar(year, taskLines, showCheckbox, headerClass, customSubtitle) {
+            let html = '<div class="calendar-wrapper">';
+            html += `<div class="${headerClass}">`;
+            html += `<h2>${year}</h2>`;
+            html += `<div class="year">${customSubtitle || 'Годовой планировщик'}</div>`;
+            html += '</div>';
+            
+            html += '<div class="year-grid">';
+            
+            for (let month = 0; month < 12; month++) {
+                html += '<div class="month-mini">';
+                html += `<div class="month-title">${monthNames[month]}</div>`;
+                html += '<div class="goal-lines">';
+                
+                // Генерация строк для целей на месяц
+                for (let i = 0; i < taskLines; i++) {
+                    html += `<div class="goal-line ${showCheckbox ? 'with-checkbox' : ''}"></div>`;
+                }
+                
+                html += '</div>';
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            html += '<div class="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        function generateWeekCalendar(startDate, taskLines, showCheckbox, headerClass, customSubtitle) {
+            const date = new Date(startDate);
+            
+            // Находим понедельник этой недели
+            const dayOfWeek = date.getDay();
+            const diff = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+            const monday = new Date(date);
+            monday.setDate(date.getDate() + diff);
+            
+            let html = '<div class="calendar-wrapper">';
+            html += `<div class="${headerClass}">`;
+            const endDate = new Date(monday);
+            endDate.setDate(monday.getDate() + 6);
+            html += `<h2>${monday.getDate()} ${monthNames[monday.getMonth()]} - ${endDate.getDate()} ${monthNames[endDate.getMonth()]} ${monday.getFullYear()}</h2>`;
+            html += `<div class="year">${customSubtitle || 'Недельный планировщик'}</div>`;
+            html += '</div>';
+            
+            html += '<div class="week-view">';
+            
+            for (let i = 0; i < 7; i++) {
+                const currentDay = new Date(monday);
+                currentDay.setDate(monday.getDate() + i);
+                const dayOfWeek = currentDay.getDay();
+                const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+                
+                html += `<div class="week-column ${isWeekend ? 'weekend' : ''}">`;
+                html += `<div class="week-column-header">${dayNamesFull[(dayOfWeek === 0 ? 6 : dayOfWeek - 1) + 1] || dayNamesFull[0]}</div>`;
+                html += `<div class="week-column-date">${currentDay.getDate()}</div>`;
+                html += '<div class="week-column-content">';
+                html += '<div class="task-lines">';
+                for (let j = 0; j < taskLines; j++) {
+                    html += `<div class="task-line ${showCheckbox ? 'with-checkbox' : ''}"></div>`;
+                }
+                html += '</div>';
+                html += '</div>';
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            html += '<div class="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        function generateDayCalendar(dateStr, startHour, endHour, headerClass, customSubtitle, showCheckbox) {
+            const date = new Date(dateStr);
+            const dayOfWeek = date.getDay();
+            
+            let html = '<div class="calendar-wrapper">';
+            
+            // Добавляем заголовок с настройками выравнивания
+            if (!headerClass.includes('hidden')) {
+                html += `<div class="${headerClass}">`;
+                html += `<h2>${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}</h2>`;
+                html += `<div class="year">${customSubtitle || dayNamesFull[dayOfWeek]}</div>`;
+                html += '</div>';
+            }
+            
+            html += '<div class="day-view">';
+            
+            html += '<div class="time-slots">';
+            
+            // Генерация временных слотов с выбранного времени
+            for (let hour = startHour; hour <= endHour; hour++) {
+                html += '<div class="time-slot">';
+                html += `<div class="time-label">${hour.toString().padStart(2, '0')}:00</div>`;
+                html += `<div class="time-content ${showCheckbox ? 'with-checkbox' : ''}"></div>`;
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>';
+            html += '</div>';
+            
+            return html;
+        }
+
+        function generateCalendar() {
+            const viewMode = document.getElementById('viewMode').value;
+            const orientation = document.getElementById('orientation').value;
+            const year = parseInt(document.getElementById('year').value);
+            const month = parseInt(document.getElementById('month').value);
+            const taskLines = parseInt(document.getElementById('taskLines').value);
+            const showCheckbox = document.getElementById('showCheckboxes').checked;
+            const contrastWeekends = document.getElementById('contrastWeekends').checked;
+            const headerAlignment = document.getElementById('headerAlignment').value;
+            const customSubtitle = document.getElementById('customSubtitle').value.trim();
+            const themeName = document.querySelector('input[name="theme"]:checked').value;
+            
+            applyTheme(themeName, contrastWeekends);
+            
+            // Применяем ориентацию к body для печати
+            document.body.className = `orientation-${orientation}`;
+            
+            // Сохраняем настройки в localStorage
+            saveSettingsToStorage();
+            
+            let html = '';
+            let headerClass = headerAlignment === 'hidden' ? 'calendar-header hidden' : `calendar-header align-${headerAlignment}`;
+            
+            switch(viewMode) {
+                case 'month':
+                    html += '<div class="calendar-wrapper">';
+                    html += `<div class="${headerClass}">`;
+                    html += `<h2>${monthNames[month]}</h2>`;
+                    html += `<div class="year">${customSubtitle || year}</div>`;
+                    html += '</div>';
+                    html += generateMonthCalendar(year, month, taskLines, showCheckbox);
+                    html += '<div class="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>';
+                    html += '</div>';
+                    break;
+                    
+                case 'year':
+                    html = generateYearCalendar(year, taskLines, showCheckbox, headerClass, customSubtitle);
+                    break;
+                    
+                case 'week':
+                    const weekStart = document.getElementById('weekStart').value;
+                    if (!weekStart) {
+                        alert('Пожалуйста, выберите дату начала недели');
+                        return;
+                    }
+                    html = generateWeekCalendar(weekStart, taskLines, showCheckbox, headerClass, customSubtitle);
+                    break;
+                    
+                case 'day':
+                    const dayDate = document.getElementById('dayDate').value;
+                    const dayStart = parseInt(document.getElementById('dayStart').value);
+                    const dayEnd = parseInt(document.getElementById('dayEnd').value);
+                    if (!dayDate) {
+                        alert('Пожалуйста, выберите дату');
+                        return;
+                    }
+                    if (dayStart >= dayEnd) {
+                        alert('Время начала должно быть раньше времени конца');
+                        return;
+                    }
+                    html = generateDayCalendar(dayDate, dayStart, dayEnd, headerClass, customSubtitle, showCheckbox);
+                    break;
+            }
+            
+            document.getElementById('calendarPreview').innerHTML = html;
+        }
+
+        // Генерация календаря при загрузке страницы
+        window.addEventListener('load', function() {
+            // Устанавливаем текущую дату для контролов недели и дня
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('weekStart').value = today;
+            document.getElementById('dayDate').value = today;
+            
+            // Восстанавливаем настройки из localStorage
+            restoreSettingsFromStorage();
+            
+            // Автоматически генерируем календарь
+            generateCalendar();
+        });
+        
+        // Функция сохранения настроек в localStorage
+        function saveSettingsToStorage() {
+            try {
+                const settings = {
+                    mode: document.getElementById('viewMode').value,
+                    orientation: document.getElementById('orientation').value,
+                    year: document.getElementById('year').value,
+                    month: document.getElementById('month').value,
+                    weekStart: document.getElementById('weekStart').value,
+                    dayDate: document.getElementById('dayDate').value,
+                    dayStart: document.getElementById('dayStart').value,
+                    dayEnd: document.getElementById('dayEnd').value,
+                    taskLines: document.getElementById('taskLines').value,
+                    checkboxes: document.getElementById('showCheckboxes').checked,
+                    contrast: document.getElementById('contrastWeekends').checked,
+                    headerAlign: document.getElementById('headerAlignment').value,
+                    subtitle: document.getElementById('customSubtitle').value,
+                    theme: document.querySelector('input[name="theme"]:checked').value
+                };
+                
+                localStorage.setItem('calendarSettings', JSON.stringify(settings));
+            } catch (e) {
+                // Игнорируем ошибки localStorage (например, в приватном режиме)
+                console.log('Settings save skipped:', e);
+            }
+        }
+        
+        // Функция восстановления настроек из localStorage
+        function restoreSettingsFromStorage() {
+            try {
+                const savedSettings = localStorage.getItem('calendarSettings');
+                if (!savedSettings) return;
+                
+                const settings = JSON.parse(savedSettings);
+                
+                // Устанавливаем флаг загрузки
+                isLoadingFromURL = true;
+                
+                if (settings.mode) {
+                    document.getElementById('viewMode').value = settings.mode;
+                    document.getElementById('viewMode').dispatchEvent(new Event('change', { bubbles: false }));
+                }
+                
+                if (settings.orientation) {
+                    document.getElementById('orientation').value = settings.orientation;
+                }
+                
+                if (settings.year) {
+                    document.getElementById('year').value = settings.year;
+                }
+                
+                if (settings.month) {
+                    document.getElementById('month').value = settings.month;
+                }
+                
+                if (settings.weekStart) {
+                    document.getElementById('weekStart').value = settings.weekStart;
+                }
+                
+                if (settings.dayDate) {
+                    document.getElementById('dayDate').value = settings.dayDate;
+                }
+                
+                if (settings.dayStart) {
+                    document.getElementById('dayStart').value = settings.dayStart;
+                }
+                
+                if (settings.dayEnd) {
+                    document.getElementById('dayEnd').value = settings.dayEnd;
+                }
+                
+                if (settings.taskLines) {
+                    document.getElementById('taskLines').value = settings.taskLines;
+                }
+                
+                if (settings.checkboxes !== undefined) {
+                    document.getElementById('showCheckboxes').checked = settings.checkboxes;
+                }
+                
+                if (settings.contrast !== undefined) {
+                    document.getElementById('contrastWeekends').checked = settings.contrast;
+                }
+                
+                if (settings.headerAlign) {
+                    document.getElementById('headerAlignment').value = settings.headerAlign;
+                }
+                
+                if (settings.subtitle) {
+                    document.getElementById('customSubtitle').value = settings.subtitle;
+                }
+                
+                if (settings.theme) {
+                    const themeRadio = document.querySelector(`input[name="theme"][value="${settings.theme}"]`);
+                    if (themeRadio) {
+                        themeRadio.checked = true;
+                        document.querySelectorAll('.theme-option').forEach(o => o.classList.remove('active'));
+                        themeRadio.closest('.theme-option').classList.add('active');
+                    }
+                }
+                
+                // Снимаем флаг загрузки
+                isLoadingFromURL = false;
+            } catch (e) {
+                // Игнорируем ошибки
+                console.log('Settings restore skipped:', e);
+                isLoadingFromURL = false;
+            }
+        }
+    </script>
+</body>
+</html>
