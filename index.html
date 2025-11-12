@@ -773,6 +773,33 @@
             color: #cc0000;
         }
 
+        .section-label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .section-label-spacing {
+            margin-top: 15px;
+        }
+
+        .custom-holiday-name-input {
+            flex: 1;
+        }
+
+        .country-label {
+            margin: 0;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .no-holidays-message {
+            padding: 20px;
+            text-align: center;
+            color: #999;
+        }
+
         .calendar-footer {
             margin-top: 8px;
             text-align: center;
@@ -1125,16 +1152,16 @@
             <div class="control-group">
                 <label>Управление праздниками</label>
                 <div class="countries-section">
-                    <label style="font-size: 13px; font-weight: 600; margin-bottom: 10px; display: block;">Выберите страны:</label>
+                    <label class="section-label">Выберите страны:</label>
                     <div class="countries-grid" id="countriesGrid"></div>
 
-                    <label style="font-size: 13px; font-weight: 600; margin-bottom: 10px; margin-top: 15px; display: block;">Праздники:</label>
+                    <label class="section-label section-label-spacing">Праздники:</label>
                     <div class="holidays-list" id="holidaysList"></div>
 
                     <div class="custom-holiday-form">
                         <input type="date" id="customHolidayDate" placeholder="Дата">
-                        <input type="text" id="customHolidayName" placeholder="Название праздника" style="flex: 1;">
-                        <button onclick="addCustomHoliday()">Добавить</button>
+                        <input type="text" id="customHolidayName" class="custom-holiday-name-input" placeholder="Название праздника">
+                        <button id="addHolidayBtn">Добавить</button>
                     </div>
                 </div>
             </div>
@@ -1339,7 +1366,7 @@
                 div.innerHTML = `
                     <input type="checkbox" id="country-${code}" ${selectedCountries.has(code) ? 'checked' : ''}>
                     <span class="country-flag">${country.flag}</span>
-                    <label for="country-${code}" style="margin: 0; cursor: pointer; flex: 1;">${country.name}</label>
+                    <label for="country-${code}" class="country-label">${country.name}</label>
                 `;
 
                 const checkbox = div.querySelector('input');
@@ -1367,7 +1394,7 @@
             const allHolidays = getAllHolidays();
 
             if (allHolidays.length === 0) {
-                list.innerHTML = '<div style="padding: 20px; text-align: center; color: #999;">Выберите страны для отображения праздников</div>';
+                list.innerHTML = '<div class="no-holidays-message">Выберите страны для отображения праздников</div>';
                 return;
             }
 
@@ -1384,7 +1411,7 @@
                         <div class="holiday-title">${holiday.name}</div>
                         ${holiday.country !== 'custom' ? `<div class="holiday-country">${countries[holiday.country].name} ${countries[holiday.country].flag}</div>` : '<div class="holiday-country">Пользовательский</div>'}
                     </div>
-                    ${holiday.country === 'custom' ? '<span class="delete-holiday" onclick="deleteCustomHoliday(\'' + holiday.date + '\')">×</span>' : ''}
+                    ${holiday.country === 'custom' ? '<span class="delete-holiday" data-date="' + holiday.date + '">×</span>' : ''}
                 `;
 
                 const checkbox = div.querySelector('input');
@@ -1397,6 +1424,14 @@
                     generateCalendar();
                     saveHolidaySettings();
                 });
+
+                // Добавляем обработчик для кнопки удаления
+                if (holiday.country === 'custom') {
+                    const deleteBtn = div.querySelector('.delete-holiday');
+                    deleteBtn.addEventListener('click', function() {
+                        deleteCustomHoliday(this.dataset.date);
+                    });
+                }
 
                 list.appendChild(div);
             });
@@ -1882,6 +1917,9 @@
 
             // Инициализируем управление праздниками
             initHolidayManagement();
+
+            // Добавляем обработчик для кнопки добавления праздника
+            document.getElementById('addHolidayBtn').addEventListener('click', addCustomHoliday);
 
             // Восстанавливаем настройки из localStorage
             restoreSettingsFromStorage();
