@@ -612,13 +612,17 @@
         }
 
         .holiday {
-            background: var(--holiday-bg);
+            background: var(--holiday-bg) !important;
             position: relative;
         }
 
         .holiday .date-number {
-            background: var(--holiday-date-bg);
-            color: var(--holiday-color);
+            background: var(--holiday-date-bg) !important;
+            color: var(--holiday-color) !important;
+        }
+
+        .holiday .weekday {
+            color: var(--holiday-color) !important;
         }
 
         .holiday-name {
@@ -798,6 +802,40 @@
             padding: 20px;
             text-align: center;
             color: #999;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1d1d1f;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: #ff3b30;
+        }
+
+        .toast.success {
+            background: #34c759;
+        }
+
+        .toast.warning {
+            background: #ff9500;
         }
 
         .calendar-footer {
@@ -1159,7 +1197,7 @@
                     <div class="holidays-list" id="holidaysList"></div>
 
                     <div class="custom-holiday-form">
-                        <input type="date" id="customHolidayDate" placeholder="Дата">
+                        <input type="date" id="customHolidayDate">
                         <input type="text" id="customHolidayName" class="custom-holiday-name-input" placeholder="Название праздника">
                         <button id="addHolidayBtn">Добавить</button>
                     </div>
@@ -1349,6 +1387,26 @@
         let customHolidays = [];
         let enabledHolidays = new Set();
 
+        // Функция для показа toast уведомлений
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+
+        // Генерация уникального ID для кастомного праздника
+        function generateHolidayId() {
+            return `custom-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        }
+
         // Инициализация управления праздниками
         function initHolidayManagement() {
             // Если enabledHolidays пустой, инициализируем праздники для выбранных стран
@@ -1362,9 +1420,12 @@
                     }
                 }
                 // Инициализируем пользовательские праздники
+                // Для старых праздников без ID генерируем новые
                 customHolidays.forEach(holiday => {
-                    const holidayId = `custom-${holiday.date}`;
-                    enabledHolidays.add(holidayId);
+                    if (!holiday.id) {
+                        holiday.id = generateHolidayId();
+                    }
+                    enabledHolidays.add(holiday.id);
                 });
             }
 
@@ -1430,7 +1491,8 @@
             }
 
             allHolidays.forEach((holiday, index) => {
-                const holidayId = `${holiday.country}-${holiday.date}`;
+                // Для кастомных праздников используем их уникальный ID
+                const holidayId = holiday.country === 'custom' ? holiday.id : `${holiday.country}-${holiday.date}`;
                 const isEnabled = enabledHolidays.has(holidayId);
 
                 const div = document.createElement('div');
@@ -1442,7 +1504,7 @@
                         <div class="holiday-title">${holiday.name}</div>
                         ${holiday.country !== 'custom' ? `<div class="holiday-country">${countries[holiday.country].name} ${countries[holiday.country].flag}</div>` : '<div class="holiday-country">Пользовательский</div>'}
                     </div>
-                    ${holiday.country === 'custom' ? '<span class="delete-holiday" data-date="' + holiday.date + '">×</span>' : ''}
+                    ${holiday.country === 'custom' ? '<span class="delete-holiday" data-id="' + holiday.id + '">×</span>' : ''}
                 `;
 
                 const checkbox = div.querySelector('input');
@@ -1460,7 +1522,7 @@
                 if (holiday.country === 'custom') {
                     const deleteBtn = div.querySelector('.delete-holiday');
                     deleteBtn.addEventListener('click', function() {
-                        deleteCustomHoliday(this.dataset.date);
+                        deleteCustomHoliday(this.dataset.id);
                     });
                 }
 
@@ -1511,7 +1573,7 @@
             const name = nameInput.value.trim();
 
             if (!date || !name) {
-                alert('Пожалуйста, заполните дату и название праздника');
+                showToast('Пожалуйста, заполните дату и название праздника', 'error');
                 return;
             }
 
@@ -1519,18 +1581,23 @@
             const [year, month, day] = date.split('-');
             const formattedDate = `${month}-${day}`;
 
+            // Генерируем уникальный ID для праздника
+            const holidayId = generateHolidayId();
+
             customHolidays.push({
+                id: holidayId,
                 date: formattedDate,
                 name: name
             });
 
             // Включаем новый праздник по умолчанию
-            const holidayId = `custom-${formattedDate}`;
             enabledHolidays.add(holidayId);
 
             // Очищаем поля
             dateInput.value = '';
             nameInput.value = '';
+
+            showToast('Праздник добавлен', 'success');
 
             updateHolidaysList();
             generateCalendar();
@@ -1538,9 +1605,10 @@
         }
 
         // Удаление пользовательского праздника
-        function deleteCustomHoliday(date) {
-            customHolidays = customHolidays.filter(h => h.date !== date);
-            enabledHolidays.delete(`custom-${date}`);
+        function deleteCustomHoliday(id) {
+            customHolidays = customHolidays.filter(h => h.id !== id);
+            enabledHolidays.delete(id);
+            showToast('Праздник удален', 'info');
             updateHolidaysList();
             generateCalendar();
             saveHolidaySettings();
@@ -1558,8 +1626,11 @@
             const holidays = getAllHolidays();
 
             const holiday = holidays.find(h => {
-                const holidayId = `${h.country}-${h.date}`;
-                return h.date === dateStr && enabledHolidays.has(holidayId);
+                if (h.date !== dateStr) return false;
+
+                // Для кастомных праздников проверяем по их уникальному ID
+                const holidayId = h.country === 'custom' ? h.id : `${h.country}-${h.date}`;
+                return enabledHolidays.has(holidayId);
             });
 
             return holiday;
@@ -1575,7 +1646,8 @@
                 };
                 localStorage.setItem('holidaySettings', JSON.stringify(settings));
             } catch (e) {
-                console.log('Holiday settings save skipped:', e);
+                console.error('Holiday settings save failed:', e);
+                showToast('Не удалось сохранить настройки', 'warning');
             }
         }
 
@@ -1590,7 +1662,7 @@
                     enabledHolidays = new Set(settings.enabledHolidays || []);
                 }
             } catch (e) {
-                console.log('Holiday settings load skipped:', e);
+                console.error('Holiday settings load failed:', e);
             }
         }
 
@@ -1907,22 +1979,22 @@
                 case 'week':
                     const weekStart = document.getElementById('weekStart').value;
                     if (!weekStart) {
-                        alert('Пожалуйста, выберите дату начала недели');
+                        showToast('Пожалуйста, выберите дату начала недели', 'error');
                         return;
                     }
                     html = generateWeekCalendar(weekStart, taskLines, showCheckbox, headerClass, customSubtitle);
                     break;
-                    
+
                 case 'day':
                     const dayDate = document.getElementById('dayDate').value;
                     const dayStart = parseInt(document.getElementById('dayStart').value);
                     const dayEnd = parseInt(document.getElementById('dayEnd').value);
                     if (!dayDate) {
-                        alert('Пожалуйста, выберите дату');
+                        showToast('Пожалуйста, выберите дату', 'error');
                         return;
                     }
                     if (dayStart >= dayEnd) {
-                        alert('Время начала должно быть раньше времени конца');
+                        showToast('Время начала должно быть раньше времени конца', 'error');
                         return;
                     }
                     html = generateDayCalendar(dayDate, dayStart, dayEnd, headerClass, customSubtitle, showCheckbox);
@@ -1977,17 +2049,16 @@
                 
                 localStorage.setItem('calendarSettings', JSON.stringify(settings));
             } catch (e) {
-                // Игнорируем ошибки localStorage (например, в приватном режиме)
-                console.log('Settings save skipped:', e);
+                console.error('Calendar settings save failed:', e);
             }
         }
-        
+
         // Функция восстановления настроек из localStorage
         function restoreSettingsFromStorage() {
             try {
                 const savedSettings = localStorage.getItem('calendarSettings');
                 if (!savedSettings) return;
-                
+
                 const settings = JSON.parse(savedSettings);
                 
                 // Устанавливаем флаг загрузки
@@ -2058,8 +2129,7 @@
                 // Снимаем флаг загрузки
                 isLoadingFromURL = false;
             } catch (e) {
-                // Игнорируем ошибки
-                console.log('Settings restore skipped:', e);
+                console.error('Calendar settings restore failed:', e);
                 isLoadingFromURL = false;
             }
         }
