@@ -1351,6 +1351,23 @@
 
         // Инициализация управления праздниками
         function initHolidayManagement() {
+            // Если enabledHolidays пустой, инициализируем праздники для выбранных стран
+            if (enabledHolidays.size === 0) {
+                for (const countryCode of selectedCountries) {
+                    if (defaultHolidays[countryCode]) {
+                        defaultHolidays[countryCode].forEach(holiday => {
+                            const holidayId = `${countryCode}-${holiday.date}`;
+                            enabledHolidays.add(holidayId);
+                        });
+                    }
+                }
+                // Инициализируем пользовательские праздники
+                customHolidays.forEach(holiday => {
+                    const holidayId = `custom-${holiday.date}`;
+                    enabledHolidays.add(holidayId);
+                });
+            }
+
             renderCountriesGrid();
             updateHolidaysList();
         }
@@ -1373,8 +1390,22 @@
                 checkbox.addEventListener('change', function() {
                     if (this.checked) {
                         selectedCountries.add(code);
+                        // Включаем все праздники новой страны по умолчанию
+                        if (defaultHolidays[code]) {
+                            defaultHolidays[code].forEach(holiday => {
+                                const holidayId = `${code}-${holiday.date}`;
+                                enabledHolidays.add(holidayId);
+                            });
+                        }
                     } else {
                         selectedCountries.delete(code);
+                        // Удаляем праздники этой страны из enabledHolidays
+                        if (defaultHolidays[code]) {
+                            defaultHolidays[code].forEach(holiday => {
+                                const holidayId = `${code}-${holiday.date}`;
+                                enabledHolidays.delete(holidayId);
+                            });
+                        }
                     }
                     div.classList.toggle('selected', this.checked);
                     updateHolidaysList();
@@ -1445,10 +1476,6 @@
             for (const countryCode of selectedCountries) {
                 if (defaultHolidays[countryCode]) {
                     defaultHolidays[countryCode].forEach(holiday => {
-                        const holidayId = `${countryCode}-${holiday.date}`;
-                        if (!enabledHolidays.has(holidayId)) {
-                            enabledHolidays.add(holidayId);
-                        }
                         holidays.push({
                             ...holiday,
                             country: countryCode
@@ -1459,10 +1486,6 @@
 
             // Добавляем пользовательские праздники
             customHolidays.forEach(holiday => {
-                const holidayId = `custom-${holiday.date}`;
-                if (!enabledHolidays.has(holidayId)) {
-                    enabledHolidays.add(holidayId);
-                }
                 holidays.push({
                     ...holiday,
                     country: 'custom'
@@ -1500,6 +1523,10 @@
                 date: formattedDate,
                 name: name
             });
+
+            // Включаем новый праздник по умолчанию
+            const holidayId = `custom-${formattedDate}`;
+            enabledHolidays.add(holidayId);
 
             // Очищаем поля
             dateInput.value = '';
