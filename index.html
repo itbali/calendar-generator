@@ -1405,7 +1405,7 @@
 
         // Генерация уникального ID для кастомного праздника
         function generateHolidayId() {
-            return `custom-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+            return `custom-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`;
         }
 
         // Парсинг даты праздника MM-DD
@@ -1416,8 +1416,6 @@
 
         // Инициализация управления праздниками
         function initHolidayManagement() {
-            let needsSave = false;
-
             // Инициализируем праздники только если НЕ загружены настройки (первый запуск)
             if (!hasLoadedSettings) {
                 for (const countryCode of selectedCountries) {
@@ -1431,24 +1429,29 @@
             }
 
             // Миграция старых пользовательских праздников без ID
-            const migratedHolidays = customHolidays.map(holiday => {
-                if (!holiday.id) {
-                    needsSave = true;
-                    return {
-                        ...holiday,
-                        id: generateHolidayId()
-                    };
-                }
-                return holiday;
-            });
+            // Проверяем, нужна ли миграция вообще
+            if (customHolidays.some(h => !h.id)) {
+                const migratedHolidays = customHolidays.map(holiday => {
+                    if (!holiday.id) {
+                        const newId = generateHolidayId();
+                        const oldId = `custom-${holiday.date}`;
 
-            // Заменяем массив только если была миграция
-            if (needsSave) {
-                customHolidays = migratedHolidays;
-                // Добавляем мигрированные праздники в enabledHolidays
-                migratedHolidays.forEach(holiday => {
-                    enabledHolidays.add(holiday.id);
+                        // Мигрируем состояние enabled: добавляем новый ID только если старый был включен
+                        if (enabledHolidays.has(oldId)) {
+                            enabledHolidays.add(newId);
+                        }
+                        // Удаляем старый ID
+                        enabledHolidays.delete(oldId);
+
+                        return {
+                            ...holiday,
+                            id: newId
+                        };
+                    }
+                    return holiday;
                 });
+
+                customHolidays = migratedHolidays;
                 // Сохраняем обновленные данные
                 saveHolidaySettings();
             }
