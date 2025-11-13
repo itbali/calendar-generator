@@ -1386,6 +1386,7 @@
         let selectedCountries = new Set(['russia']);
         let customHolidays = [];
         let enabledHolidays = new Set();
+        let hasLoadedSettings = false; // Флаг для отличия первой загрузки от пустого выбора
 
         // Функция для показа toast уведомлений
         function showToast(message, type = 'info') {
@@ -1407,10 +1408,18 @@
             return `custom-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
         }
 
+        // Парсинг даты праздника MM-DD
+        function parseHolidayDate(dateStr) {
+            const [month, day] = dateStr.split('-').map(Number);
+            return { month, day };
+        }
+
         // Инициализация управления праздниками
         function initHolidayManagement() {
-            // Если enabledHolidays пустой, инициализируем праздники для выбранных стран
-            if (enabledHolidays.size === 0) {
+            let needsSave = false;
+
+            // Инициализируем праздники только если НЕ загружены настройки (первый запуск)
+            if (!hasLoadedSettings) {
                 for (const countryCode of selectedCountries) {
                     if (defaultHolidays[countryCode]) {
                         defaultHolidays[countryCode].forEach(holiday => {
@@ -1419,14 +1428,29 @@
                         });
                     }
                 }
-                // Инициализируем пользовательские праздники
-                // Для старых праздников без ID генерируем новые
-                customHolidays.forEach(holiday => {
-                    if (!holiday.id) {
-                        holiday.id = generateHolidayId();
-                    }
+            }
+
+            // Миграция старых пользовательских праздников без ID
+            const migratedHolidays = customHolidays.map(holiday => {
+                if (!holiday.id) {
+                    needsSave = true;
+                    return {
+                        ...holiday,
+                        id: generateHolidayId()
+                    };
+                }
+                return holiday;
+            });
+
+            // Заменяем массив только если была миграция
+            if (needsSave) {
+                customHolidays = migratedHolidays;
+                // Добавляем мигрированные праздники в enabledHolidays
+                migratedHolidays.forEach(holiday => {
                     enabledHolidays.add(holiday.id);
                 });
+                // Сохраняем обновленные данные
+                saveHolidaySettings();
             }
 
             renderCountriesGrid();
@@ -1556,8 +1580,8 @@
 
             // Сортируем по дате
             holidays.sort((a, b) => {
-                const [monthA, dayA] = a.date.split('-').map(Number);
-                const [monthB, dayB] = b.date.split('-').map(Number);
+                const { month: monthA, day: dayA } = parseHolidayDate(a.date);
+                const { month: monthB, day: dayB } = parseHolidayDate(b.date);
                 return monthA !== monthB ? monthA - monthB : dayA - dayB;
             });
 
@@ -1616,7 +1640,7 @@
 
         // Форматирование даты для отображения
         function formatDateForDisplay(dateStr) {
-            const [month, day] = dateStr.split('-').map(Number);
+            const { month, day } = parseHolidayDate(dateStr);
             return `${day} ${monthNames[month - 1]}`;
         }
 
@@ -1660,6 +1684,7 @@
                     selectedCountries = new Set(settings.selectedCountries || ['russia']);
                     customHolidays = settings.customHolidays || [];
                     enabledHolidays = new Set(settings.enabledHolidays || []);
+                    hasLoadedSettings = true; // Отмечаем, что настройки были загружены
                 }
             } catch (e) {
                 console.error('Holiday settings load failed:', e);
