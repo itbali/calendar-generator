@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Генератор календарей на React",
+  "homepage": "https://itbali.github.io/calendar-generator/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -2,6 +2,8 @@
 
 Современное React-приложение для создания и печати настраиваемых календарей.
 
+🌐 **Демо**: [https://itbali.github.io/calendar-generator/](https://itbali.github.io/calendar-generator/)
+
 ## Описание
 
 Приложение позволяет создавать календари в различных режимах (год, месяц, неделя, день) с гибкими настройками:
@@ -143,6 +145,17 @@ npm run build
 npm run preview
 ```
 
+## Деплой на GitHub Pages
+
+Проект автоматически деплоится на GitHub Pages при пуше в main/master ветку через GitHub Actions.
+
+Для ручного деплоя:
+1. Соберите проект: `npm run build`
+2. Папка `dist` будет содержать готовые файлы
+3. GitHub Actions автоматически опубликует их на Pages
+
+Приложение будет доступно по адресу: https://itbali.github.io/calendar-generator/
+
 ## Особенности
 
 ### Управление состоянием
@@ -187,6 +200,8 @@ npm run preview
 - CSS3 с переменными
 - localStorage API
 - Print Media Queries
+- GitHub Pages
+- GitHub Actions (автодеплой)
 
 ## Автор
 
