@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const CACHE_NAME = 'calendar-generator-v1';
 const urlsToCache = [
   '/calendar-generator/',

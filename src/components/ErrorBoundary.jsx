@@ -4,14 +4,14 @@ class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false, error: null, errorInfo: null };
+    this.handleReset = this.handleReset.bind(this);
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError(_error) {
     return { hasError: true };
   }
 
   componentDidCatch(error, errorInfo) {
-    // eslint-disable-next-line no-console
     console.error('Error caught by ErrorBoundary:', error, errorInfo);
     this.setState({
       error,
@@ -19,14 +19,14 @@ class ErrorBoundary extends React.Component {
     });
   }
 
-  handleReset = () => {
+  handleReset(clearStorage) {
     this.setState({ hasError: false, error: null, errorInfo: null });
     // Очищаем localStorage на случай, если ошибка вызвана поврежденными данными
-    if (this.props.clearStorage) {
+    if (clearStorage) {
       localStorage.clear();
       window.location.reload();
     }
-  };
+  }
 
   render() {
     if (this.state.hasError) {
@@ -37,20 +37,15 @@ class ErrorBoundary extends React.Component {
             <p>Приложение столкнулось с неожиданной ошибкой.</p>
 
             <div className="error-actions">
-              <button onClick={this.handleReset} className="error-btn primary">
+              <button onClick={() => this.handleReset(false)} className="error-btn primary">
                 Попробовать снова
               </button>
-              <button
-                onClick={() => {
-                  this.props.clearStorage = true;
-                  this.handleReset();
-                }}
-                className="error-btn secondary"
-              >
+              <button onClick={() => this.handleReset(true)} className="error-btn secondary">
                 Сбросить настройки и перезагрузить
               </button>
             </div>
 
+            {/* eslint-disable-next-line no-undef */}
             {process.env.NODE_ENV === 'development' && this.state.error && (
               <details className="error-details">
                 <summary>Детали ошибки (для разработки)</summary>

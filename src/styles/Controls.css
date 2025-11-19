@@ -436,7 +436,6 @@ body.dark-mode .custom-holiday-form {
   border-color: #404040;
 }
 
-
 /* Экспорт секция */
 .export-section {
   margin-top: 20px;
@@ -550,7 +549,6 @@ body.dark-mode .export-hint {
   color: #999;
 }
 
-
 /* Переключатель языка */
 .language-selector {
   width: 100%;
@@ -583,4 +581,3 @@ body.dark-mode .language-selector:hover,
 body.dark-mode .language-selector:focus {
   border-color: #0066cc;
 }
-

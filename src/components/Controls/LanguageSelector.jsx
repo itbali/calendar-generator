@@ -8,7 +8,11 @@ const LanguageSelector = () => {
   return (
     <div className="control-group">
       <label>{t('language')}</label>
-      <select value={language} onChange={e => setLanguage(e.target.value)} className="language-selector">
+      <select
+        value={language}
+        onChange={e => setLanguage(e.target.value)}
+        className="language-selector"
+      >
         {languages.map(lang => (
           <option key={lang.code} value={lang.code}>
             {lang.flag} {lang.name}

@@ -3,13 +3,7 @@ import { useCalendar } from '../../context/CalendarContext';
 import { exportToPNG, exportToPDF, exportToICS } from '../../utils/exportUtils';
 
 const ExportButtons = () => {
-  const {
-    orientation,
-    year,
-    getAllHolidays,
-    showToast,
-    enabledHolidays,
-  } = useCalendar();
+  const { orientation, year, getAllHolidays, showToast, enabledHolidays } = useCalendar();
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPDF = async () => {
@@ -57,7 +51,8 @@ const ExportButtons = () => {
 
     // Фильтруем только включенные праздники
     const activeHolidays = allHolidays.filter(holiday => {
-      const holidayId = holiday.country === 'custom' ? holiday.id : `${holiday.country}-${holiday.date}`;
+      const holidayId =
+        holiday.country === 'custom' ? holiday.id : `${holiday.country}-${holiday.date}`;
       return enabledHolidays.has(holidayId);
     });
 

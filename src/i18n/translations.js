@@ -47,6 +47,7 @@ export const translations = {
     print: 'Печать',
     add: 'Добавить',
     delete: 'Удалить',
+    faq: 'Часто задаваемые вопросы',
 
     // Месяцы
     months: [
@@ -143,6 +144,7 @@ export const translations = {
     print: 'Print',
     add: 'Add',
     delete: 'Delete',
+    faq: 'Frequently Asked Questions',
 
     // Months
     months: [
@@ -239,6 +241,7 @@ export const translations = {
     print: 'Imprimir',
     add: 'Agregar',
     delete: 'Eliminar',
+    faq: 'Preguntas Frecuentes',
 
     // Meses
     months: [
@@ -335,6 +338,7 @@ export const translations = {
     print: 'Imprimir',
     add: 'Adicionar',
     delete: 'Excluir',
+    faq: 'Perguntas Frequentes',
 
     // Meses
     months: [
@@ -431,6 +435,7 @@ export const translations = {
     print: 'Drucken',
     add: 'Hinzufügen',
     delete: 'Löschen',
+    faq: 'Häufig gestellte Fragen',
 
     // Monate
     months: [

@@ -118,11 +118,14 @@ export const exportToICS = (holidays, year) => {
     ].join('\r\n');
 
     // Создаем Blob и скачиваем файл
+    // eslint-disable-next-line no-undef
     const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
     const link = document.createElement('a');
+    // eslint-disable-next-line no-undef
     link.href = URL.createObjectURL(blob);
     link.download = `holidays-${year}.ics`;
     link.click();
+    // eslint-disable-next-line no-undef
     URL.revokeObjectURL(link.href);
 
     return true;
