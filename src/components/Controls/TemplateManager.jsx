@@ -15,7 +15,7 @@ const TemplateManager = () => {
   const {
     viewMode,
     orientation,
-    colorTheme,
+    theme,
     darkMode,
     taskLines,
     showCheckboxes,
@@ -27,7 +27,7 @@ const TemplateManager = () => {
     showToast,
     setViewMode,
     setOrientation,
-    setColorTheme,
+    setTheme,
     setDarkMode,
     setTaskLines,
     setShowCheckboxes,
@@ -54,7 +54,7 @@ const TemplateManager = () => {
     const currentSettings = {
       viewMode,
       orientation,
-      colorTheme,
+      theme,
       darkMode,
       taskLines,
       showCheckboxes,
@@ -77,7 +77,7 @@ const TemplateManager = () => {
     const setters = {
       setViewMode,
       setOrientation,
-      setColorTheme,
+      setTheme,
       setDarkMode,
       setTaskLines,
       setShowCheckboxes,

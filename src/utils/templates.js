@@ -5,7 +5,7 @@ export const predefinedTemplates = {
     id: 'minimalist',
     viewMode: 'month',
     orientation: 'portrait',
-    colorTheme: 'classic',
+    theme: 'classic',
     darkMode: false,
     taskLines: 0,
     showCheckboxes: false,
@@ -20,7 +20,7 @@ export const predefinedTemplates = {
     id: 'taskPlanner',
     viewMode: 'week',
     orientation: 'portrait',
-    colorTheme: 'modern',
+    theme: 'modern',
     darkMode: false,
     taskLines: 10,
     showCheckboxes: true,
@@ -35,7 +35,7 @@ export const predefinedTemplates = {
     id: 'familyCalendar',
     viewMode: 'month',
     orientation: 'portrait',
-    colorTheme: 'pastel',
+    theme: 'pastel',
     darkMode: false,
     taskLines: 3,
     showCheckboxes: false,
@@ -110,7 +110,7 @@ export const applyTemplate = (template, setters) => {
     const {
       viewMode,
       orientation,
-      colorTheme,
+      theme,
       darkMode,
       taskLines,
       showCheckboxes,
@@ -125,8 +125,7 @@ export const applyTemplate = (template, setters) => {
     if (typeof setters.setViewMode === 'function' && viewMode) setters.setViewMode(viewMode);
     if (typeof setters.setOrientation === 'function' && orientation)
       setters.setOrientation(orientation);
-    if (typeof setters.setColorTheme === 'function' && colorTheme)
-      setters.setColorTheme(colorTheme);
+    if (typeof setters.setTheme === 'function' && theme) setters.setTheme(theme);
     if (typeof setters.setDarkMode === 'function' && darkMode !== undefined)
       setters.setDarkMode(darkMode);
     if (typeof setters.setTaskLines === 'function' && taskLines !== undefined)

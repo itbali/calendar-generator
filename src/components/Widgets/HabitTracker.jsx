@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
-
-// Time constants in milliseconds
-const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
+import { MILLIS_PER_DAY } from '../../utils/recurringUtils';
 
 const HabitTracker = () => {
   const { t } = useLanguage();

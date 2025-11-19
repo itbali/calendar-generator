@@ -55,7 +55,7 @@ const CalendarPreview = () => {
               <h2>{year}</h2>
               <div className="year">{customSubtitle || 'Годовой планировщик'}</div>
             </div>
-            <YearCalendar year={year} taskLines={taskLines} showCheckbox={showCheckboxes} />
+            <YearCalendar taskLines={taskLines} showCheckbox={showCheckboxes} />
             <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
           </div>
         );

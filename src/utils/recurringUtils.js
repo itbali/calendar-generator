@@ -1,6 +1,6 @@
 // Time constants in milliseconds
-const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
-const MILLIS_PER_WEEK = MILLIS_PER_DAY * 7;
+export const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
+export const MILLIS_PER_WEEK = MILLIS_PER_DAY * 7;
 
 /**
  * Calculate all occurrences of a recurring event for a given year

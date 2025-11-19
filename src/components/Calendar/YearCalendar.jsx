@@ -1,7 +1,7 @@
 import React from 'react';
 import { monthNames } from '../../utils/constants';
 
-const YearCalendar = ({ year: _year, taskLines, showCheckbox }) => {
+const YearCalendar = ({ taskLines, showCheckbox }) => {
   return (
     <div className="year-grid">
       {monthNames.map((monthName, index) => (
