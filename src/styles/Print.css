@@ -1,0 +1,237 @@
+/* Стили для печати */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  .app-container {
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .header,
+  .controls {
+    display: none !important;
+  }
+
+  .calendar-preview {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  @page {
+    margin: 8mm;
+    size: A4;
+  }
+
+  body.orientation-portrait {
+    /* Используется через JavaScript */
+  }
+
+  body.orientation-landscape {
+    /* Используется через JavaScript */
+  }
+
+  /* Убираем все тени при печати */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* Динамическое масштабирование контента */
+  .calendar-wrapper {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    page-break-inside: avoid;
+  }
+
+  .calendar-header {
+    flex-shrink: 0;
+  }
+
+  .calendar-footer {
+    flex-shrink: 0;
+  }
+
+  .calendar-table,
+  .year-grid,
+  .week-view,
+  .day-view {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Динамическая высота ячеек таблицы */
+  .calendar-table {
+    height: 100%;
+  }
+
+  .calendar-table tbody {
+    height: 100%;
+  }
+
+  .calendar-table tr {
+    height: calc(100% / 6);
+  }
+
+  .calendar-table td {
+    height: 100%;
+    font-size: clamp(8px, 1.2vw, 14px);
+  }
+
+  .date-number {
+    font-size: clamp(10px, 1.5vw, 16px);
+  }
+
+  .weekday {
+    font-size: clamp(7px, 1vw, 11px);
+  }
+
+  .task-line {
+    height: auto;
+    min-height: 10px;
+    font-size: clamp(7px, 1vw, 12px);
+  }
+
+  /* Год - динамическая сетка */
+  .year-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: clamp(8px, 1.5vw, 15px);
+    height: 100%;
+  }
+
+  .month-mini {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .month-mini .month-title {
+    font-size: clamp(12px, 1.8vw, 18px);
+    flex-shrink: 0;
+  }
+
+  .month-mini .goal-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .month-mini .goal-line {
+    flex: 1;
+    min-height: 12px;
+    font-size: clamp(8px, 1.2vw, 12px);
+  }
+
+  /* Неделя - динамическая высота */
+  .week-view {
+    display: flex;
+    height: 100%;
+  }
+
+  .week-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .week-column-header {
+    font-size: clamp(10px, 1.5vw, 14px);
+    flex-shrink: 0;
+  }
+
+  .week-column-date {
+    font-size: clamp(14px, 2vw, 20px);
+    flex-shrink: 0;
+  }
+
+  .week-column-content {
+    flex: 1;
+    min-height: 0;
+    padding: clamp(5px, 1vw, 10px);
+  }
+
+  .week-column-content .task-lines {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .week-column-content .task-line {
+    flex: 1;
+    min-height: 10px;
+  }
+
+  /* День - динамические временные слоты */
+  .day-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .day-header {
+    flex-shrink: 0;
+  }
+
+  .day-header .date {
+    font-size: clamp(24px, 4vw, 42px);
+  }
+
+  .day-header .weekday-full {
+    font-size: clamp(14px, 2.5vw, 22px);
+  }
+
+  .time-slots {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(8px, 1.5vw, 15px);
+  }
+
+  .time-slot {
+    flex: 1;
+    min-height: 0;
+  }
+
+  .time-label {
+    font-size: clamp(10px, 1.5vw, 16px);
+    width: clamp(50px, 8vw, 80px);
+  }
+
+  .time-content {
+    font-size: clamp(9px, 1.2vw, 14px);
+  }
+
+  .time-content.with-checkbox:before {
+    font-size: clamp(12px, 1.8vw, 18px);
+  }
+
+  /* Заголовки */
+  .calendar-header h2 {
+    font-size: clamp(20px, 3vw, 32px);
+  }
+
+  .calendar-header .year {
+    font-size: clamp(14px, 2vw, 18px);
+  }
+
+  .calendar-footer {
+    font-size: clamp(8px, 1.2vw, 11px);
+  }
+}

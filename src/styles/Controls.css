@@ -1,0 +1,354 @@
+.controls {
+  padding: 30px;
+  background: #ffffff;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #1d1d1f;
+  font-size: 14px;
+}
+
+.control-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.control-group select,
+.control-group input[type="number"],
+.control-group input[type="date"],
+.control-group input[type="text"] {
+  padding: 10px 15px;
+  border: 1px solid #d2d2d7;
+  border-radius: 10px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.2s;
+  min-width: 150px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.control-group select:focus,
+.control-group input[type="number"]:focus,
+.control-group input[type="date"]:focus,
+.control-group input[type="text"]:focus {
+  outline: none;
+  border-color: #007AFF;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+/* Темы */
+.color-themes {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  transition: all 0.2s;
+  width: 44px;
+  height: 44px;
+}
+
+.theme-option:hover {
+  transform: scale(1.1);
+  border-color: #007AFF;
+}
+
+.theme-option.active {
+  border-color: #007AFF;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.theme-option input[type="radio"] {
+  display: none;
+}
+
+.theme-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Чекбоксы */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #d2d2d7;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox-group label {
+  margin: 0;
+  cursor: pointer;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #d2d2d7;
+}
+
+.setting-item label {
+  margin: 0;
+  font-weight: 600;
+  color: #1d1d1f;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.setting-item select,
+.setting-item input[type="number"] {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* Кнопки */
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.btn-primary {
+  background: #007AFF;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: #0051D5;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #007AFF;
+  border: 1px solid #007AFF;
+}
+
+.btn-secondary:hover {
+  background: #007AFF;
+  color: white;
+}
+
+/* Праздники */
+.countries-section {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.countries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.country-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+  border: 2px solid #d2d2d7;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.country-checkbox:hover {
+  border-color: #007AFF;
+  background: #f0f8ff;
+}
+
+.country-checkbox.selected {
+  border-color: #007AFF;
+  background: #e6f2ff;
+}
+
+.country-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.country-flag {
+  font-size: 20px;
+}
+
+.country-label {
+  margin: 0;
+  cursor: pointer;
+  flex: 1;
+}
+
+.holidays-list {
+  max-height: 300px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #d2d2d7;
+}
+
+.holiday-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+}
+
+.holiday-item:hover {
+  background: #f8f9fa;
+}
+
+.holiday-item:last-child {
+  border-bottom: none;
+}
+
+.holiday-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.holiday-info {
+  flex: 1;
+}
+
+.holiday-date {
+  font-weight: 600;
+  color: #1d1d1f;
+  font-size: 13px;
+}
+
+.holiday-title {
+  color: #6a6a6a;
+  font-size: 12px;
+}
+
+.holiday-country {
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+}
+
+.custom-holiday-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.custom-holiday-form input[type="date"],
+.custom-holiday-form input[type="text"] {
+  padding: 8px;
+  border: 1px solid #d2d2d7;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.custom-holiday-form button {
+  padding: 8px 15px;
+  background: #007AFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.custom-holiday-form button:hover {
+  background: #0051D5;
+}
+
+.delete-holiday {
+  color: #ff3b30;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+.delete-holiday:hover {
+  color: #cc0000;
+}
+
+.section-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-label-spacing {
+  margin-top: 15px;
+}
+
+.custom-holiday-name-input {
+  flex: 1;
+}
+
+.no-holidays-message {
+  padding: 20px;
+  text-align: center;
+  color: #999;
+}
