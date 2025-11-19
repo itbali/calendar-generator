@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { countries } from '../../utils/constants';
 import { formatDateForDisplay } from '../../utils/dateUtils';
+import { syncHolidaysFromAPI } from '../../utils/holidaysApi';
 
 const HolidayManagement = () => {
+  const { t } = useLanguage();
   const {
     selectedCountries,
     getAllHolidays,
@@ -12,10 +15,13 @@ const HolidayManagement = () => {
     deleteCustomHoliday,
     toggleCountry,
     toggleHoliday,
+    showToast,
+    year,
   } = useCalendar();
 
   const [customDate, setCustomDate] = useState('');
   const [customName, setCustomName] = useState('');
+  const [isSyncing, setIsSyncing] = useState(false);
 
   const handleAddHoliday = () => {
     if (addCustomHoliday(customDate, customName)) {
@@ -24,13 +30,44 @@ const HolidayManagement = () => {
     }
   };
 
+  const handleSyncHolidays = async () => {
+    if (selectedCountries.size === 0) {
+      showToast(t('selectCountries'), 'error');
+      return;
+    }
+
+    setIsSyncing(true);
+
+    try {
+      // Создаем объект enabledCountries из Set
+      const enabledCountriesObj = {};
+      selectedCountries.forEach(code => {
+        enabledCountriesObj[code] = true;
+      });
+
+      const result = await syncHolidaysFromAPI(enabledCountriesObj, year);
+
+      if (result.success) {
+        showToast(t('holidaysSynced'), 'success');
+        // В будущем можно добавить эти праздники в календарь через CalendarContext
+      } else {
+        showToast(t('holidaysSyncError'), 'error');
+      }
+    } catch (error) {
+      console.error('Sync error:', error);
+      showToast(t('holidaysSyncError'), 'error');
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+
   const allHolidays = getAllHolidays();
 
   return (
     <div className="control-group">
-      <label>Управление праздниками</label>
+      <label>{t('holidays')}</label>
       <div className="countries-section">
-        <label className="section-label">Выберите страны:</label>
+        <label className="section-label">{t('selectCountries')}</label>
         <div className="countries-grid">
           {Object.entries(countries).map(([code, country]) => {
             const isSelected = selectedCountries.has(code);
@@ -51,10 +88,21 @@ const HolidayManagement = () => {
           })}
         </div>
 
-        <label className="section-label section-label-spacing">Праздники:</label>
+        {/* Кнопка синхронизации с API */}
+        <div className="sync-holidays-section">
+          <button
+            onClick={handleSyncHolidays}
+            disabled={isSyncing || selectedCountries.size === 0}
+            className="btn btn-primary sync-holidays-btn"
+          >
+            🔄 {isSyncing ? t('syncingHolidays') : t('syncFromAPI')}
+          </button>
+        </div>
+
+        <label className="section-label section-label-spacing">{t('holidays')}:</label>
         <div className="holidays-list">
           {allHolidays.length === 0 ? (
-            <div className="no-holidays-message">Выберите страны для отображения праздников</div>
+            <div className="no-holidays-message">{t('noHolidaysSelected')}</div>
           ) : (
             allHolidays.map((holiday, index) => {
               const holidayId =
@@ -77,7 +125,7 @@ const HolidayManagement = () => {
                         {countries[holiday.country].name} {countries[holiday.country].flag}
                       </div>
                     ) : (
-                      <div className="holiday-country">Пользовательский</div>
+                      <div className="holiday-country">{t('customHolidays')}</div>
                     )}
                   </div>
                   {holiday.country === 'custom' && (
@@ -95,15 +143,20 @@ const HolidayManagement = () => {
         </div>
 
         <div className="custom-holiday-form">
-          <input type="date" value={customDate} onChange={e => setCustomDate(e.target.value)} />
+          <input
+            type="date"
+            value={customDate}
+            onChange={e => setCustomDate(e.target.value)}
+            aria-label={t('date')}
+          />
           <input
             type="text"
             value={customName}
             onChange={e => setCustomName(e.target.value)}
             className="custom-holiday-name-input"
-            placeholder="Название праздника"
+            placeholder={t('holidayName')}
           />
-          <button onClick={handleAddHoliday}>Добавить</button>
+          <button onClick={handleAddHoliday}>{t('add')}</button>
         </div>
       </div>
     </div>

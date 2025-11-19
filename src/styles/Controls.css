@@ -930,3 +930,43 @@ body.dark-mode .template-action-btn.load:hover {
 body.dark-mode .no-templates-message {
   color: #666;
 }
+
+/* Sync Holidays Button */
+.sync-holidays-section {
+  margin: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.sync-holidays-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.sync-holidays-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.sync-holidays-btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 122, 255, 0.4);
+}
+
+.sync-holidays-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+body.dark-mode .sync-holidays-btn {
+  background: #0066cc;
+}
+
+body.dark-mode .sync-holidays-btn:not(:disabled):hover {
+  background: #0052a3;
+  box-shadow: 0 6px 15px rgba(0, 102, 204, 0.4);
+}

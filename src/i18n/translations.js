@@ -73,6 +73,13 @@ export const translations = {
     templateSaved: 'Шаблон сохранён',
     templateDeleted: 'Шаблон удалён',
 
+    // API Праздников
+    syncHolidays: 'Синхронизировать праздники',
+    syncingHolidays: 'Синхронизация...',
+    holidaysSynced: 'Праздники загружены из API',
+    holidaysSyncError: 'Ошибка загрузки праздников',
+    syncFromAPI: 'Загрузить из API',
+
     // Месяцы
     months: [
       'Январь',
@@ -193,6 +200,13 @@ export const translations = {
     templateLoaded: 'Template loaded',
     templateSaved: 'Template saved',
     templateDeleted: 'Template deleted',
+
+    // Holidays API
+    syncHolidays: 'Sync Holidays',
+    syncingHolidays: 'Syncing...',
+    holidaysSynced: 'Holidays loaded from API',
+    holidaysSyncError: 'Error loading holidays',
+    syncFromAPI: 'Load from API',
 
     // Months
     months: [
@@ -315,6 +329,13 @@ export const translations = {
     templateSaved: 'Plantilla guardada',
     templateDeleted: 'Plantilla eliminada',
 
+    // API de Festivos
+    syncHolidays: 'Sincronizar Festivos',
+    syncingHolidays: 'Sincronizando...',
+    holidaysSynced: 'Festivos cargados desde API',
+    holidaysSyncError: 'Error al cargar festivos',
+    syncFromAPI: 'Cargar desde API',
+
     // Meses
     months: [
       'Enero',
@@ -436,6 +457,13 @@ export const translations = {
     templateSaved: 'Modelo salvo',
     templateDeleted: 'Modelo excluído',
 
+    // API de Feriados
+    syncHolidays: 'Sincronizar Feriados',
+    syncingHolidays: 'Sincronizando...',
+    holidaysSynced: 'Feriados carregados da API',
+    holidaysSyncError: 'Erro ao carregar feriados',
+    syncFromAPI: 'Carregar da API',
+
     // Meses
     months: [
       'Janeiro',
@@ -556,6 +584,13 @@ export const translations = {
     templateLoaded: 'Vorlage geladen',
     templateSaved: 'Vorlage gespeichert',
     templateDeleted: 'Vorlage gelöscht',
+
+    // Feiertage-API
+    syncHolidays: 'Feiertage synchronisieren',
+    syncingHolidays: 'Synchronisiere...',
+    holidaysSynced: 'Feiertage von API geladen',
+    holidaysSyncError: 'Fehler beim Laden der Feiertage',
+    syncFromAPI: 'Von API laden',
 
     // Monate
     months: [
