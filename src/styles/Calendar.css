@@ -1,0 +1,353 @@
+/* Обёртка календаря */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 210mm;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+body.orientation-landscape .calendar-wrapper {
+  max-width: 287mm;
+}
+
+@media screen {
+  .calendar-wrapper {
+    min-height: 600px;
+  }
+
+  .day-view {
+    min-height: 600px;
+  }
+}
+
+/* Заголовок календаря */
+.calendar-header {
+  text-align: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 3px double var(--primary-color);
+}
+
+.calendar-header.align-left {
+  text-align: left;
+}
+
+.calendar-header.align-right {
+  text-align: right;
+}
+
+.calendar-header.hidden {
+  display: none;
+}
+
+.calendar-header h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.calendar-header .year {
+  font-size: 16px;
+  color: var(--secondary-color);
+  font-style: italic;
+}
+
+/* Футер календаря */
+.calendar-footer {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 10px;
+  color: var(--secondary-color);
+  font-style: italic;
+  padding-top: 6px;
+  border-top: 2px solid var(--date-bg);
+}
+
+/* Таблица месяца */
+.calendar-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.calendar-table td {
+  border: 2px solid var(--border-color);
+  padding: 6px;
+  vertical-align: top;
+  height: auto;
+  min-height: 80px;
+  background: white;
+  position: relative;
+}
+
+.date-number {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+  padding: 2px 6px;
+  background: var(--date-bg);
+  border-radius: 4px;
+  display: inline-block;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.weekday {
+  font-size: 10px;
+  font-weight: normal;
+  color: var(--secondary-color);
+  margin-left: 4px;
+  font-style: italic;
+}
+
+.task-lines {
+  margin-top: 6px;
+}
+
+.task-line {
+  border-bottom: 1px solid var(--line-color);
+  height: 14px;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.task-line.with-checkbox:before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  color: var(--secondary-color);
+  font-size: 11px;
+}
+
+.task-line:nth-child(odd) {
+  background: var(--task-bg);
+}
+
+.empty-cell {
+  background: #f0f0f0;
+  border-color: #d0d0d0;
+}
+
+.weekend {
+  background: var(--weekend-bg);
+}
+
+.weekend .date-number {
+  background: var(--weekend-date-bg);
+  color: var(--weekend-color);
+}
+
+.weekend .weekday {
+  color: var(--weekend-color);
+}
+
+.holiday {
+  background: var(--holiday-bg) !important;
+  position: relative;
+}
+
+.holiday .date-number {
+  background: var(--holiday-date-bg) !important;
+  color: var(--holiday-color) !important;
+}
+
+.holiday .weekday {
+  color: var(--holiday-color) !important;
+}
+
+.holiday-name {
+  font-size: 9px;
+  color: var(--holiday-color);
+  font-weight: bold;
+  margin-top: 2px;
+  line-height: 1.2;
+  font-style: italic;
+}
+
+/* Год - сетка месяцев */
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.month-mini {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px;
+  background: white;
+  min-height: 150px;
+}
+
+.month-mini .month-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.month-mini .goal-lines {
+  margin-top: 8px;
+}
+
+.month-mini .goal-line {
+  border-bottom: 1px solid var(--line-color);
+  height: 18px;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.month-mini .goal-line.with-checkbox:before {
+  content: "□";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  color: var(--secondary-color);
+  font-size: 12px;
+}
+
+/* Неделя */
+.week-view {
+  display: flex;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.week-column {
+  flex: 1;
+  border: 2px solid var(--border-color);
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-column:last-child {
+  border-right: 2px solid var(--border-color);
+}
+
+.week-column-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.week-column-date {
+  background: var(--date-bg);
+  padding: 8px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.week-column-content {
+  padding: 8px;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-column-content .task-lines {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.week-column-content .task-line {
+  flex: 1;
+  min-height: 14px;
+}
+
+/* День */
+.day-view {
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.day-header {
+  background: var(--primary-color);
+  color: white;
+  padding: 15px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.day-header .date {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.day-header .weekday-full {
+  font-size: 20px;
+  opacity: 0.9;
+}
+
+.time-slots {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.time-slot {
+  display: flex;
+  border-bottom: 2px solid var(--line-color);
+  min-height: 25px;
+  padding: 4px 0;
+  flex: 1;
+}
+
+.time-slot:last-child {
+  border-bottom: none;
+}
+
+.time-label {
+  width: 80px;
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 16px;
+  padding-right: 15px;
+  border-right: 2px solid var(--border-color);
+  text-align: right;
+}
+
+.time-content {
+  flex: 1;
+  padding-left: 15px;
+  background: var(--task-bg);
+  position: relative;
+}
+
+.time-content.with-checkbox:before {
+  content: "□";
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--secondary-color);
+  font-size: 16px;
+}
+
+.time-content.with-checkbox {
+  padding-left: 30px;
+}

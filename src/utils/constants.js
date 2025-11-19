@@ -1,0 +1,173 @@
+// Цветовые темы
+export const themes = {
+  blue: {
+    primary: '#2c5f7c',
+    secondary: '#6b8e9f',
+    border: '#4a7c95',
+    dateBg: 'linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 100%)',
+    taskBg: 'linear-gradient(to right, #f8fbfd 0%, white 100%)',
+    line: '#a8c5d4',
+    weekendBg: 'linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)',
+    weekendDateBg: 'linear-gradient(135deg, #ffd9a8 0%, #ffcc80 100%)',
+    weekendColor: '#d67a00',
+    holidayBg: 'linear-gradient(135deg, #ffe8f0 0%, #ffd4e5 100%)',
+    holidayDateBg: 'linear-gradient(135deg, #ffb3d9 0%, #ff8cc7 100%)',
+    holidayColor: '#cc0066'
+  },
+  green: {
+    primary: '#2d7c4f',
+    secondary: '#5a9d73',
+    border: '#4a9d6a',
+    dateBg: 'linear-gradient(135deg, #e8f8f0 0%, #d4f0e0 100%)',
+    taskBg: 'linear-gradient(to right, #f8fdfb 0%, white 100%)',
+    line: '#a8d4b8',
+    weekendBg: 'linear-gradient(135deg, #fff0f5 0%, #ffe4ec 100%)',
+    weekendDateBg: 'linear-gradient(135deg, #ffc4d6 0%, #ffaac7 100%)',
+    weekendColor: '#c7366b',
+    holidayBg: 'linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%)',
+    holidayDateBg: 'linear-gradient(135deg, #ffd9a8 0%, #ffcc80 100%)',
+    holidayColor: '#d67a00'
+  },
+  purple: {
+    primary: '#6b4c9a',
+    secondary: '#8b6bb7',
+    border: '#8b6bb7',
+    dateBg: 'linear-gradient(135deg, #f3eff8 0%, #e8dff5 100%)',
+    taskBg: 'linear-gradient(to right, #faf8fd 0%, white 100%)',
+    line: '#c4b4d9',
+    weekendBg: 'linear-gradient(135deg, #fff8e6 0%, #ffedb3 100%)',
+    weekendDateBg: 'linear-gradient(135deg, #ffe699 0%, #ffd966 100%)',
+    weekendColor: '#cc9900',
+    holidayBg: 'linear-gradient(135deg, #ffe8f0 0%, #ffd4e5 100%)',
+    holidayDateBg: 'linear-gradient(135deg, #ffb3d9 0%, #ff8cc7 100%)',
+    holidayColor: '#cc0066'
+  },
+  warm: {
+    primary: '#c67a3e',
+    secondary: '#d4954f',
+    border: '#d4954f',
+    dateBg: 'linear-gradient(135deg, #fdf5ef 0%, #faeadb 100%)',
+    taskBg: 'linear-gradient(to right, #fdfaf8 0%, white 100%)',
+    line: '#e8c9a8',
+    weekendBg: 'linear-gradient(135deg, #f0e8ff 0%, #e4d4ff 100%)',
+    weekendDateBg: 'linear-gradient(135deg, #d4b3ff 0%, #c299ff 100%)',
+    weekendColor: '#7a3bcc',
+    holidayBg: 'linear-gradient(135deg, #e8f8ff 0%, #d4f0ff 100%)',
+    holidayDateBg: 'linear-gradient(135deg, #b3e0ff 0%, #80d4ff 100%)',
+    holidayColor: '#0066cc'
+  },
+  mono: {
+    primary: '#4a4a4a',
+    secondary: '#6a6a6a',
+    border: '#6a6a6a',
+    dateBg: 'linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%)',
+    taskBg: 'linear-gradient(to right, #fafafa 0%, white 100%)',
+    line: '#b8b8b8',
+    weekendBg: 'linear-gradient(135deg, #e8e8e8 0%, #dddddd 100%)',
+    weekendDateBg: 'linear-gradient(135deg, #d0d0d0 0%, #c5c5c5 100%)',
+    weekendColor: '#5a5a5a',
+    holidayBg: 'linear-gradient(135deg, #f8f8f8 0%, #eeeeee 100%)',
+    holidayDateBg: 'linear-gradient(135deg, #d8d8d8 0%, #c8c8c8 100%)',
+    holidayColor: '#3a3a3a'
+  }
+};
+
+// Названия месяцев
+export const monthNames = [
+  'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+  'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+];
+
+// Названия дней недели (короткие)
+export const dayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+
+// Названия дней недели (полные)
+export const dayNamesFull = [
+  'Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'
+];
+
+// Данные о странах
+export const countries = {
+  russia: { name: 'Россия', flag: '🇷🇺' },
+  usa: { name: 'США', flag: '🇺🇸' },
+  uk: { name: 'Великобритания', flag: '🇬🇧' },
+  germany: { name: 'Германия', flag: '🇩🇪' },
+  france: { name: 'Франция', flag: '🇫🇷' },
+  spain: { name: 'Испания', flag: '🇪🇸' },
+  italy: { name: 'Италия', flag: '🇮🇹' },
+  china: { name: 'Китай', flag: '🇨🇳' },
+  japan: { name: 'Япония', flag: '🇯🇵' }
+};
+
+// Дефолтные праздники по странам
+export const defaultHolidays = {
+  russia: [
+    { date: '01-01', name: 'Новый год' },
+    { date: '01-02', name: 'Новогодние каникулы' },
+    { date: '01-03', name: 'Новогодние каникулы' },
+    { date: '01-04', name: 'Новогодние каникулы' },
+    { date: '01-05', name: 'Новогодние каникулы' },
+    { date: '01-06', name: 'Новогодние каникулы' },
+    { date: '01-07', name: 'Рождество Христово' },
+    { date: '01-08', name: 'Новогодние каникулы' },
+    { date: '02-23', name: 'День защитника Отечества' },
+    { date: '03-08', name: 'Международный женский день' },
+    { date: '05-01', name: 'Праздник Весны и Труда' },
+    { date: '05-09', name: 'День Победы' },
+    { date: '06-12', name: 'День России' },
+    { date: '11-04', name: 'День народного единства' }
+  ],
+  usa: [
+    { date: '01-01', name: 'New Year\'s Day' },
+    { date: '07-04', name: 'Independence Day' },
+    { date: '12-25', name: 'Christmas Day' },
+    { date: '11-11', name: 'Veterans Day' },
+    { date: '02-14', name: 'Valentine\'s Day' },
+    { date: '10-31', name: 'Halloween' }
+  ],
+  uk: [
+    { date: '01-01', name: 'New Year\'s Day' },
+    { date: '12-25', name: 'Christmas Day' },
+    { date: '12-26', name: 'Boxing Day' },
+    { date: '03-17', name: 'St. Patrick\'s Day' }
+  ],
+  germany: [
+    { date: '01-01', name: 'Neujahr' },
+    { date: '05-01', name: 'Tag der Arbeit' },
+    { date: '10-03', name: 'Tag der Deutschen Einheit' },
+    { date: '12-25', name: 'Weihnachten' },
+    { date: '12-26', name: 'Zweiter Weihnachtstag' }
+  ],
+  france: [
+    { date: '01-01', name: 'Jour de l\'an' },
+    { date: '05-01', name: 'Fête du Travail' },
+    { date: '05-08', name: 'Victoire 1945' },
+    { date: '07-14', name: 'Fête Nationale' },
+    { date: '12-25', name: 'Noël' }
+  ],
+  spain: [
+    { date: '01-01', name: 'Año Nuevo' },
+    { date: '01-06', name: 'Día de Reyes' },
+    { date: '05-01', name: 'Día del Trabajo' },
+    { date: '10-12', name: 'Fiesta Nacional' },
+    { date: '12-25', name: 'Navidad' }
+  ],
+  italy: [
+    { date: '01-01', name: 'Capodanno' },
+    { date: '01-06', name: 'Epifania' },
+    { date: '04-25', name: 'Liberazione' },
+    { date: '05-01', name: 'Festa dei Lavoratori' },
+    { date: '12-25', name: 'Natale' }
+  ],
+  china: [
+    { date: '01-01', name: '元旦 (New Year)' },
+    { date: '05-01', name: '劳动节 (Labor Day)' },
+    { date: '10-01', name: '国庆节 (National Day)' }
+  ],
+  japan: [
+    { date: '01-01', name: '元日 (New Year)' },
+    { date: '02-11', name: '建国記念の日' },
+    { date: '05-03', name: '憲法記念日' },
+    { date: '12-23', name: '天皇誕生日' }
+  ]
+};
