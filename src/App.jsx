@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { CalendarProvider, useCalendar } from './context/CalendarContext';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import Controls from './components/Controls/Controls';
 import CalendarPreview from './components/Calendar/CalendarPreview';
 import Toast from './components/Toast';
@@ -14,6 +15,7 @@ import './styles/ErrorBoundary.css';
 
 const AppContent = () => {
   const { orientation } = useCalendar();
+  const { t } = useLanguage();
 
   // Применяем тему
   useTheme();
@@ -30,8 +32,8 @@ const AppContent = () => {
     <>
       <div className="app-container">
         <div className="header">
-          <h1>✦ Генератор Календарей ✦</h1>
-          <p>Создайте идеальный календарь для планирования</p>
+          <h1>✦ {t('appTitle')} ✦</h1>
+          <p>{t('appSubtitle')}</p>
         </div>
         <Controls />
         <CalendarPreview />
@@ -44,9 +46,11 @@ const AppContent = () => {
 function App() {
   return (
     <ErrorBoundary>
-      <CalendarProvider>
-        <AppContent />
-      </CalendarProvider>
+      <LanguageProvider>
+        <CalendarProvider>
+          <AppContent />
+        </CalendarProvider>
+      </LanguageProvider>
     </ErrorBoundary>
   );
 }

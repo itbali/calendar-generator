@@ -550,3 +550,37 @@ body.dark-mode .export-hint {
   color: #999;
 }
 
+
+/* Переключатель языка */
+.language-selector {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.language-selector:hover {
+  border-color: #007aff;
+}
+
+.language-selector:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+body.dark-mode .language-selector {
+  background: #2a2a2a;
+  border-color: #404040;
+  color: #e5e5e5;
+}
+
+body.dark-mode .language-selector:hover,
+body.dark-mode .language-selector:focus {
+  border-color: #0066cc;
+}
+
