@@ -80,6 +80,17 @@ export const translations = {
     holidaysSyncError: 'Ошибка загрузки праздников',
     syncFromAPI: 'Загрузить из API',
 
+    // Импорт календаря
+    importCalendar: 'Импорт календаря',
+    importFromICS: 'Импорт из .ics файла',
+    selectICSFile: 'Выберите .ics файл',
+    importing: 'Импорт...',
+    importSuccess: 'Календарь импортирован успешно',
+    importError: 'Ошибка импорта календаря',
+    eventsImported: 'событий импортировано',
+    noEventsFound: 'События не найдены в файле',
+    invalidICSFile: 'Неверный формат .ics файла',
+
     // Месяцы
     months: [
       'Январь',
@@ -207,6 +218,17 @@ export const translations = {
     holidaysSynced: 'Holidays loaded from API',
     holidaysSyncError: 'Error loading holidays',
     syncFromAPI: 'Load from API',
+
+    // Calendar Import
+    importCalendar: 'Import Calendar',
+    importFromICS: 'Import from .ics file',
+    selectICSFile: 'Select .ics file',
+    importing: 'Importing...',
+    importSuccess: 'Calendar imported successfully',
+    importError: 'Error importing calendar',
+    eventsImported: 'events imported',
+    noEventsFound: 'No events found in file',
+    invalidICSFile: 'Invalid .ics file format',
 
     // Months
     months: [
@@ -336,6 +358,17 @@ export const translations = {
     holidaysSyncError: 'Error al cargar festivos',
     syncFromAPI: 'Cargar desde API',
 
+    // Importar Calendario
+    importCalendar: 'Importar Calendario',
+    importFromICS: 'Importar desde archivo .ics',
+    selectICSFile: 'Seleccione archivo .ics',
+    importing: 'Importando...',
+    importSuccess: 'Calendario importado exitosamente',
+    importError: 'Error al importar calendario',
+    eventsImported: 'eventos importados',
+    noEventsFound: 'No se encontraron eventos en el archivo',
+    invalidICSFile: 'Formato de archivo .ics inválido',
+
     // Meses
     months: [
       'Enero',
@@ -464,6 +497,17 @@ export const translations = {
     holidaysSyncError: 'Erro ao carregar feriados',
     syncFromAPI: 'Carregar da API',
 
+    // Importar Calendário
+    importCalendar: 'Importar Calendário',
+    importFromICS: 'Importar de arquivo .ics',
+    selectICSFile: 'Selecione arquivo .ics',
+    importing: 'Importando...',
+    importSuccess: 'Calendário importado com sucesso',
+    importError: 'Erro ao importar calendário',
+    eventsImported: 'eventos importados',
+    noEventsFound: 'Nenhum evento encontrado no arquivo',
+    invalidICSFile: 'Formato de arquivo .ics inválido',
+
     // Meses
     months: [
       'Janeiro',
@@ -591,6 +635,17 @@ export const translations = {
     holidaysSynced: 'Feiertage von API geladen',
     holidaysSyncError: 'Fehler beim Laden der Feiertage',
     syncFromAPI: 'Von API laden',
+
+    // Kalender importieren
+    importCalendar: 'Kalender importieren',
+    importFromICS: 'Aus .ics-Datei importieren',
+    selectICSFile: '.ics-Datei auswählen',
+    importing: 'Importiere...',
+    importSuccess: 'Kalender erfolgreich importiert',
+    importError: 'Fehler beim Importieren des Kalenders',
+    eventsImported: 'Ereignisse importiert',
+    noEventsFound: 'Keine Ereignisse in der Datei gefunden',
+    invalidICSFile: 'Ungültiges .ics-Dateiformat',
 
     // Monate
     months: [

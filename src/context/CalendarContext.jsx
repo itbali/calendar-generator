@@ -300,6 +300,34 @@ export const CalendarProvider = ({ children }) => {
     }
   }, []);
 
+  // Импортировать праздники из .ics файла
+  const importHolidaysFromICS = useCallback(events => {
+    if (!events || events.length === 0) {
+      return { success: false, count: 0 };
+    }
+
+    const newHolidays = [];
+    const newEnabledIds = [];
+
+    events.forEach(event => {
+      const holidayId = generateHolidayId();
+      newHolidays.push({
+        id: holidayId,
+        date: event.date, // Already in MM-DD format
+        name: event.name,
+      });
+      newEnabledIds.push(holidayId);
+    });
+
+    // Add all new holidays
+    setCustomHolidays(prev => [...prev, ...newHolidays]);
+
+    // Enable all imported holidays
+    setEnabledHolidays(prev => new Set([...prev, ...newEnabledIds]));
+
+    return { success: true, count: newHolidays.length };
+  }, []);
+
   const value = {
     // Настройки календаря
     viewMode,
@@ -343,6 +371,7 @@ export const CalendarProvider = ({ children }) => {
     deleteCustomHoliday,
     toggleCountry,
     toggleHoliday,
+    importHolidaysFromICS,
 
     // Toast
     toasts,

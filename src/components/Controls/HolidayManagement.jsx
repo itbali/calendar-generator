@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { countries } from '../../utils/constants';
 import { formatDateForDisplay } from '../../utils/dateUtils';
 import { syncHolidaysFromAPI } from '../../utils/holidaysApi';
+import { importFromICS } from '../../utils/icsParser';
 
 const HolidayManagement = () => {
   const { t } = useLanguage();
@@ -15,6 +16,7 @@ const HolidayManagement = () => {
     deleteCustomHoliday,
     toggleCountry,
     toggleHoliday,
+    importHolidaysFromICS,
     showToast,
     year,
   } = useCalendar();
@@ -22,6 +24,8 @@ const HolidayManagement = () => {
   const [customDate, setCustomDate] = useState('');
   const [customName, setCustomName] = useState('');
   const [isSyncing, setIsSyncing] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
+  const fileInputRef = useRef(null);
 
   const handleAddHoliday = () => {
     if (addCustomHoliday(customDate, customName)) {
@@ -61,6 +65,47 @@ const HolidayManagement = () => {
     }
   };
 
+  const handleImportICS = async event => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    setIsImporting(true);
+
+    try {
+      const events = await importFromICS(file);
+
+      // Import events as custom holidays
+      const result = importHolidaysFromICS(events);
+
+      if (result.success) {
+        showToast(`${result.count} ${t('eventsImported')}`, 'success');
+      } else {
+        showToast(t('importError'), 'error');
+      }
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    } catch (error) {
+      console.error('Import error:', error);
+      if (error.message === 'No events found in file') {
+        showToast(t('noEventsFound'), 'error');
+      } else if (error.message === 'Invalid ICS file format') {
+        showToast(t('invalidICSFile'), 'error');
+      } else {
+        showToast(t('importError'), 'error');
+      }
+
+      // Reset file input
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    } finally {
+      setIsImporting(false);
+    }
+  };
+
   const allHolidays = getAllHolidays();
 
   return (
@@ -97,6 +142,19 @@ const HolidayManagement = () => {
           >
             🔄 {isSyncing ? t('syncingHolidays') : t('syncFromAPI')}
           </button>
+
+          {/* Кнопка импорта из .ics файла */}
+          <label className="btn btn-secondary import-ics-btn">
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept=".ics"
+              onChange={handleImportICS}
+              disabled={isImporting}
+              style={{ display: 'none' }}
+            />
+            📥 {isImporting ? t('importing') : t('importFromICS')}
+          </label>
         </div>
 
         <label className="section-label section-label-spacing">{t('holidays')}:</label>
