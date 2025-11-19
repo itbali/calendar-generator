@@ -1,3 +1,7 @@
+// Time constants in milliseconds
+const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
+const MILLIS_PER_WEEK = MILLIS_PER_DAY * 7;
+
 /**
  * Calculate all occurrences of a recurring event for a given year
  * @param {object} event - Recurring event object
@@ -54,7 +58,7 @@ const calculateDailyOccurrences = (startDate, endDate, interval, year, occurrenc
 
   // If startDate is before year, align to interval
   if (startDate < yearStart) {
-    const daysSinceStart = Math.floor((yearStart - startDate) / (1000 * 60 * 60 * 24));
+    const daysSinceStart = Math.floor((yearStart - startDate) / MILLIS_PER_DAY);
     const offset = daysSinceStart % interval;
     if (offset > 0) {
       currentDate.setDate(currentDate.getDate() + (interval - offset));
@@ -84,7 +88,7 @@ const calculateWeeklyOccurrences = (startDate, endDate, interval, year, occurren
 
   // If startDate is before year, align to interval
   if (startDate < yearStart) {
-    const weeksSinceStart = Math.floor((yearStart - startDate) / (1000 * 60 * 60 * 24 * 7));
+    const weeksSinceStart = Math.floor((yearStart - startDate) / MILLIS_PER_WEEK);
     const offset = weeksSinceStart % interval;
     if (offset > 0) {
       currentDate.setDate(currentDate.getDate() + (interval - offset) * 7);

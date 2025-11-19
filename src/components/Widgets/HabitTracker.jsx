@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 
+// Time constants in milliseconds
+const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
+
 const HabitTracker = () => {
   const { t } = useLanguage();
   const { habits, addHabit, deleteHabit, toggleHabitDay, showToast } = useCalendar();
@@ -66,7 +69,7 @@ const HabitTracker = () => {
         currDate.setHours(0, 0, 0, 0);
 
         const diffTime = prevDate - currDate;
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const diffDays = Math.ceil(diffTime / MILLIS_PER_DAY);
 
         if (diffDays === 1) {
           tempStreak++;

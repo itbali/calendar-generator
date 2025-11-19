@@ -8,7 +8,7 @@ export const predefinedTemplates = {
     colorTheme: 'classic',
     darkMode: false,
     taskLines: 0,
-    showCheckbox: false,
+    showCheckboxes: false,
     contrastWeekends: false,
     headerAlignment: 'center',
     customSubtitle: '',
@@ -23,7 +23,7 @@ export const predefinedTemplates = {
     colorTheme: 'modern',
     darkMode: false,
     taskLines: 10,
-    showCheckbox: true,
+    showCheckboxes: true,
     contrastWeekends: true,
     headerAlignment: 'left',
     customSubtitle: 'Weekly Task Planner',
@@ -38,7 +38,7 @@ export const predefinedTemplates = {
     colorTheme: 'pastel',
     darkMode: false,
     taskLines: 3,
-    showCheckbox: false,
+    showCheckboxes: false,
     contrastWeekends: true,
     headerAlignment: 'center',
     customSubtitle: 'Family Calendar',
@@ -54,10 +54,21 @@ export const predefinedTemplates = {
 export const saveTemplate = (name, settings) => {
   try {
     const templates = getCustomTemplates();
+
+    // Convert Set to object for JSON serialization
+    const settingsToSave = { ...settings };
+    if (settingsToSave.enabledHolidays instanceof Set) {
+      const holidaysObj = {};
+      settingsToSave.enabledHolidays.forEach(key => {
+        holidaysObj[key] = true;
+      });
+      settingsToSave.enabledHolidays = holidaysObj;
+    }
+
     const newTemplate = {
       id: Date.now().toString(),
       name,
-      ...settings,
+      ...settingsToSave,
       createdAt: new Date().toISOString(),
     };
     templates.push(newTemplate);
@@ -102,7 +113,7 @@ export const applyTemplate = (template, setters) => {
       colorTheme,
       darkMode,
       taskLines,
-      showCheckbox,
+      showCheckboxes,
       contrastWeekends,
       headerAlignment,
       customSubtitle,
@@ -111,20 +122,32 @@ export const applyTemplate = (template, setters) => {
     } = template;
 
     // Применяем все настройки
-    if (setters.setViewMode && viewMode) setters.setViewMode(viewMode);
-    if (setters.setOrientation && orientation) setters.setOrientation(orientation);
-    if (setters.setColorTheme && colorTheme) setters.setColorTheme(colorTheme);
-    if (setters.setDarkMode !== undefined && darkMode !== undefined) setters.setDarkMode(darkMode);
-    if (setters.setTaskLines && taskLines !== undefined) setters.setTaskLines(taskLines);
-    if (setters.setShowCheckbox && showCheckbox !== undefined)
-      setters.setShowCheckbox(showCheckbox);
-    if (setters.setContrastWeekends && contrastWeekends !== undefined)
+    if (typeof setters.setViewMode === 'function' && viewMode) setters.setViewMode(viewMode);
+    if (typeof setters.setOrientation === 'function' && orientation)
+      setters.setOrientation(orientation);
+    if (typeof setters.setColorTheme === 'function' && colorTheme)
+      setters.setColorTheme(colorTheme);
+    if (typeof setters.setDarkMode === 'function' && darkMode !== undefined)
+      setters.setDarkMode(darkMode);
+    if (typeof setters.setTaskLines === 'function' && taskLines !== undefined)
+      setters.setTaskLines(taskLines);
+    if (typeof setters.setShowCheckboxes === 'function' && showCheckboxes !== undefined)
+      setters.setShowCheckboxes(showCheckboxes);
+    if (typeof setters.setContrastWeekends === 'function' && contrastWeekends !== undefined)
       setters.setContrastWeekends(contrastWeekends);
-    if (setters.setHeaderAlignment && headerAlignment) setters.setHeaderAlignment(headerAlignment);
-    if (setters.setCustomSubtitle !== undefined) setters.setCustomSubtitle(customSubtitle || '');
-    if (setters.setEnabledHolidays && enabledHolidays)
-      setters.setEnabledHolidays(enabledHolidays || {});
-    if (setters.setCustomHolidays && customHolidays)
+    if (typeof setters.setHeaderAlignment === 'function' && headerAlignment)
+      setters.setHeaderAlignment(headerAlignment);
+    if (typeof setters.setCustomSubtitle === 'function')
+      setters.setCustomSubtitle(customSubtitle || '');
+    if (typeof setters.setEnabledHolidays === 'function' && enabledHolidays) {
+      // Convert object to Set for proper state management
+      const holidaysSet =
+        enabledHolidays instanceof Set
+          ? enabledHolidays
+          : new Set(Object.keys(enabledHolidays).filter(key => enabledHolidays[key]));
+      setters.setEnabledHolidays(holidaysSet);
+    }
+    if (typeof setters.setCustomHolidays === 'function' && customHolidays)
       setters.setCustomHolidays(customHolidays || []);
 
     return true;

@@ -51,8 +51,13 @@ const RecurringEvents = () => {
     const num = parseInt(interval, 10);
     if (isNaN(num) || num <= 0) return '';
 
-    const pattern = repeatPattern;
-    let key = `${pattern === 'daily' ? 'day' : pattern === 'weekly' ? 'week' : pattern === 'monthly' ? 'month' : 'year'}`;
+    const patternKeyMap = {
+      daily: 'day',
+      weekly: 'week',
+      monthly: 'month',
+      yearly: 'year',
+    };
+    let key = patternKeyMap[repeatPattern] || 'year';
 
     // Русская множественность
     if (num === 1) {
@@ -177,9 +182,19 @@ const RecurringEvents = () => {
                 )}
                 <span className="event-detail">
                   {t('repeatPattern')}: {t(event.pattern)} ({t('repeatEvery')} {event.interval}{' '}
-                  {event.interval === 1
-                    ? t(`${event.pattern.replace('ly', '')}_one`)
-                    : t(`${event.pattern.replace('ly', '')}_few`)}
+                  {(() => {
+                    const patternKeyMap = {
+                      daily: 'day',
+                      weekly: 'week',
+                      monthly: 'month',
+                      yearly: 'year',
+                    };
+                    const baseKey = patternKeyMap[event.pattern] || 'year';
+                    const num = event.interval;
+                    if (num === 1) return t(`${baseKey}_one`);
+                    if (num >= 2 && num <= 4) return t(`${baseKey}_few`);
+                    return t(`${baseKey}_many`);
+                  })()}
                   )
                 </span>
               </div>

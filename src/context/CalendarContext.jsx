@@ -253,8 +253,8 @@ export const CalendarProvider = ({ children }) => {
       }
 
       // Преобразуем дату из YYYY-MM-DD в MM-DD
-      const parts = date.split('-');
-      const formattedDate = `${parts[1]}-${parts[2]}`;
+      const [, month, day] = date.split('-');
+      const formattedDate = `${month}-${day}`;
 
       const holidayId = generateHolidayId();
 

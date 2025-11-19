@@ -213,6 +213,7 @@ const HolidayManagement = () => {
             onChange={e => setCustomName(e.target.value)}
             className="custom-holiday-name-input"
             placeholder={t('holidayName')}
+            aria-label={t('holidayName')}
           />
           <button onClick={handleAddHoliday}>{t('add')}</button>
         </div>
