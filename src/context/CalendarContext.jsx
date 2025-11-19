@@ -5,6 +5,8 @@ import {
   loadCalendarSettings,
   saveHolidaySettings,
   loadHolidaySettings,
+  saveWidgets,
+  loadWidgets,
 } from '../utils/storageUtils';
 import { generateHolidayId, parseHolidayDate } from '../utils/dateUtils';
 
@@ -72,8 +74,24 @@ export const CalendarProvider = ({ children }) => {
     };
   };
 
+  // Инициализация виджетов из localStorage
+  const initializeWidgets = () => {
+    const savedWidgets = loadWidgets();
+    if (savedWidgets) {
+      return {
+        notes: savedWidgets.notes || [],
+        habits: savedWidgets.habits || [],
+      };
+    }
+    return {
+      notes: [],
+      habits: [],
+    };
+  };
+
   const calendarSettings = initializeCalendarSettings();
   const holidaySettings = initializeHolidaySettings();
+  const widgetsSettings = initializeWidgets();
 
   // Настройки календаря
   const [viewMode, setViewMode] = useState(calendarSettings.viewMode);
@@ -96,6 +114,10 @@ export const CalendarProvider = ({ children }) => {
   const [selectedCountries, setSelectedCountries] = useState(holidaySettings.selectedCountries);
   const [customHolidays, setCustomHolidays] = useState(holidaySettings.customHolidays);
   const [enabledHolidays, setEnabledHolidays] = useState(holidaySettings.enabledHolidays);
+
+  // Виджеты
+  const [notes, setNotes] = useState(widgetsSettings.notes);
+  const [habits, setHabits] = useState(widgetsSettings.habits);
 
   // Тосты
   const [toasts, setToasts] = useState([]);
@@ -156,6 +178,15 @@ export const CalendarProvider = ({ children }) => {
     };
     saveHolidaySettings(settings);
   }, [selectedCountries, customHolidays, enabledHolidays]);
+
+  // Сохранение виджетов
+  useEffect(() => {
+    const widgets = {
+      notes,
+      habits,
+    };
+    saveWidgets(widgets);
+  }, [notes, habits]);
 
   // Получить все праздники из выбранных стран
   const getAllHolidays = useCallback(() => {
@@ -328,6 +359,58 @@ export const CalendarProvider = ({ children }) => {
     return { success: true, count: newHolidays.length };
   }, []);
 
+  // Добавить заметку
+  const addNote = useCallback(text => {
+    const newNote = {
+      id: Date.now().toString(),
+      text,
+      createdAt: new Date().toISOString(),
+    };
+    setNotes(prev => [newNote, ...prev]);
+  }, []);
+
+  // Удалить заметку
+  const deleteNote = useCallback(noteId => {
+    setNotes(prev => prev.filter(note => note.id !== noteId));
+  }, []);
+
+  // Добавить привычку
+  const addHabit = useCallback(name => {
+    const newHabit = {
+      id: Date.now().toString(),
+      name,
+      completedDays: [],
+      createdAt: new Date().toISOString(),
+    };
+    setHabits(prev => [...prev, newHabit]);
+  }, []);
+
+  // Удалить привычку
+  const deleteHabit = useCallback(habitId => {
+    setHabits(prev => prev.filter(habit => habit.id !== habitId));
+  }, []);
+
+  // Переключить день привычки
+  const toggleHabitDay = useCallback((habitId, dayStr) => {
+    setHabits(prev =>
+      prev.map(habit => {
+        if (habit.id === habitId) {
+          const completedDays = [...habit.completedDays];
+          const dayIndex = completedDays.indexOf(dayStr);
+
+          if (dayIndex > -1) {
+            completedDays.splice(dayIndex, 1);
+          } else {
+            completedDays.push(dayStr);
+          }
+
+          return { ...habit, completedDays };
+        }
+        return habit;
+      })
+    );
+  }, []);
+
   const value = {
     // Настройки календаря
     viewMode,
@@ -372,6 +455,15 @@ export const CalendarProvider = ({ children }) => {
     toggleCountry,
     toggleHoliday,
     importHolidaysFromICS,
+
+    // Виджеты
+    notes,
+    habits,
+    addNote,
+    deleteNote,
+    addHabit,
+    deleteHabit,
+    toggleHabitDay,
 
     // Toast
     toasts,

@@ -8,6 +8,7 @@ import AdditionalSettings from './AdditionalSettings';
 import HolidayManagement from './HolidayManagement';
 import ExportButtons from './ExportButtons';
 import TemplateManager from './TemplateManager';
+import WidgetsManager from './WidgetsManager';
 
 const Controls = () => {
   const { t } = useLanguage();
@@ -30,6 +31,10 @@ const Controls = () => {
 
       <CollapsibleSection title={t('calendarSettings')} defaultOpen={true}>
         <AdditionalSettings />
+      </CollapsibleSection>
+
+      <CollapsibleSection title={t('widgets')} defaultOpen={false}>
+        <WidgetsManager />
       </CollapsibleSection>
 
       <CollapsibleSection title={t('holidays')} defaultOpen={true}>

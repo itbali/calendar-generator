@@ -91,6 +91,27 @@ export const translations = {
     noEventsFound: 'События не найдены в файле',
     invalidICSFile: 'Неверный формат .ics файла',
 
+    // Виджеты
+    widgets: 'Виджеты',
+    notes: 'Заметки',
+    habitTracker: 'Трекер привычек',
+    addNote: 'Добавить заметку',
+    noteText: 'Текст заметки',
+    noteAdded: 'Заметка добавлена',
+    noteDeleted: 'Заметка удалена',
+    noNotes: 'Нет заметок',
+    addHabit: 'Добавить привычку',
+    habitName: 'Название привычки',
+    habitAdded: 'Привычка добавлена',
+    habitDeleted: 'Привычка удалена',
+    noHabits: 'Нет привычек',
+    habitCompleted: 'Привычка выполнена',
+    habitUncompleted: 'Выполнение отменено',
+    completedDays: 'Выполнено дней',
+    currentStreak: 'Текущая серия',
+    bestStreak: 'Лучшая серия',
+    days: 'дней',
+
     // Месяцы
     months: [
       'Январь',
@@ -229,6 +250,27 @@ export const translations = {
     eventsImported: 'events imported',
     noEventsFound: 'No events found in file',
     invalidICSFile: 'Invalid .ics file format',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notes',
+    habitTracker: 'Habit Tracker',
+    addNote: 'Add Note',
+    noteText: 'Note text',
+    noteAdded: 'Note added',
+    noteDeleted: 'Note deleted',
+    noNotes: 'No notes',
+    addHabit: 'Add Habit',
+    habitName: 'Habit name',
+    habitAdded: 'Habit added',
+    habitDeleted: 'Habit deleted',
+    noHabits: 'No habits',
+    habitCompleted: 'Habit completed',
+    habitUncompleted: 'Completion cancelled',
+    completedDays: 'Completed days',
+    currentStreak: 'Current streak',
+    bestStreak: 'Best streak',
+    days: 'days',
 
     // Months
     months: [
@@ -369,6 +411,27 @@ export const translations = {
     noEventsFound: 'No se encontraron eventos en el archivo',
     invalidICSFile: 'Formato de archivo .ics inválido',
 
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notas',
+    habitTracker: 'Rastreador de Hábitos',
+    addNote: 'Agregar Nota',
+    noteText: 'Texto de la nota',
+    noteAdded: 'Nota agregada',
+    noteDeleted: 'Nota eliminada',
+    noNotes: 'No hay notas',
+    addHabit: 'Agregar Hábito',
+    habitName: 'Nombre del hábito',
+    habitAdded: 'Hábito agregado',
+    habitDeleted: 'Hábito eliminado',
+    noHabits: 'No hay hábitos',
+    habitCompleted: 'Hábito completado',
+    habitUncompleted: 'Completación cancelada',
+    completedDays: 'Días completados',
+    currentStreak: 'Racha actual',
+    bestStreak: 'Mejor racha',
+    days: 'días',
+
     // Meses
     months: [
       'Enero',
@@ -508,6 +571,27 @@ export const translations = {
     noEventsFound: 'Nenhum evento encontrado no arquivo',
     invalidICSFile: 'Formato de arquivo .ics inválido',
 
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notas',
+    habitTracker: 'Rastreador de Hábitos',
+    addNote: 'Adicionar Nota',
+    noteText: 'Texto da nota',
+    noteAdded: 'Nota adicionada',
+    noteDeleted: 'Nota excluída',
+    noNotes: 'Nenhuma nota',
+    addHabit: 'Adicionar Hábito',
+    habitName: 'Nome do hábito',
+    habitAdded: 'Hábito adicionado',
+    habitDeleted: 'Hábito excluído',
+    noHabits: 'Nenhum hábito',
+    habitCompleted: 'Hábito completado',
+    habitUncompleted: 'Conclusão cancelada',
+    completedDays: 'Dias completados',
+    currentStreak: 'Sequência atual',
+    bestStreak: 'Melhor sequência',
+    days: 'dias',
+
     // Meses
     months: [
       'Janeiro',
@@ -646,6 +730,27 @@ export const translations = {
     eventsImported: 'Ereignisse importiert',
     noEventsFound: 'Keine Ereignisse in der Datei gefunden',
     invalidICSFile: 'Ungültiges .ics-Dateiformat',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notizen',
+    habitTracker: 'Gewohnheitstracker',
+    addNote: 'Notiz hinzufügen',
+    noteText: 'Notiztext',
+    noteAdded: 'Notiz hinzugefügt',
+    noteDeleted: 'Notiz gelöscht',
+    noNotes: 'Keine Notizen',
+    addHabit: 'Gewohnheit hinzufügen',
+    habitName: 'Gewohnheitsname',
+    habitAdded: 'Gewohnheit hinzugefügt',
+    habitDeleted: 'Gewohnheit gelöscht',
+    noHabits: 'Keine Gewohnheiten',
+    habitCompleted: 'Gewohnheit abgeschlossen',
+    habitUncompleted: 'Abschluss abgebrochen',
+    completedDays: 'Abgeschlossene Tage',
+    currentStreak: 'Aktuelle Serie',
+    bestStreak: 'Beste Serie',
+    days: 'Tage',
 
     // Monate
     months: [
