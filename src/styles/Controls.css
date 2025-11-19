@@ -720,3 +720,213 @@ body.dark-mode .btn-secondary:hover {
   color: white;
   border-color: #0066cc;
 }
+
+/* Template Manager */
+.template-manager {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.template-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.template-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.template-card:hover {
+  border-color: #007aff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+}
+
+.template-card.predefined {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.template-icon {
+  font-size: 32px;
+  text-align: center;
+}
+
+.template-info {
+  flex: 1;
+}
+
+.template-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+}
+
+.template-desc {
+  font-size: 13px;
+  color: #6a6a6a;
+  line-height: 1.4;
+}
+
+.template-date {
+  font-size: 12px;
+  color: #999;
+  font-style: italic;
+}
+
+.template-load-btn {
+  background: #007aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.template-load-btn:hover {
+  background: #0051d5;
+}
+
+.save-template-form {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.template-name-input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #d2d2d7;
+  border-radius: 10px;
+  font-size: 14px;
+  background: white;
+  transition: all 0.2s;
+}
+
+.template-name-input:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.custom-templates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.template-card.custom {
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.template-card.custom .template-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.template-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.template-action-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.template-action-btn.load {
+  background: #007aff;
+  color: white;
+}
+
+.template-action-btn.load:hover {
+  background: #0051d5;
+}
+
+.template-action-btn.delete {
+  background: #ff3b30;
+  color: white;
+  padding: 6px 10px;
+}
+
+.template-action-btn.delete:hover {
+  background: #cc0000;
+}
+
+.no-templates-message {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  font-style: italic;
+}
+
+/* Dark Mode для шаблонов */
+body.dark-mode .template-card {
+  background: #333;
+  border-color: #404040;
+}
+
+body.dark-mode .template-card.predefined {
+  background: linear-gradient(135deg, #2a2a2a 0%, #1e1e1e 100%);
+}
+
+body.dark-mode .template-card:hover {
+  border-color: #0066cc;
+}
+
+body.dark-mode .template-title {
+  color: #e5e5e5;
+}
+
+body.dark-mode .template-desc {
+  color: #aaa;
+}
+
+body.dark-mode .template-name-input {
+  background: #2a2a2a;
+  border-color: #404040;
+  color: #e5e5e5;
+}
+
+body.dark-mode .template-name-input:focus {
+  border-color: #0066cc;
+}
+
+body.dark-mode .template-action-btn.load {
+  background: #0066cc;
+}
+
+body.dark-mode .template-action-btn.load:hover {
+  background: #0052a3;
+}
+
+body.dark-mode .no-templates-message {
+  color: #666;
+}

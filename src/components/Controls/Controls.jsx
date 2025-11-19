@@ -7,6 +7,7 @@ import ThemeSelector from './ThemeSelector';
 import AdditionalSettings from './AdditionalSettings';
 import HolidayManagement from './HolidayManagement';
 import ExportButtons from './ExportButtons';
+import TemplateManager from './TemplateManager';
 
 const Controls = () => {
   const { t } = useLanguage();
@@ -17,6 +18,10 @@ const Controls = () => {
 
   return (
     <div className="controls">
+      <CollapsibleSection title={t('templates')} defaultOpen={false}>
+        <TemplateManager />
+      </CollapsibleSection>
+
       <CollapsibleSection title={t('displaySettings')} defaultOpen={true}>
         <LanguageSelector />
         <ViewModeSelector />

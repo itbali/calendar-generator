@@ -54,6 +54,25 @@ export const translations = {
     calendarSettings: 'Настройки календаря',
     exportAndActions: 'Экспорт и действия',
 
+    // Шаблоны
+    templates: 'Шаблоны',
+    templateName: 'Название шаблона',
+    saveAsTemplate: 'Сохранить как шаблон',
+    loadTemplate: 'Загрузить',
+    deleteTemplate: 'Удалить',
+    predefinedTemplates: 'Предустановленные шаблоны',
+    myTemplates: 'Мои шаблоны',
+    noCustomTemplates: 'Нет сохранённых шаблонов',
+    templateMinimalist: 'Минималист',
+    templateMinimalistDesc: 'Чистый и простой дизайн без лишних элементов',
+    templateTaskPlanner: 'Планировщик задач',
+    templateTaskPlannerDesc: 'Максимальное пространство для задач с чекбоксами',
+    templateFamilyCalendar: 'Семейный календарь',
+    templateFamilyCalendarDesc: 'Яркий дизайн с праздниками и выходными',
+    templateLoaded: 'Шаблон загружен',
+    templateSaved: 'Шаблон сохранён',
+    templateDeleted: 'Шаблон удалён',
+
     // Месяцы
     months: [
       'Январь',
@@ -155,6 +174,25 @@ export const translations = {
     displaySettings: 'Display Settings',
     calendarSettings: 'Calendar Settings',
     exportAndActions: 'Export & Actions',
+
+    // Templates
+    templates: 'Templates',
+    templateName: 'Template Name',
+    saveAsTemplate: 'Save as Template',
+    loadTemplate: 'Load',
+    deleteTemplate: 'Delete',
+    predefinedTemplates: 'Predefined Templates',
+    myTemplates: 'My Templates',
+    noCustomTemplates: 'No saved templates',
+    templateMinimalist: 'Minimalist',
+    templateMinimalistDesc: 'Clean and simple design without unnecessary elements',
+    templateTaskPlanner: 'Task Planner',
+    templateTaskPlannerDesc: 'Maximum space for tasks with checkboxes',
+    templateFamilyCalendar: 'Family Calendar',
+    templateFamilyCalendarDesc: 'Bright design with holidays and weekends',
+    templateLoaded: 'Template loaded',
+    templateSaved: 'Template saved',
+    templateDeleted: 'Template deleted',
 
     // Months
     months: [
@@ -258,6 +296,25 @@ export const translations = {
     calendarSettings: 'Configuración del Calendario',
     exportAndActions: 'Exportar y Acciones',
 
+    // Plantillas
+    templates: 'Plantillas',
+    templateName: 'Nombre de Plantilla',
+    saveAsTemplate: 'Guardar como Plantilla',
+    loadTemplate: 'Cargar',
+    deleteTemplate: 'Eliminar',
+    predefinedTemplates: 'Plantillas Predefinidas',
+    myTemplates: 'Mis Plantillas',
+    noCustomTemplates: 'No hay plantillas guardadas',
+    templateMinimalist: 'Minimalista',
+    templateMinimalistDesc: 'Diseño limpio y simple sin elementos innecesarios',
+    templateTaskPlanner: 'Planificador de Tareas',
+    templateTaskPlannerDesc: 'Máximo espacio para tareas con casillas de verificación',
+    templateFamilyCalendar: 'Calendario Familiar',
+    templateFamilyCalendarDesc: 'Diseño brillante con días festivos y fines de semana',
+    templateLoaded: 'Plantilla cargada',
+    templateSaved: 'Plantilla guardada',
+    templateDeleted: 'Plantilla eliminada',
+
     // Meses
     months: [
       'Enero',
@@ -360,6 +417,25 @@ export const translations = {
     calendarSettings: 'Configurações do Calendário',
     exportAndActions: 'Exportar e Ações',
 
+    // Modelos
+    templates: 'Modelos',
+    templateName: 'Nome do Modelo',
+    saveAsTemplate: 'Salvar como Modelo',
+    loadTemplate: 'Carregar',
+    deleteTemplate: 'Excluir',
+    predefinedTemplates: 'Modelos Predefinidos',
+    myTemplates: 'Meus Modelos',
+    noCustomTemplates: 'Nenhum modelo salvo',
+    templateMinimalist: 'Minimalista',
+    templateMinimalistDesc: 'Design limpo e simples sem elementos desnecessários',
+    templateTaskPlanner: 'Planejador de Tarefas',
+    templateTaskPlannerDesc: 'Máximo espaço para tarefas com caixas de seleção',
+    templateFamilyCalendar: 'Calendário Familiar',
+    templateFamilyCalendarDesc: 'Design brilhante com feriados e fins de semana',
+    templateLoaded: 'Modelo carregado',
+    templateSaved: 'Modelo salvo',
+    templateDeleted: 'Modelo excluído',
+
     // Meses
     months: [
       'Janeiro',
@@ -461,6 +537,25 @@ export const translations = {
     displaySettings: 'Anzeigeeinstellungen',
     calendarSettings: 'Kalendereinstellungen',
     exportAndActions: 'Export & Aktionen',
+
+    // Vorlagen
+    templates: 'Vorlagen',
+    templateName: 'Vorlagenname',
+    saveAsTemplate: 'Als Vorlage speichern',
+    loadTemplate: 'Laden',
+    deleteTemplate: 'Löschen',
+    predefinedTemplates: 'Vordefinierte Vorlagen',
+    myTemplates: 'Meine Vorlagen',
+    noCustomTemplates: 'Keine gespeicherten Vorlagen',
+    templateMinimalist: 'Minimalistisch',
+    templateMinimalistDesc: 'Sauberes und einfaches Design ohne unnötige Elemente',
+    templateTaskPlanner: 'Aufgabenplaner',
+    templateTaskPlannerDesc: 'Maximaler Platz für Aufgaben mit Kontrollkästchen',
+    templateFamilyCalendar: 'Familienkalender',
+    templateFamilyCalendarDesc: 'Helles Design mit Feiertagen und Wochenenden',
+    templateLoaded: 'Vorlage geladen',
+    templateSaved: 'Vorlage gespeichert',
+    templateDeleted: 'Vorlage gelöscht',
 
     // Monate
     months: [
