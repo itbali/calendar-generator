@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
+import CollapsibleSection from '../CollapsibleSection';
 import LanguageSelector from './LanguageSelector';
 import ViewModeSelector from './ViewModeSelector';
 import ThemeSelector from './ThemeSelector';
@@ -16,18 +17,28 @@ const Controls = () => {
 
   return (
     <div className="controls">
-      <LanguageSelector />
-      <ViewModeSelector />
-      <ThemeSelector />
-      <AdditionalSettings />
-      <HolidayManagement />
-      <ExportButtons />
+      <CollapsibleSection title={t('displaySettings')} defaultOpen={true}>
+        <LanguageSelector />
+        <ViewModeSelector />
+        <ThemeSelector />
+      </CollapsibleSection>
 
-      <div className="action-buttons">
-        <button className="btn btn-secondary" onClick={handlePrint}>
-          🖨️ {t('print')}
-        </button>
-      </div>
+      <CollapsibleSection title={t('calendarSettings')} defaultOpen={true}>
+        <AdditionalSettings />
+      </CollapsibleSection>
+
+      <CollapsibleSection title={t('holidays')} defaultOpen={true}>
+        <HolidayManagement />
+      </CollapsibleSection>
+
+      <CollapsibleSection title={t('exportAndActions')} defaultOpen={true}>
+        <ExportButtons />
+        <div className="action-buttons">
+          <button className="btn btn-secondary" onClick={handlePrint}>
+            🖨️ {t('print')}
+          </button>
+        </div>
+      </CollapsibleSection>
     </div>
   );
 };

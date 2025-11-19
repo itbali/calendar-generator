@@ -49,6 +49,11 @@ export const translations = {
     delete: 'Удалить',
     faq: 'Часто задаваемые вопросы',
 
+    // Секции панели управления
+    displaySettings: 'Настройки отображения',
+    calendarSettings: 'Настройки календаря',
+    exportAndActions: 'Экспорт и действия',
+
     // Месяцы
     months: [
       'Январь',
@@ -145,6 +150,11 @@ export const translations = {
     add: 'Add',
     delete: 'Delete',
     faq: 'Frequently Asked Questions',
+
+    // Control Panel Sections
+    displaySettings: 'Display Settings',
+    calendarSettings: 'Calendar Settings',
+    exportAndActions: 'Export & Actions',
 
     // Months
     months: [
@@ -243,6 +253,11 @@ export const translations = {
     delete: 'Eliminar',
     faq: 'Preguntas Frecuentes',
 
+    // Secciones del Panel de Control
+    displaySettings: 'Configuración de Visualización',
+    calendarSettings: 'Configuración del Calendario',
+    exportAndActions: 'Exportar y Acciones',
+
     // Meses
     months: [
       'Enero',
@@ -340,6 +355,11 @@ export const translations = {
     delete: 'Excluir',
     faq: 'Perguntas Frequentes',
 
+    // Seções do Painel de Controle
+    displaySettings: 'Configurações de Exibição',
+    calendarSettings: 'Configurações do Calendário',
+    exportAndActions: 'Exportar e Ações',
+
     // Meses
     months: [
       'Janeiro',
@@ -436,6 +456,11 @@ export const translations = {
     add: 'Hinzufügen',
     delete: 'Löschen',
     faq: 'Häufig gestellte Fragen',
+
+    // Bedienfeld-Abschnitte
+    displaySettings: 'Anzeigeeinstellungen',
+    calendarSettings: 'Kalendereinstellungen',
+    exportAndActions: 'Export & Aktionen',
 
     // Monate
     months: [

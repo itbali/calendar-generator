@@ -581,3 +581,142 @@ body.dark-mode .language-selector:hover,
 body.dark-mode .language-selector:focus {
   border-color: #0066cc;
 }
+
+/* Collapsible sections in Controls */
+.controls .collapsible-section {
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+}
+
+.controls .collapsible-section:last-child {
+  border-bottom: none;
+}
+
+.controls .collapsible-header {
+  background: #f9f9f9;
+  padding: 18px 30px;
+  font-size: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.controls .collapsible-header:hover {
+  background: #f0f0f0;
+}
+
+.controls .collapsible-content {
+  padding: 20px 30px;
+  background: white;
+}
+
+body.dark-mode .controls {
+  background: #2a2a2a;
+  border-bottom-color: #404040;
+}
+
+body.dark-mode .controls .collapsible-section {
+  border-bottom-color: #404040;
+}
+
+body.dark-mode .controls .collapsible-header {
+  background: #1e1e1e;
+  border-bottom-color: #404040;
+}
+
+body.dark-mode .controls .collapsible-header:hover {
+  background: #333;
+}
+
+body.dark-mode .controls .collapsible-content {
+  background: #2a2a2a;
+}
+
+body.dark-mode .checkbox-group {
+  background: #333;
+  border-color: #404040;
+}
+
+body.dark-mode .setting-item {
+  background: #333;
+  border-color: #404040;
+}
+
+body.dark-mode .setting-item label {
+  color: #e5e5e5;
+}
+
+body.dark-mode .countries-section {
+  background: #1e1e1e;
+}
+
+body.dark-mode .country-checkbox {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .country-checkbox:hover {
+  border-color: #0066cc;
+  background: #333;
+}
+
+body.dark-mode .country-checkbox.selected {
+  border-color: #0066cc;
+  background: #1e3a5f;
+}
+
+body.dark-mode .country-label {
+  color: #e5e5e5;
+}
+
+body.dark-mode .holidays-list {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .holiday-item {
+  border-bottom-color: #404040;
+}
+
+body.dark-mode .holiday-item:hover {
+  background: #333;
+}
+
+body.dark-mode .holiday-date {
+  color: #e5e5e5;
+}
+
+body.dark-mode .holiday-title {
+  color: #aaa;
+}
+
+body.dark-mode .custom-holiday-form {
+  background: #1e1e1e;
+}
+
+body.dark-mode .custom-holiday-form input[type='date'],
+body.dark-mode .custom-holiday-form input[type='text'] {
+  background: #2a2a2a;
+  border-color: #404040;
+  color: #e5e5e5;
+}
+
+body.dark-mode .custom-holiday-form button {
+  background: #0066cc;
+}
+
+body.dark-mode .custom-holiday-form button:hover {
+  background: #0052a3;
+}
+
+body.dark-mode .btn-secondary {
+  background: #333;
+  color: #e5e5e5;
+  border-color: #555;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background: #0066cc;
+  color: white;
+  border-color: #0066cc;
+}
