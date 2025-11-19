@@ -5,6 +5,7 @@ import CalendarPreview from './components/Calendar/CalendarPreview';
 import Toast from './components/Toast';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useTheme } from './hooks/useTheme';
+import { usePWA } from './hooks/usePWA';
 import './styles/App.css';
 import './styles/Controls.css';
 import './styles/Calendar.css';
@@ -16,6 +17,9 @@ const AppContent = () => {
 
   // Применяем тему
   useTheme();
+
+  // Регистрируем PWA
+  usePWA();
 
   // Применяем ориентацию к body
   useEffect(() => {

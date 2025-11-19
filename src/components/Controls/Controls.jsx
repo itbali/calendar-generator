@@ -3,6 +3,7 @@ import ViewModeSelector from './ViewModeSelector';
 import ThemeSelector from './ThemeSelector';
 import AdditionalSettings from './AdditionalSettings';
 import HolidayManagement from './HolidayManagement';
+import ExportButtons from './ExportButtons';
 
 const Controls = () => {
   const handlePrint = () => {
@@ -15,6 +16,7 @@ const Controls = () => {
       <ThemeSelector />
       <AdditionalSettings />
       <HolidayManagement />
+      <ExportButtons />
 
       <div className="action-buttons">
         <button className="btn btn-secondary" onClick={handlePrint}>

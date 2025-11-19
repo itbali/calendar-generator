@@ -436,3 +436,117 @@ body.dark-mode .custom-holiday-form {
   border-color: #404040;
 }
 
+
+/* Экспорт секция */
+.export-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.export-btn {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 16px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.export-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.export-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.export-pdf {
+  border-color: #e74c3c;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  color: white;
+}
+
+.export-pdf:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+}
+
+.export-png {
+  border-color: #3498db;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  color: white;
+}
+
+.export-png:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+}
+
+.export-ics {
+  border-color: #27ae60;
+  background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+  color: white;
+}
+
+.export-ics:hover:not(:disabled) {
+  background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+}
+
+.export-hint {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Dark Mode для экспорта */
+body.dark-mode .export-section {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .export-btn {
+  background: #333;
+  border-color: #555;
+  color: #e5e5e5;
+}
+
+body.dark-mode .export-pdf {
+  background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+}
+
+body.dark-mode .export-png {
+  background: linear-gradient(135deg, #2980b9 0%, #21618c 100%);
+}
+
+body.dark-mode .export-ics {
+  background: linear-gradient(135deg, #229954 0%, #1e8449 100%);
+}
+
+body.dark-mode .export-hint {
+  color: #999;
+}
+
