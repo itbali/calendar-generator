@@ -90,4 +90,4 @@ const AdditionalSettings = () => {
   );
 };
 
-export default AdditionalSettings;
+export default React.memo(AdditionalSettings);

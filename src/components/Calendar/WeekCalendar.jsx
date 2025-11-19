@@ -35,4 +35,4 @@ const WeekCalendar = ({ startDate, taskLines, showCheckbox }) => {
   );
 };
 
-export default WeekCalendar;
+export default React.memo(WeekCalendar);

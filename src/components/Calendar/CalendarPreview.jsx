@@ -125,4 +125,4 @@ const CalendarPreview = () => {
   return <div className="calendar-preview">{renderCalendar()}</div>;
 };
 
-export default CalendarPreview;
+export default React.memo(CalendarPreview);

@@ -10,4 +10,4 @@ const TaskLines = ({ count, showCheckbox }) => {
   );
 };
 
-export default TaskLines;
+export default React.memo(TaskLines);

@@ -100,4 +100,4 @@ const ViewModeSelector = () => {
   );
 };
 
-export default ViewModeSelector;
+export default React.memo(ViewModeSelector);

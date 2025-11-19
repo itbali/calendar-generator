@@ -19,4 +19,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector;
+export default React.memo(LanguageSelector);

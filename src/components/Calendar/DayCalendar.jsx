@@ -18,4 +18,4 @@ const DayCalendar = ({ startHour, endHour, showCheckbox }) => {
   );
 };
 
-export default DayCalendar;
+export default React.memo(DayCalendar);

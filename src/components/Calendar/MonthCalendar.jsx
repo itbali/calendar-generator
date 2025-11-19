@@ -54,4 +54,4 @@ const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
   );
 };
 
-export default MonthCalendar;
+export default React.memo(MonthCalendar);

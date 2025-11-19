@@ -18,4 +18,4 @@ const YearCalendar = ({ year: _year, taskLines, showCheckbox }) => {
   );
 };
 
-export default YearCalendar;
+export default React.memo(YearCalendar);

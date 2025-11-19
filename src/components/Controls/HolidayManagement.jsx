@@ -110,4 +110,4 @@ const HolidayManagement = () => {
   );
 };
 
-export default HolidayManagement;
+export default React.memo(HolidayManagement);

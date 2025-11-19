@@ -112,4 +112,4 @@ const ExportButtons = () => {
   );
 };
 
-export default ExportButtons;
+export default React.memo(ExportButtons);
