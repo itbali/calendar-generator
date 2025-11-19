@@ -7,7 +7,8 @@
 
 /* Widget Base Styles */
 .notes-widget,
-.habit-tracker-widget {
+.habit-tracker-widget,
+.recurring-events-widget {
   background: white;
   border-radius: 12px;
   padding: 20px;
@@ -319,4 +320,220 @@ body.dark-mode .stat-value {
 
 body.dark-mode .empty-state {
   color: #666;
+}
+
+/* Recurring Events Widget */
+.add-recurring-event-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.event-input:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.date-row,
+.repeat-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.date-input-group,
+.select-group,
+.interval-group {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.date-input-group label,
+.select-group label,
+.interval-group label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.date-input,
+.pattern-select {
+  padding: 8px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.date-input:focus,
+.pattern-select:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.interval-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interval-input {
+  width: 70px;
+  padding: 8px;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.interval-input:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+
+.interval-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.btn-add-event {
+  align-self: flex-start;
+}
+
+.recurring-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recurring-event-item {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.2s;
+}
+
+.recurring-event-item:hover {
+  background: #f5f5f5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.event-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.event-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+.btn-delete-event {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-size: 16px;
+}
+
+.btn-delete-event:hover {
+  background: #ffe5e5;
+  transform: scale(1.1);
+}
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: #666;
+  padding-top: 8px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.event-detail {
+  display: flex;
+  align-items: center;
+}
+
+/* Dark Mode - Recurring Events */
+body.dark-mode .recurring-events-widget {
+  background: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .event-input,
+body.dark-mode .date-input,
+body.dark-mode .pattern-select,
+body.dark-mode .interval-input {
+  background: #2a2a2a;
+  border-color: #555;
+  color: #e5e5e5;
+}
+
+body.dark-mode .event-input:focus,
+body.dark-mode .date-input:focus,
+body.dark-mode .pattern-select:focus,
+body.dark-mode .interval-input:focus {
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.2);
+}
+
+body.dark-mode .date-input-group label,
+body.dark-mode .select-group label,
+body.dark-mode .interval-group label {
+  color: #999;
+}
+
+body.dark-mode .interval-label {
+  color: #999;
+}
+
+body.dark-mode .recurring-event-item {
+  background: #2a2a2a;
+  border-color: #555;
+}
+
+body.dark-mode .recurring-event-item:hover {
+  background: #3a3a3a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .event-title {
+  color: #e5e5e5;
+}
+
+body.dark-mode .btn-delete-event:hover {
+  background: #5a2a2a;
+}
+
+body.dark-mode .event-details {
+  border-top-color: #555;
+  color: #999;
 }

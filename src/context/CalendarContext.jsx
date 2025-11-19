@@ -81,11 +81,13 @@ export const CalendarProvider = ({ children }) => {
       return {
         notes: savedWidgets.notes || [],
         habits: savedWidgets.habits || [],
+        recurringEvents: savedWidgets.recurringEvents || [],
       };
     }
     return {
       notes: [],
       habits: [],
+      recurringEvents: [],
     };
   };
 
@@ -118,6 +120,7 @@ export const CalendarProvider = ({ children }) => {
   // Виджеты
   const [notes, setNotes] = useState(widgetsSettings.notes);
   const [habits, setHabits] = useState(widgetsSettings.habits);
+  const [recurringEvents, setRecurringEvents] = useState(widgetsSettings.recurringEvents);
 
   // Тосты
   const [toasts, setToasts] = useState([]);
@@ -184,9 +187,10 @@ export const CalendarProvider = ({ children }) => {
     const widgets = {
       notes,
       habits,
+      recurringEvents,
     };
     saveWidgets(widgets);
-  }, [notes, habits]);
+  }, [notes, habits, recurringEvents]);
 
   // Получить все праздники из выбранных стран
   const getAllHolidays = useCallback(() => {
@@ -411,6 +415,21 @@ export const CalendarProvider = ({ children }) => {
     );
   }, []);
 
+  // Добавить повторяющееся событие
+  const addRecurringEvent = useCallback(event => {
+    const newEvent = {
+      id: Date.now().toString(),
+      ...event,
+      createdAt: new Date().toISOString(),
+    };
+    setRecurringEvents(prev => [...prev, newEvent]);
+  }, []);
+
+  // Удалить повторяющееся событие
+  const deleteRecurringEvent = useCallback(eventId => {
+    setRecurringEvents(prev => prev.filter(event => event.id !== eventId));
+  }, []);
+
   const value = {
     // Настройки календаря
     viewMode,
@@ -464,6 +483,9 @@ export const CalendarProvider = ({ children }) => {
     addHabit,
     deleteHabit,
     toggleHabitDay,
+    recurringEvents,
+    addRecurringEvent,
+    deleteRecurringEvent,
 
     // Toast
     toasts,
