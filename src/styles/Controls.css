@@ -23,9 +23,9 @@
 }
 
 .control-group select,
-.control-group input[type="number"],
-.control-group input[type="date"],
-.control-group input[type="text"] {
+.control-group input[type='number'],
+.control-group input[type='date'],
+.control-group input[type='text'] {
   padding: 10px 15px;
   border: 1px solid #d2d2d7;
   border-radius: 10px;
@@ -37,11 +37,11 @@
 }
 
 .control-group select:focus,
-.control-group input[type="number"]:focus,
-.control-group input[type="date"]:focus,
-.control-group input[type="text"]:focus {
+.control-group input[type='number']:focus,
+.control-group input[type='date']:focus,
+.control-group input[type='text']:focus {
   outline: none;
-  border-color: #007AFF;
+  border-color: #007aff;
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
 
@@ -68,16 +68,16 @@
 
 .theme-option:hover {
   transform: scale(1.1);
-  border-color: #007AFF;
+  border-color: #007aff;
 }
 
 .theme-option.active {
-  border-color: #007AFF;
+  border-color: #007aff;
   transform: scale(1.15);
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
 
-.theme-option input[type="radio"] {
+.theme-option input[type='radio'] {
   display: none;
 }
 
@@ -100,7 +100,7 @@
   border: 1px solid #d2d2d7;
 }
 
-.checkbox-group input[type="checkbox"] {
+.checkbox-group input[type='checkbox'] {
   width: 20px;
   height: 20px;
   cursor: pointer;
@@ -136,7 +136,7 @@
 }
 
 .setting-item select,
-.setting-item input[type="number"] {
+.setting-item input[type='number'] {
   flex: 1;
   min-width: 80px;
 }
@@ -160,25 +160,25 @@
 }
 
 .btn-primary {
-  background: #007AFF;
+  background: #007aff;
   color: white;
   box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
 }
 
 .btn-primary:hover {
-  background: #0051D5;
+  background: #0051d5;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
 }
 
 .btn-secondary {
   background: white;
-  color: #007AFF;
-  border: 1px solid #007AFF;
+  color: #007aff;
+  border: 1px solid #007aff;
 }
 
 .btn-secondary:hover {
-  background: #007AFF;
+  background: #007aff;
   color: white;
 }
 
@@ -210,16 +210,16 @@
 }
 
 .country-checkbox:hover {
-  border-color: #007AFF;
+  border-color: #007aff;
   background: #f0f8ff;
 }
 
 .country-checkbox.selected {
-  border-color: #007AFF;
+  border-color: #007aff;
   background: #e6f2ff;
 }
 
-.country-checkbox input[type="checkbox"] {
+.country-checkbox input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;
@@ -261,7 +261,7 @@
   border-bottom: none;
 }
 
-.holiday-item input[type="checkbox"] {
+.holiday-item input[type='checkbox'] {
   width: 18px;
   height: 18px;
   cursor: pointer;
@@ -297,8 +297,8 @@
   border-radius: 8px;
 }
 
-.custom-holiday-form input[type="date"],
-.custom-holiday-form input[type="text"] {
+.custom-holiday-form input[type='date'],
+.custom-holiday-form input[type='text'] {
   padding: 8px;
   border: 1px solid #d2d2d7;
   border-radius: 6px;
@@ -307,7 +307,7 @@
 
 .custom-holiday-form button {
   padding: 8px 15px;
-  background: #007AFF;
+  background: #007aff;
   color: white;
   border: none;
   border-radius: 6px;
@@ -318,7 +318,7 @@
 }
 
 .custom-holiday-form button:hover {
-  background: #0051D5;
+  background: #0051d5;
 }
 
 .delete-holiday {
@@ -352,3 +352,87 @@
   text-align: center;
   color: #999;
 }
+
+/* Dark Mode для контролов */
+body.dark-mode .controls-panel {
+  background: #1e1e1e;
+  border-top: 1px solid #404040;
+  color: #e5e5e5;
+}
+
+body.dark-mode .control-group label,
+body.dark-mode .section-label {
+  color: #e5e5e5;
+}
+
+body.dark-mode input[type='number'],
+body.dark-mode input[type='date'],
+body.dark-mode input[type='text'],
+body.dark-mode select {
+  background: #2a2a2a;
+  border-color: #404040;
+  color: #e5e5e5;
+}
+
+body.dark-mode input[type='number']:focus,
+body.dark-mode input[type='date']:focus,
+body.dark-mode input[type='text']:focus,
+body.dark-mode select:focus {
+  border-color: #0066cc;
+  background: #333;
+}
+
+body.dark-mode .theme-options,
+body.dark-mode .view-mode-options {
+  background: #2a2a2a;
+}
+
+body.dark-mode .theme-btn {
+  background: #333;
+  color: #e5e5e5;
+  border-color: #404040;
+}
+
+body.dark-mode .theme-btn:hover {
+  background: #404040;
+  border-color: #555;
+}
+
+body.dark-mode .theme-btn.active {
+  background: #0066cc;
+  border-color: #0066cc;
+  color: white;
+}
+
+body.dark-mode .print-btn {
+  background: #0066cc;
+  color: white;
+}
+
+body.dark-mode .print-btn:hover {
+  background: #0052a3;
+}
+
+body.dark-mode .holiday-list {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .holiday-item {
+  background: #333;
+  border-color: #404040;
+}
+
+body.dark-mode .holiday-item:hover {
+  background: #3a3a3a;
+}
+
+body.dark-mode .no-holidays-message {
+  color: #666;
+}
+
+body.dark-mode .custom-holiday-form {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+

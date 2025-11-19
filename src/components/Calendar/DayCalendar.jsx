@@ -8,9 +8,7 @@ const DayCalendar = ({ startHour, endHour, showCheckbox }) => {
           const hour = startHour + i;
           return (
             <div key={hour} className="time-slot">
-              <div className="time-label">
-                {hour.toString().padStart(2, '0')}:00
-              </div>
+              <div className="time-label">{hour.toString().padStart(2, '0')}:00</div>
               <div className={`time-content ${showCheckbox ? 'with-checkbox' : ''}`}></div>
             </div>
           );

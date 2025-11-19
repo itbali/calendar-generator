@@ -1,5 +1,5 @@
 // Сохранение настроек календаря
-export const saveCalendarSettings = (settings) => {
+export const saveCalendarSettings = settings => {
   try {
     localStorage.setItem('calendarSettings', JSON.stringify(settings));
   } catch (e) {
@@ -19,7 +19,7 @@ export const loadCalendarSettings = () => {
 };
 
 // Сохранение настроек праздников
-export const saveHolidaySettings = (settings) => {
+export const saveHolidaySettings = settings => {
   try {
     localStorage.setItem('holidaySettings', JSON.stringify(settings));
   } catch (e) {

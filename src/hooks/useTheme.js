@@ -3,13 +3,20 @@ import { useCalendar } from '../context/CalendarContext';
 import { themes } from '../utils/constants';
 
 export const useTheme = () => {
-  const { theme, contrastWeekends } = useCalendar();
+  const { theme, contrastWeekends, darkMode } = useCalendar();
 
   useEffect(() => {
     const selectedTheme = themes[theme];
     if (!selectedTheme) return;
 
     const root = document.documentElement;
+
+    // Применяем или убираем класс dark mode
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
 
     root.style.setProperty('--primary-color', selectedTheme.primary);
     root.style.setProperty('--secondary-color', selectedTheme.secondary);
@@ -25,7 +32,7 @@ export const useTheme = () => {
       root.style.setProperty('--weekend-color', selectedTheme.weekendColor);
     } else {
       // Используем обычные цвета для выходных
-      root.style.setProperty('--weekend-bg', 'white');
+      root.style.setProperty('--weekend-bg', darkMode ? '#1e1e1e' : 'white');
       root.style.setProperty('--weekend-date-bg', selectedTheme.dateBg);
       root.style.setProperty('--weekend-color', selectedTheme.primary);
     }
@@ -34,5 +41,5 @@ export const useTheme = () => {
     root.style.setProperty('--holiday-bg', selectedTheme.holidayBg);
     root.style.setProperty('--holiday-date-bg', selectedTheme.holidayDateBg);
     root.style.setProperty('--holiday-color', selectedTheme.holidayColor);
-  }, [theme, contrastWeekends]);
+  }, [theme, contrastWeekends, darkMode]);
 };

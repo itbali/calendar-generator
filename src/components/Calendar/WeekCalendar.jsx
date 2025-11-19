@@ -19,17 +19,12 @@ const WeekCalendar = ({ startDate, taskLines, showCheckbox }) => {
 
         return (
           <div key={i} className={`week-column ${isWeekend ? 'weekend' : ''}`}>
-            <div className="week-column-header">
-              {dayNamesFull[(dayNameIndex + 1) % 7 || 0]}
-            </div>
+            <div className="week-column-header">{dayNamesFull[(dayNameIndex + 1) % 7 || 0]}</div>
             <div className="week-column-date">{currentDay.getDate()}</div>
             <div className="week-column-content">
               <div className="task-lines">
                 {Array.from({ length: taskLines }, (_, j) => (
-                  <div
-                    key={j}
-                    className={`task-line ${showCheckbox ? 'with-checkbox' : ''}`}
-                  ></div>
+                  <div key={j} className={`task-line ${showCheckbox ? 'with-checkbox' : ''}`}></div>
                 ))}
               </div>
             </div>

@@ -11,7 +11,7 @@ const HolidayManagement = () => {
     addCustomHoliday,
     deleteCustomHoliday,
     toggleCountry,
-    toggleHoliday
+    toggleHoliday,
   } = useCalendar();
 
   const [customDate, setCustomDate] = useState('');
@@ -35,15 +35,12 @@ const HolidayManagement = () => {
           {Object.entries(countries).map(([code, country]) => {
             const isSelected = selectedCountries.has(code);
             return (
-              <div
-                key={code}
-                className={`country-checkbox ${isSelected ? 'selected' : ''}`}
-              >
+              <div key={code} className={`country-checkbox ${isSelected ? 'selected' : ''}`}>
                 <input
                   type="checkbox"
                   id={`country-${code}`}
                   checked={isSelected}
-                  onChange={(e) => toggleCountry(code, e.target.checked)}
+                  onChange={e => toggleCountry(code, e.target.checked)}
                 />
                 <span className="country-flag">{country.flag}</span>
                 <label htmlFor={`country-${code}`} className="country-label">
@@ -57,14 +54,11 @@ const HolidayManagement = () => {
         <label className="section-label section-label-spacing">Праздники:</label>
         <div className="holidays-list">
           {allHolidays.length === 0 ? (
-            <div className="no-holidays-message">
-              Выберите страны для отображения праздников
-            </div>
+            <div className="no-holidays-message">Выберите страны для отображения праздников</div>
           ) : (
             allHolidays.map((holiday, index) => {
-              const holidayId = holiday.country === 'custom'
-                ? holiday.id
-                : `${holiday.country}-${holiday.date}`;
+              const holidayId =
+                holiday.country === 'custom' ? holiday.id : `${holiday.country}-${holiday.date}`;
               const isEnabled = enabledHolidays.has(holidayId);
 
               return (
@@ -73,12 +67,10 @@ const HolidayManagement = () => {
                     type="checkbox"
                     id={`holiday-${index}`}
                     checked={isEnabled}
-                    onChange={(e) => toggleHoliday(holidayId, e.target.checked)}
+                    onChange={e => toggleHoliday(holidayId, e.target.checked)}
                   />
                   <div className="holiday-info">
-                    <div className="holiday-date">
-                      {formatDateForDisplay(holiday.date)}
-                    </div>
+                    <div className="holiday-date">{formatDateForDisplay(holiday.date)}</div>
                     <div className="holiday-title">{holiday.name}</div>
                     {holiday.country !== 'custom' ? (
                       <div className="holiday-country">
@@ -103,15 +95,11 @@ const HolidayManagement = () => {
         </div>
 
         <div className="custom-holiday-form">
-          <input
-            type="date"
-            value={customDate}
-            onChange={(e) => setCustomDate(e.target.value)}
-          />
+          <input type="date" value={customDate} onChange={e => setCustomDate(e.target.value)} />
           <input
             type="text"
             value={customName}
-            onChange={(e) => setCustomName(e.target.value)}
+            onChange={e => setCustomName(e.target.value)}
             className="custom-holiday-name-input"
             placeholder="Название праздника"
           />

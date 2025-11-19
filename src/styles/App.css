@@ -21,7 +21,7 @@ body {
 }
 
 .header {
-  background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+  background: linear-gradient(135deg, #007aff 0%, #0051d5 100%);
   color: white;
   padding: 30px;
   text-align: center;
@@ -57,4 +57,28 @@ body.orientation-portrait {
 
 body.orientation-landscape {
   /* Альбомная ориентация */
+}
+
+/* Dark Mode */
+body.dark-mode {
+  background: #1a1a1a;
+  color: #e5e5e5;
+}
+
+body.dark-mode .app-container {
+  background: #2a2a2a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+}
+
+body.dark-mode .calendar-preview {
+  background: #2a2a2a;
+  color: #e5e5e5;
+}
+
+body.dark-mode .no-preview {
+  color: #a0a0a0;
 }

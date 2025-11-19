@@ -20,7 +20,7 @@ const CalendarPreview = () => {
     showCheckboxes,
     headerAlignment,
     customSubtitle,
-    showToast
+    showToast,
   } = useCalendar();
 
   const getHeaderClass = () => {
@@ -55,11 +55,7 @@ const CalendarPreview = () => {
               <h2>{year}</h2>
               <div className="year">{customSubtitle || 'Годовой планировщик'}</div>
             </div>
-            <YearCalendar
-              year={year}
-              taskLines={taskLines}
-              showCheckbox={showCheckboxes}
-            />
+            <YearCalendar year={year} taskLines={taskLines} showCheckbox={showCheckboxes} />
             <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
           </div>
         );
@@ -77,8 +73,8 @@ const CalendarPreview = () => {
           <div className="calendar-wrapper">
             <div className={getHeaderClass()}>
               <h2>
-                {monday.getDate()} {monthNames[monday.getMonth()]} -{' '}
-                {endDate.getDate()} {monthNames[endDate.getMonth()]} {monday.getFullYear()}
+                {monday.getDate()} {monthNames[monday.getMonth()]} - {endDate.getDate()}{' '}
+                {monthNames[endDate.getMonth()]} {monday.getFullYear()}
               </h2>
               <div className="year">{customSubtitle || 'Недельный планировщик'}</div>
             </div>
@@ -115,11 +111,7 @@ const CalendarPreview = () => {
                 <div className="year">{customSubtitle || dayNamesFull[dayOfWeek]}</div>
               </div>
             )}
-            <DayCalendar
-              startHour={dayStart}
-              endHour={dayEnd}
-              showCheckbox={showCheckboxes}
-            />
+            <DayCalendar startHour={dayStart} endHour={dayEnd} showCheckbox={showCheckboxes} />
             <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
           </div>
         );
@@ -130,11 +122,7 @@ const CalendarPreview = () => {
     }
   };
 
-  return (
-    <div className="calendar-preview">
-      {renderCalendar()}
-    </div>
-  );
+  return <div className="calendar-preview">{renderCalendar()}</div>;
 };
 
 export default CalendarPreview;

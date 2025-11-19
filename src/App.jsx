@@ -3,11 +3,13 @@ import { CalendarProvider, useCalendar } from './context/CalendarContext';
 import Controls from './components/Controls/Controls';
 import CalendarPreview from './components/Calendar/CalendarPreview';
 import Toast from './components/Toast';
+import ErrorBoundary from './components/ErrorBoundary';
 import { useTheme } from './hooks/useTheme';
 import './styles/App.css';
 import './styles/Controls.css';
 import './styles/Calendar.css';
 import './styles/Print.css';
+import './styles/ErrorBoundary.css';
 
 const AppContent = () => {
   const { orientation } = useCalendar();
@@ -37,9 +39,11 @@ const AppContent = () => {
 
 function App() {
   return (
-    <CalendarProvider>
-      <AppContent />
-    </CalendarProvider>
+    <ErrorBoundary>
+      <CalendarProvider>
+        <AppContent />
+      </CalendarProvider>
+    </ErrorBoundary>
   );
 }
 

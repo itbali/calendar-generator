@@ -3,13 +3,19 @@ import { useCalendar } from '../../context/CalendarContext';
 
 const AdditionalSettings = () => {
   const {
-    showCheckboxes, setShowCheckboxes,
-    contrastWeekends, setContrastWeekends,
-    orientation, setOrientation,
-    taskLines, setTaskLines,
-    headerAlignment, setHeaderAlignment,
-    customSubtitle, setCustomSubtitle,
-    viewMode
+    showCheckboxes,
+    setShowCheckboxes,
+    contrastWeekends,
+    setContrastWeekends,
+    orientation,
+    setOrientation,
+    taskLines,
+    setTaskLines,
+    headerAlignment,
+    setHeaderAlignment,
+    customSubtitle,
+    setCustomSubtitle,
+    viewMode,
   } = useCalendar();
 
   return (
@@ -17,10 +23,7 @@ const AdditionalSettings = () => {
       <div className="control-group">
         <label>Заголовок календаря</label>
         <div className="control-row">
-          <select
-            value={headerAlignment}
-            onChange={(e) => setHeaderAlignment(e.target.value)}
-          >
+          <select value={headerAlignment} onChange={e => setHeaderAlignment(e.target.value)}>
             <option value="left">Слева</option>
             <option value="center">По центру</option>
             <option value="right">Справа</option>
@@ -29,7 +32,7 @@ const AdditionalSettings = () => {
           <input
             type="text"
             value={customSubtitle}
-            onChange={(e) => setCustomSubtitle(e.target.value)}
+            onChange={e => setCustomSubtitle(e.target.value)}
             placeholder="Текст под заголовком (необязательно)"
             style={{ flex: 1, minWidth: '200px' }}
           />
@@ -44,7 +47,7 @@ const AdditionalSettings = () => {
               type="checkbox"
               id="showCheckboxes"
               checked={showCheckboxes}
-              onChange={(e) => setShowCheckboxes(e.target.checked)}
+              onChange={e => setShowCheckboxes(e.target.checked)}
             />
             <label htmlFor="showCheckboxes">Чекбоксы перед строками</label>
           </div>
@@ -53,7 +56,7 @@ const AdditionalSettings = () => {
               type="checkbox"
               id="contrastWeekends"
               checked={contrastWeekends}
-              onChange={(e) => setContrastWeekends(e.target.checked)}
+              onChange={e => setContrastWeekends(e.target.checked)}
             />
             <label htmlFor="contrastWeekends">Контрастные выходные</label>
           </div>
@@ -62,7 +65,7 @@ const AdditionalSettings = () => {
             <select
               id="orientation"
               value={orientation}
-              onChange={(e) => setOrientation(e.target.value)}
+              onChange={e => setOrientation(e.target.value)}
             >
               <option value="portrait">Книжная</option>
               <option value="landscape">Альбомная</option>
@@ -75,7 +78,7 @@ const AdditionalSettings = () => {
                 type="number"
                 id="taskLines"
                 value={taskLines}
-                onChange={(e) => setTaskLines(parseInt(e.target.value))}
+                onChange={e => setTaskLines(parseInt(e.target.value))}
                 min="1"
                 max="20"
               />
