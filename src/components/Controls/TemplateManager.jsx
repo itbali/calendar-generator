@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
+import { useSubscription } from '../../context/SubscriptionContext';
 import {
   predefinedTemplates,
   saveTemplate,
@@ -11,6 +12,7 @@ import {
 
 const TemplateManager = () => {
   const { t } = useLanguage();
+  const { checkLimit, getRemainingCount } = useSubscription();
   const calendarContext = useCalendar();
   const {
     viewMode,
@@ -48,6 +50,13 @@ const TemplateManager = () => {
   const handleSaveTemplate = () => {
     if (!templateName.trim()) {
       showToast(t('templateName'), 'error');
+      return;
+    }
+
+    // Проверка лимита шаблонов
+    const currentTemplateCount = customTemplates.length;
+    if (!checkLimit('maxCustomTemplates', currentTemplateCount)) {
+      showToast(t('templateLimitMessage'), 'error');
       return;
     }
 
@@ -148,7 +157,13 @@ const TemplateManager = () => {
 
       {/* Сохранить текущие настройки */}
       <div className="template-section">
-        <label className="section-label">{t('saveAsTemplate')}</label>
+        <label className="section-label">
+          {t('saveAsTemplate')}
+          <span className="template-limit-hint">
+            {' '}
+            ({customTemplates.length}/{getRemainingCount('maxCustomTemplates', customTemplates.length) + customTemplates.length})
+          </span>
+        </label>
         <div className="save-template-form">
           <input
             type="text"

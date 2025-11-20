@@ -537,3 +537,209 @@ body.dark-mode .event-details {
   border-top-color: #555;
   color: #999;
 }
+
+/* Mobile responsive for widgets */
+@media (max-width: 768px) {
+  .notes-widget,
+  .habit-tracker-widget,
+  .recurring-events-widget {
+    padding: 16px;
+  }
+
+  .widget-header {
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .widget-header h3 {
+    font-size: 16px;
+  }
+
+  .note-textarea {
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .habit-input,
+  .event-input {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .date-input-group,
+  .select-group,
+  .interval-group {
+    min-width: 180px;
+  }
+
+  .date-input,
+  .pattern-select {
+    padding: 7px 9px;
+    font-size: 13px;
+  }
+
+  .interval-input {
+    width: 60px;
+    padding: 7px;
+    font-size: 13px;
+  }
+
+  .interval-label {
+    font-size: 13px;
+  }
+
+  .habit-name,
+  .event-title {
+    font-size: 14px;
+  }
+
+  .habit-checkbox {
+    width: 24px;
+    height: 24px;
+  }
+
+  .stat-value {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notes-widget,
+  .habit-tracker-widget,
+  .recurring-events-widget {
+    padding: 12px;
+  }
+
+  .widget-header {
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+  }
+
+  .widget-header h3 {
+    font-size: 15px;
+  }
+
+  .add-note-section,
+  .add-habit-section,
+  .add-recurring-event-section {
+    gap: 8px;
+  }
+
+  .note-textarea {
+    padding: 9px;
+    font-size: 12px;
+  }
+
+  .habit-input,
+  .event-input {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .add-habit-section {
+    flex-direction: column;
+  }
+
+  .btn-add-habit {
+    width: 100%;
+  }
+
+  .date-row,
+  .repeat-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date-input-group,
+  .select-group,
+  .interval-group {
+    min-width: 100%;
+  }
+
+  .date-input-group label,
+  .select-group label,
+  .interval-group label {
+    font-size: 11px;
+  }
+
+  .date-input,
+  .pattern-select {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+
+  .interval-input-wrapper {
+    gap: 6px;
+  }
+
+  .interval-input {
+    width: 55px;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  .interval-label {
+    font-size: 12px;
+  }
+
+  .notes-list,
+  .habits-list,
+  .recurring-events-list {
+    gap: 10px;
+  }
+
+  .note-item,
+  .habit-item,
+  .recurring-event-item {
+    padding: 10px;
+  }
+
+  .note-content {
+    font-size: 13px;
+  }
+
+  .note-meta {
+    font-size: 11px;
+  }
+
+  .habit-name,
+  .event-title {
+    font-size: 13px;
+  }
+
+  .habit-checkbox {
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
+
+  .habit-stats {
+    gap: 12px;
+    padding-top: 6px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .stat-value {
+    font-size: 13px;
+  }
+
+  .event-details {
+    font-size: 11px;
+    gap: 3px;
+    padding-top: 6px;
+  }
+
+  .empty-state {
+    padding: 30px 15px;
+    font-size: 13px;
+  }
+
+  .btn-delete-note,
+  .btn-delete-habit,
+  .btn-delete-event {
+    font-size: 14px;
+  }
+}
