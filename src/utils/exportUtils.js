@@ -2,9 +2,31 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
 /**
+ * Добавить водяной знак на canvas
+ */
+const addWatermarkToCanvas = canvas => {
+  const ctx = canvas.getContext('2d');
+  const watermarkText = 'Calendar Generator - Get Pro';
+
+  // Настройки водяного знака
+  ctx.save();
+  ctx.globalAlpha = 0.3;
+  ctx.font = 'bold 24px Arial';
+  ctx.fillStyle = '#666666';
+  ctx.textAlign = 'center';
+
+  // Размещаем водяной знак в центре внизу
+  const x = canvas.width / 2;
+  const y = canvas.height - 30;
+
+  ctx.fillText(watermarkText, x, y);
+  ctx.restore();
+};
+
+/**
  * Экспорт календаря в PNG
  */
-export const exportToPNG = async calendarElement => {
+export const exportToPNG = async (calendarElement, addWatermark = false) => {
   try {
     const canvas = await html2canvas(calendarElement, {
       scale: 2,
@@ -12,6 +34,11 @@ export const exportToPNG = async calendarElement => {
       logging: false,
       useCORS: true,
     });
+
+    // Добавляем водяной знак если необходимо
+    if (addWatermark) {
+      addWatermarkToCanvas(canvas);
+    }
 
     // Создаем ссылку для скачивания
     const link = document.createElement('a');
@@ -30,7 +57,7 @@ export const exportToPNG = async calendarElement => {
 /**
  * Экспорт календаря в PDF
  */
-export const exportToPDF = async (calendarElement, orientation = 'portrait') => {
+export const exportToPDF = async (calendarElement, orientation = 'portrait', addWatermark = false) => {
   try {
     const canvas = await html2canvas(calendarElement, {
       scale: 2,
@@ -38,6 +65,11 @@ export const exportToPDF = async (calendarElement, orientation = 'portrait') => 
       logging: false,
       useCORS: true,
     });
+
+    // Добавляем водяной знак если необходимо
+    if (addWatermark) {
+      addWatermarkToCanvas(canvas);
+    }
 
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF({

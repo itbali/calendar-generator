@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
+import { useSubscription } from '../../context/SubscriptionContext';
 import { exportToPNG, exportToPDF, exportToICS } from '../../utils/exportUtils';
 
 const ExportButtons = () => {
   const { orientation, year, getAllHolidays, showToast, enabledHolidays } = useCalendar();
+  const { hasFeature } = useSubscription();
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPDF = async () => {
@@ -16,7 +18,8 @@ const ExportButtons = () => {
       return;
     }
 
-    const success = await exportToPDF(calendarElement, orientation);
+    const addWatermark = !hasFeature('exportWatermark');
+    const success = await exportToPDF(calendarElement, orientation, addWatermark);
     setIsExporting(false);
 
     if (success) {
@@ -36,7 +39,8 @@ const ExportButtons = () => {
       return;
     }
 
-    const success = await exportToPNG(calendarElement);
+    const addWatermark = !hasFeature('exportWatermark');
+    const success = await exportToPNG(calendarElement, addWatermark);
     setIsExporting(false);
 
     if (success) {
