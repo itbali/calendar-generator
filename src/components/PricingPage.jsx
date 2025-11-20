@@ -1,11 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { useSubscription, SUBSCRIPTION_TIERS } from '../context/SubscriptionContext';
+import { useSubscription } from '../context/SubscriptionContext';
+import { SUBSCRIPTION_TIERS } from '../context/subscriptionConstants';
 import '../styles/Pricing.css';
 
 const PricingPage = ({ onClose }) => {
   const { t } = useLanguage();
-  const { subscription, upgradeTo, isPro, isBusiness, startTrial } = useSubscription();
+  const { upgradeTo, isPro, isBusiness, startTrial } = useSubscription();
 
   const plans = [
     {

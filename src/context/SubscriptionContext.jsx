@@ -1,50 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { SUBSCRIPTION_TIERS, SUBSCRIPTION_LIMITS } from './subscriptionConstants';
 
 const SubscriptionContext = createContext();
-
-// Типы подписок
-export const SUBSCRIPTION_TIERS = {
-  FREE: 'free',
-  PRO: 'pro',
-  BUSINESS: 'business',
-};
-
-// Лимиты для каждого тарифа
-export const SUBSCRIPTION_LIMITS = {
-  [SUBSCRIPTION_TIERS.FREE]: {
-    maxCustomTemplates: 3,
-    exportWatermark: true,
-    premiumThemes: false,
-    cloudSync: false,
-    analytics: false,
-    integrations: false,
-    aiAssistant: false,
-    teamFeatures: false,
-    prioritySupport: false,
-  },
-  [SUBSCRIPTION_TIERS.PRO]: {
-    maxCustomTemplates: Infinity,
-    exportWatermark: false,
-    premiumThemes: true,
-    cloudSync: true,
-    analytics: false,
-    integrations: false,
-    aiAssistant: false,
-    teamFeatures: false,
-    prioritySupport: false,
-  },
-  [SUBSCRIPTION_TIERS.BUSINESS]: {
-    maxCustomTemplates: Infinity,
-    exportWatermark: false,
-    premiumThemes: true,
-    cloudSync: true,
-    analytics: true,
-    integrations: true,
-    aiAssistant: true,
-    teamFeatures: true,
-    prioritySupport: true,
-  },
-};
 
 export const SubscriptionProvider = ({ children }) => {
   // В production это будет приходить с сервера
@@ -140,6 +97,7 @@ export const SubscriptionProvider = ({ children }) => {
   return <SubscriptionContext.Provider value={value}>{children}</SubscriptionContext.Provider>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useSubscription = () => {
   const context = useContext(SubscriptionContext);
   if (!context) {

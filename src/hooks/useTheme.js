@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useCalendar } from '../context/CalendarContext';
 import { themes } from '../utils/constants';
 
@@ -24,7 +24,9 @@ export const useTheme = () => {
     return () => mediaQuery.removeEventListener('change', handleThemeChange);
   }, [setDarkMode]);
 
-  useEffect(() => {
+  // Используем useLayoutEffect для синхронного применения темы ДО рендера
+  // Это предотвращает мерцание при загрузке страницы
+  useLayoutEffect(() => {
     const selectedTheme = themes[theme];
     if (!selectedTheme) return;
 

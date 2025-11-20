@@ -22,7 +22,7 @@ import './styles/Paywall.css';
 const AppContent = () => {
   const { orientation } = useCalendar();
   const { t } = useLanguage();
-  const { subscription, isPro, isBusiness } = useSubscription();
+  const { isPro, isBusiness } = useSubscription();
   const [showFAQ, setShowFAQ] = useState(false);
   const [showPricing, setShowPricing] = useState(false);
 
