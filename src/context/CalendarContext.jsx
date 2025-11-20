@@ -4,12 +4,15 @@ import {
   saveCalendarSettings,
   loadCalendarSettings,
   saveHolidaySettings,
-  loadHolidaySettings
+  loadHolidaySettings,
+  saveWidgets,
+  loadWidgets,
 } from '../utils/storageUtils';
 import { generateHolidayId, parseHolidayDate } from '../utils/dateUtils';
 
 const CalendarContext = createContext();
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useCalendar = () => {
   const context = useContext(CalendarContext);
   if (!context) {
@@ -24,27 +27,100 @@ export const CalendarProvider = ({ children }) => {
   const currentYear = today.getFullYear();
   const todayStr = today.toISOString().split('T')[0];
 
+  // Инициализация настроек календаря из localStorage
+  const initializeCalendarSettings = () => {
+    const savedCalendar = loadCalendarSettings();
+    // Определяем системную тему, если нет сохраненной настройки
+    const prefersDark =
+      savedCalendar?.darkMode === undefined
+        ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        : savedCalendar.darkMode;
+
+    return {
+      viewMode: savedCalendar?.mode || 'month',
+      orientation: savedCalendar?.orientation || 'portrait',
+      year: parseInt(savedCalendar?.year) || currentYear,
+      month: parseInt(savedCalendar?.month) || currentMonth,
+      weekStart: savedCalendar?.weekStart || todayStr,
+      dayDate: savedCalendar?.dayDate || todayStr,
+      dayStart: parseInt(savedCalendar?.dayStart) || 8,
+      dayEnd: parseInt(savedCalendar?.dayEnd) || 22,
+      taskLines: parseInt(savedCalendar?.taskLines) || 5,
+      showCheckboxes: savedCalendar?.checkboxes !== undefined ? savedCalendar.checkboxes : true,
+      contrastWeekends: savedCalendar?.contrast !== undefined ? savedCalendar.contrast : true,
+      headerAlignment: savedCalendar?.headerAlign || 'center',
+      customSubtitle: savedCalendar?.subtitle || '',
+      theme: savedCalendar?.theme || 'blue',
+      darkMode: prefersDark,
+    };
+  };
+
+  // Инициализация настроек праздников из localStorage
+  const initializeHolidaySettings = () => {
+    const savedHolidays = loadHolidaySettings();
+    if (savedHolidays) {
+      return {
+        selectedCountries: new Set(savedHolidays.selectedCountries || ['russia']),
+        customHolidays: savedHolidays.customHolidays || [],
+        enabledHolidays: new Set(savedHolidays.enabledHolidays || []),
+      };
+    }
+    // Если настройки не загружены - инициализируем дефолтные праздники России
+    const russiaHolidays = defaultHolidays.russia.map(h => `russia-${h.date}`);
+    return {
+      selectedCountries: new Set(['russia']),
+      customHolidays: [],
+      enabledHolidays: new Set(russiaHolidays),
+    };
+  };
+
+  // Инициализация виджетов из localStorage
+  const initializeWidgets = () => {
+    const savedWidgets = loadWidgets();
+    if (savedWidgets) {
+      return {
+        notes: savedWidgets.notes || [],
+        habits: savedWidgets.habits || [],
+        recurringEvents: savedWidgets.recurringEvents || [],
+      };
+    }
+    return {
+      notes: [],
+      habits: [],
+      recurringEvents: [],
+    };
+  };
+
+  const calendarSettings = initializeCalendarSettings();
+  const holidaySettings = initializeHolidaySettings();
+  const widgetsSettings = initializeWidgets();
+
   // Настройки календаря
-  const [viewMode, setViewMode] = useState('month');
-  const [orientation, setOrientation] = useState('portrait');
-  const [year, setYear] = useState(currentYear);
-  const [month, setMonth] = useState(currentMonth);
-  const [weekStart, setWeekStart] = useState(todayStr);
-  const [dayDate, setDayDate] = useState(todayStr);
-  const [dayStart, setDayStart] = useState(8);
-  const [dayEnd, setDayEnd] = useState(22);
-  const [taskLines, setTaskLines] = useState(5);
-  const [showCheckboxes, setShowCheckboxes] = useState(true);
-  const [contrastWeekends, setContrastWeekends] = useState(true);
-  const [headerAlignment, setHeaderAlignment] = useState('center');
-  const [customSubtitle, setCustomSubtitle] = useState('');
-  const [theme, setTheme] = useState('blue');
+  const [viewMode, setViewMode] = useState(calendarSettings.viewMode);
+  const [orientation, setOrientation] = useState(calendarSettings.orientation);
+  const [year, setYear] = useState(calendarSettings.year);
+  const [month, setMonth] = useState(calendarSettings.month);
+  const [weekStart, setWeekStart] = useState(calendarSettings.weekStart);
+  const [dayDate, setDayDate] = useState(calendarSettings.dayDate);
+  const [dayStart, setDayStart] = useState(calendarSettings.dayStart);
+  const [dayEnd, setDayEnd] = useState(calendarSettings.dayEnd);
+  const [taskLines, setTaskLines] = useState(calendarSettings.taskLines);
+  const [showCheckboxes, setShowCheckboxes] = useState(calendarSettings.showCheckboxes);
+  const [contrastWeekends, setContrastWeekends] = useState(calendarSettings.contrastWeekends);
+  const [headerAlignment, setHeaderAlignment] = useState(calendarSettings.headerAlignment);
+  const [customSubtitle, setCustomSubtitle] = useState(calendarSettings.customSubtitle);
+  const [theme, setTheme] = useState(calendarSettings.theme);
+  const [darkMode, setDarkMode] = useState(calendarSettings.darkMode);
 
   // Настройки праздников
-  const [selectedCountries, setSelectedCountries] = useState(new Set(['russia']));
-  const [customHolidays, setCustomHolidays] = useState([]);
-  const [enabledHolidays, setEnabledHolidays] = useState(new Set());
-  const [hasLoadedSettings, setHasLoadedSettings] = useState(false);
+  const [selectedCountries, setSelectedCountries] = useState(holidaySettings.selectedCountries);
+  const [customHolidays, setCustomHolidays] = useState(holidaySettings.customHolidays);
+  const [enabledHolidays, setEnabledHolidays] = useState(holidaySettings.enabledHolidays);
+
+  // Виджеты
+  const [notes, setNotes] = useState(widgetsSettings.notes);
+  const [habits, setHabits] = useState(widgetsSettings.habits);
+  const [recurringEvents, setRecurringEvents] = useState(widgetsSettings.recurringEvents);
 
   // Тосты
   const [toasts, setToasts] = useState([]);
@@ -56,41 +132,6 @@ export const CalendarProvider = ({ children }) => {
     setTimeout(() => {
       setToasts(prev => prev.filter(t => t.id !== id));
     }, 3000);
-  }, []);
-
-  // Загрузка настроек при монтировании
-  useEffect(() => {
-    // Загружаем настройки календаря
-    const savedCalendar = loadCalendarSettings();
-    if (savedCalendar) {
-      setViewMode(savedCalendar.mode || 'month');
-      setOrientation(savedCalendar.orientation || 'portrait');
-      setYear(parseInt(savedCalendar.year) || currentYear);
-      setMonth(parseInt(savedCalendar.month) || currentMonth);
-      setWeekStart(savedCalendar.weekStart || todayStr);
-      setDayDate(savedCalendar.dayDate || todayStr);
-      setDayStart(parseInt(savedCalendar.dayStart) || 8);
-      setDayEnd(parseInt(savedCalendar.dayEnd) || 22);
-      setTaskLines(parseInt(savedCalendar.taskLines) || 5);
-      setShowCheckboxes(savedCalendar.checkboxes !== undefined ? savedCalendar.checkboxes : true);
-      setContrastWeekends(savedCalendar.contrast !== undefined ? savedCalendar.contrast : true);
-      setHeaderAlignment(savedCalendar.headerAlign || 'center');
-      setCustomSubtitle(savedCalendar.subtitle || '');
-      setTheme(savedCalendar.theme || 'blue');
-    }
-
-    // Загружаем настройки праздников
-    const savedHolidays = loadHolidaySettings();
-    if (savedHolidays) {
-      setSelectedCountries(new Set(savedHolidays.selectedCountries || ['russia']));
-      setCustomHolidays(savedHolidays.customHolidays || []);
-      setEnabledHolidays(new Set(savedHolidays.enabledHolidays || []));
-      setHasLoadedSettings(true);
-    } else {
-      // Если настройки не загружены - инициализируем дефолтные праздники России
-      const russiaHolidays = defaultHolidays.russia.map(h => `russia-${h.date}`);
-      setEnabledHolidays(new Set(russiaHolidays));
-    }
   }, []);
 
   // Сохранение настроек календаря
@@ -109,13 +150,26 @@ export const CalendarProvider = ({ children }) => {
       contrast: contrastWeekends,
       headerAlign: headerAlignment,
       subtitle: customSubtitle,
-      theme
+      theme,
+      darkMode,
     };
     saveCalendarSettings(settings);
   }, [
-    viewMode, orientation, year, month, weekStart, dayDate,
-    dayStart, dayEnd, taskLines, showCheckboxes, contrastWeekends,
-    headerAlignment, customSubtitle, theme
+    viewMode,
+    orientation,
+    year,
+    month,
+    weekStart,
+    dayDate,
+    dayStart,
+    dayEnd,
+    taskLines,
+    showCheckboxes,
+    contrastWeekends,
+    headerAlignment,
+    customSubtitle,
+    theme,
+    darkMode,
   ]);
 
   // Сохранение настроек праздников
@@ -123,10 +177,20 @@ export const CalendarProvider = ({ children }) => {
     const settings = {
       selectedCountries: Array.from(selectedCountries),
       customHolidays,
-      enabledHolidays: Array.from(enabledHolidays)
+      enabledHolidays: Array.from(enabledHolidays),
     };
     saveHolidaySettings(settings);
   }, [selectedCountries, customHolidays, enabledHolidays]);
+
+  // Сохранение виджетов
+  useEffect(() => {
+    const widgets = {
+      notes,
+      habits,
+      recurringEvents,
+    };
+    saveWidgets(widgets);
+  }, [notes, habits, recurringEvents]);
 
   // Получить все праздники из выбранных стран
   const getAllHolidays = useCallback(() => {
@@ -138,7 +202,7 @@ export const CalendarProvider = ({ children }) => {
         defaultHolidays[countryCode].forEach(holiday => {
           holidays.push({
             ...holiday,
-            country: countryCode
+            country: countryCode,
           });
         });
       }
@@ -148,7 +212,7 @@ export const CalendarProvider = ({ children }) => {
     customHolidays.forEach(holiday => {
       holidays.push({
         ...holiday,
-        country: 'custom'
+        country: 'custom',
       });
     });
 
@@ -163,55 +227,67 @@ export const CalendarProvider = ({ children }) => {
   }, [selectedCountries, customHolidays]);
 
   // Проверка, является ли день праздником
-  const isHoliday = useCallback((year, month, day) => {
-    const dateStr = `${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-    const holidays = getAllHolidays();
+  const isHoliday = useCallback(
+    (year, month, day) => {
+      const dateStr = `${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      const holidays = getAllHolidays();
 
-    const holiday = holidays.find(h => {
-      if (h.date !== dateStr) return false;
+      const holiday = holidays.find(h => {
+        if (h.date !== dateStr) return false;
 
-      const holidayId = h.country === 'custom' ? h.id : `${h.country}-${h.date}`;
-      return enabledHolidays.has(holidayId);
-    });
+        const holidayId = h.country === 'custom' ? h.id : `${h.country}-${h.date}`;
+        return enabledHolidays.has(holidayId);
+      });
 
-    return holiday;
-  }, [getAllHolidays, enabledHolidays]);
+      return holiday;
+    },
+    [getAllHolidays, enabledHolidays]
+  );
 
   // Добавить пользовательский праздник
-  const addCustomHoliday = useCallback((date, name) => {
-    if (!date || !name.trim()) {
-      showToast('Пожалуйста, заполните дату и название праздника', 'error');
-      return false;
-    }
+  const addCustomHoliday = useCallback(
+    (date, name) => {
+      if (!date || !name.trim()) {
+        showToast('Пожалуйста, заполните дату и название праздника', 'error');
+        return false;
+      }
 
-    // Преобразуем дату из YYYY-MM-DD в MM-DD
-    const [year, month, day] = date.split('-');
-    const formattedDate = `${month}-${day}`;
+      // Преобразуем дату из YYYY-MM-DD в MM-DD
+      const [, month, day] = date.split('-');
+      const formattedDate = `${month}-${day}`;
 
-    const holidayId = generateHolidayId();
+      const holidayId = generateHolidayId();
 
-    setCustomHolidays(prev => [...prev, {
-      id: holidayId,
-      date: formattedDate,
-      name: name.trim()
-    }]);
+      setCustomHolidays(prev => [
+        ...prev,
+        {
+          id: holidayId,
+          date: formattedDate,
+          name: name.trim(),
+        },
+      ]);
 
-    setEnabledHolidays(prev => new Set([...prev, holidayId]));
+      setEnabledHolidays(prev => new Set([...prev, holidayId]));
 
-    showToast('Праздник добавлен', 'success');
-    return true;
-  }, [showToast]);
+      showToast('Праздник добавлен', 'success');
+      return true;
+    },
+    [showToast]
+  );
 
   // Удалить пользовательский праздник
-  const deleteCustomHoliday = useCallback((id) => {
-    setCustomHolidays(prev => prev.filter(h => h.id !== id));
-    setEnabledHolidays(prev => {
-      const newSet = new Set(prev);
-      newSet.delete(id);
-      return newSet;
-    });
-    showToast('Праздник удален', 'info');
-  }, [showToast]);
+  const deleteCustomHoliday = useCallback(
+    id => {
+      setCustomHolidays(prev => prev.filter(h => h.id !== id));
+      setEnabledHolidays(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(id);
+        return newSet;
+      });
+      showToast('Праздник удален', 'info');
+    },
+    [showToast]
+  );
 
   // Переключить страну
   const toggleCountry = useCallback((countryCode, enabled) => {
@@ -259,22 +335,133 @@ export const CalendarProvider = ({ children }) => {
     }
   }, []);
 
+  // Импортировать праздники из .ics файла
+  const importHolidaysFromICS = useCallback(events => {
+    if (!events || events.length === 0) {
+      return { success: false, count: 0 };
+    }
+
+    const newHolidays = [];
+    const newEnabledIds = [];
+
+    events.forEach(event => {
+      const holidayId = generateHolidayId();
+      newHolidays.push({
+        id: holidayId,
+        date: event.date, // Already in MM-DD format
+        name: event.name,
+      });
+      newEnabledIds.push(holidayId);
+    });
+
+    // Add all new holidays
+    setCustomHolidays(prev => [...prev, ...newHolidays]);
+
+    // Enable all imported holidays
+    setEnabledHolidays(prev => new Set([...prev, ...newEnabledIds]));
+
+    return { success: true, count: newHolidays.length };
+  }, []);
+
+  // Добавить заметку
+  const addNote = useCallback(text => {
+    const newNote = {
+      id: Date.now().toString(),
+      text,
+      createdAt: new Date().toISOString(),
+    };
+    setNotes(prev => [newNote, ...prev]);
+  }, []);
+
+  // Удалить заметку
+  const deleteNote = useCallback(noteId => {
+    setNotes(prev => prev.filter(note => note.id !== noteId));
+  }, []);
+
+  // Добавить привычку
+  const addHabit = useCallback(name => {
+    const newHabit = {
+      id: Date.now().toString(),
+      name,
+      completedDays: [],
+      createdAt: new Date().toISOString(),
+    };
+    setHabits(prev => [...prev, newHabit]);
+  }, []);
+
+  // Удалить привычку
+  const deleteHabit = useCallback(habitId => {
+    setHabits(prev => prev.filter(habit => habit.id !== habitId));
+  }, []);
+
+  // Переключить день привычки
+  const toggleHabitDay = useCallback((habitId, dayStr) => {
+    setHabits(prev =>
+      prev.map(habit => {
+        if (habit.id === habitId) {
+          const completedDays = [...habit.completedDays];
+          const dayIndex = completedDays.indexOf(dayStr);
+
+          if (dayIndex > -1) {
+            completedDays.splice(dayIndex, 1);
+          } else {
+            completedDays.push(dayStr);
+          }
+
+          return { ...habit, completedDays };
+        }
+        return habit;
+      })
+    );
+  }, []);
+
+  // Добавить повторяющееся событие
+  const addRecurringEvent = useCallback(event => {
+    const newEvent = {
+      id: Date.now().toString(),
+      ...event,
+      createdAt: new Date().toISOString(),
+    };
+    setRecurringEvents(prev => [...prev, newEvent]);
+  }, []);
+
+  // Удалить повторяющееся событие
+  const deleteRecurringEvent = useCallback(eventId => {
+    setRecurringEvents(prev => prev.filter(event => event.id !== eventId));
+  }, []);
+
   const value = {
     // Настройки календаря
-    viewMode, setViewMode,
-    orientation, setOrientation,
-    year, setYear,
-    month, setMonth,
-    weekStart, setWeekStart,
-    dayDate, setDayDate,
-    dayStart, setDayStart,
-    dayEnd, setDayEnd,
-    taskLines, setTaskLines,
-    showCheckboxes, setShowCheckboxes,
-    contrastWeekends, setContrastWeekends,
-    headerAlignment, setHeaderAlignment,
-    customSubtitle, setCustomSubtitle,
-    theme, setTheme,
+    viewMode,
+    setViewMode,
+    orientation,
+    setOrientation,
+    year,
+    setYear,
+    month,
+    setMonth,
+    weekStart,
+    setWeekStart,
+    dayDate,
+    setDayDate,
+    dayStart,
+    setDayStart,
+    dayEnd,
+    setDayEnd,
+    taskLines,
+    setTaskLines,
+    showCheckboxes,
+    setShowCheckboxes,
+    contrastWeekends,
+    setContrastWeekends,
+    headerAlignment,
+    setHeaderAlignment,
+    customSubtitle,
+    setCustomSubtitle,
+    theme,
+    setTheme,
+    darkMode,
+    setDarkMode,
 
     // Настройки праздников
     selectedCountries,
@@ -286,15 +473,24 @@ export const CalendarProvider = ({ children }) => {
     deleteCustomHoliday,
     toggleCountry,
     toggleHoliday,
+    importHolidaysFromICS,
+
+    // Виджеты
+    notes,
+    habits,
+    addNote,
+    deleteNote,
+    addHabit,
+    deleteHabit,
+    toggleHabitDay,
+    recurringEvents,
+    addRecurringEvent,
+    deleteRecurringEvent,
 
     // Toast
     toasts,
-    showToast
+    showToast,
   };
 
-  return (
-    <CalendarContext.Provider value={value}>
-      {children}
-    </CalendarContext.Provider>
-  );
+  return <CalendarContext.Provider value={value}>{children}</CalendarContext.Provider>;
 };

@@ -115,7 +115,7 @@ body.orientation-landscape .calendar-wrapper {
 }
 
 .task-line.with-checkbox:before {
-  content: "□";
+  content: '□';
   position: absolute;
   left: 0;
   top: -2px;
@@ -205,7 +205,7 @@ body.orientation-landscape .calendar-wrapper {
 }
 
 .month-mini .goal-line.with-checkbox:before {
-  content: "□";
+  content: '□';
   position: absolute;
   left: 0;
   top: -2px;
@@ -339,7 +339,7 @@ body.orientation-landscape .calendar-wrapper {
 }
 
 .time-content.with-checkbox:before {
-  content: "□";
+  content: '□';
   position: absolute;
   left: 5px;
   top: 50%;
@@ -350,4 +350,70 @@ body.orientation-landscape .calendar-wrapper {
 
 .time-content.with-checkbox {
   padding-left: 30px;
+}
+
+/* Dark Mode для календаря */
+body.dark-mode .calendar-wrapper {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .calendar-header {
+  color: #e5e5e5;
+}
+
+body.dark-mode .calendar-footer {
+  color: #999;
+}
+
+body.dark-mode .month-grid .day-header {
+  background: #333;
+  color: #e5e5e5;
+}
+
+body.dark-mode .month-grid .day-cell {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .month-grid .day-cell .date-number {
+  background: #333;
+  color: #e5e5e5;
+}
+
+body.dark-mode .month-grid .day-cell.weekend .date-number {
+  background: #404040;
+}
+
+body.dark-mode .month-grid .day-cell.holiday .date-number {
+  background: #4a1a1a;
+  color: #ff9999;
+}
+
+body.dark-mode .year-grid .month-mini {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .year-grid .month-title {
+  background: #333;
+  color: #e5e5e5;
+}
+
+body.dark-mode .week-grid .day-column,
+body.dark-mode .day-plan {
+  background: #2a2a2a;
+  border-color: #404040;
+}
+
+body.dark-mode .week-grid .day-header,
+body.dark-mode .day-plan .hour-slot {
+  background: #333;
+  color: #e5e5e5;
+  border-color: #404040;
+}
+
+body.dark-mode .goal-line,
+body.dark-mode .task-line {
+  border-color: #404040;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCalendar } from '../../context/CalendarContext';
-import { monthNames, dayNames } from '../../utils/constants';
+import { dayNames } from '../../utils/constants';
 import { getDaysInMonth, getFirstDayOfMonth } from '../../utils/dateUtils';
 import TaskLines from './TaskLines';
 
@@ -40,12 +40,9 @@ const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
               return (
                 <td key={col} className={cellClasses.join(' ')}>
                   <div className="date-number">
-                    {currentDay}{' '}
-                    <span className="weekday">{dayNames[dayOfWeek]}</span>
+                    {currentDay} <span className="weekday">{dayNames[dayOfWeek]}</span>
                   </div>
-                  {holiday && (
-                    <div className="holiday-name">{holiday.name}</div>
-                  )}
+                  {holiday && <div className="holiday-name">{holiday.name}</div>}
                   <TaskLines count={taskLines} showCheckbox={showCheckbox} />
                 </td>
               );
@@ -57,4 +54,4 @@ const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
   );
 };
 
-export default MonthCalendar;
+export default React.memo(MonthCalendar);

@@ -21,11 +21,7 @@ const ToastItem = ({ toast }) => {
     setTimeout(() => setShow(true), 10);
   }, []);
 
-  return (
-    <div className={`toast ${toast.type} ${show ? 'show' : ''}`}>
-      {toast.message}
-    </div>
-  );
+  return <div className={`toast ${toast.type} ${show ? 'show' : ''}`}>{toast.message}</div>;
 };
 
 export default Toast;

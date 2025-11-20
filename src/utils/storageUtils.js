@@ -1,5 +1,5 @@
 // Сохранение настроек календаря
-export const saveCalendarSettings = (settings) => {
+export const saveCalendarSettings = settings => {
   try {
     localStorage.setItem('calendarSettings', JSON.stringify(settings));
   } catch (e) {
@@ -19,7 +19,7 @@ export const loadCalendarSettings = () => {
 };
 
 // Сохранение настроек праздников
-export const saveHolidaySettings = (settings) => {
+export const saveHolidaySettings = settings => {
   try {
     localStorage.setItem('holidaySettings', JSON.stringify(settings));
   } catch (e) {
@@ -34,6 +34,26 @@ export const loadHolidaySettings = () => {
     return saved ? JSON.parse(saved) : null;
   } catch (e) {
     console.error('Holiday settings load failed:', e);
+    return null;
+  }
+};
+
+// Сохранение виджетов (заметок и привычек)
+export const saveWidgets = widgets => {
+  try {
+    localStorage.setItem('calendarWidgets', JSON.stringify(widgets));
+  } catch (e) {
+    console.error('Widgets save failed:', e);
+  }
+};
+
+// Загрузка виджетов
+export const loadWidgets = () => {
+  try {
+    const saved = localStorage.getItem('calendarWidgets');
+    return saved ? JSON.parse(saved) : null;
+  } catch (e) {
+    console.error('Widgets load failed:', e);
     return null;
   }
 };

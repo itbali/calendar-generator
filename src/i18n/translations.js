@@ -1,0 +1,954 @@
+export const translations = {
+  ru: {
+    // Заголовок
+    appTitle: 'Генератор Календарей',
+    appSubtitle: 'Создайте идеальный календарь для планирования',
+
+    // Режимы отображения
+    viewMode: 'Режим отображения',
+    year: 'Год',
+    month: 'Месяц',
+    week: 'Неделя',
+    day: 'День',
+
+    // Темы
+    colorTheme: 'Цветовая тема',
+    darkMode: 'Темная тема',
+
+    // Дополнительные настройки
+    additionalSettings: 'Дополнительные настройки',
+    orientation: 'Ориентация',
+    portrait: 'Книжная',
+    landscape: 'Альбомная',
+    taskLines: 'Строк для задач',
+    showCheckboxes: 'Показать чекбоксы',
+    contrastWeekends: 'Контрастные выходные',
+    headerAlignment: 'Выравнивание заголовка',
+    left: 'Слева',
+    center: 'По центру',
+    right: 'Справа',
+    hidden: 'Скрыть',
+    customSubtitle: 'Пользовательский подзаголовок',
+
+    // Праздники
+    holidays: 'Праздники',
+    selectCountries: 'Выберите страны',
+    customHolidays: 'Пользовательские праздники',
+    addHoliday: 'Добавить праздник',
+    date: 'Дата',
+    holidayName: 'Название праздника',
+    noHolidaysSelected: 'Праздники не выбраны',
+
+    // Экспорт
+    exportCalendar: 'Экспорт календаря',
+    exportHint: 'PDF/PNG - для печати и сохранения, iCal - для импорта праздников в календарь',
+
+    // Кнопки
+    print: 'Печать',
+    add: 'Добавить',
+    delete: 'Удалить',
+    faq: 'Часто задаваемые вопросы',
+
+    // Секции панели управления
+    displaySettings: 'Настройки отображения',
+    calendarSettings: 'Настройки календаря',
+    exportAndActions: 'Экспорт и действия',
+
+    // Шаблоны
+    templates: 'Шаблоны',
+    templateName: 'Название шаблона',
+    saveAsTemplate: 'Сохранить как шаблон',
+    loadTemplate: 'Загрузить',
+    deleteTemplate: 'Удалить',
+    predefinedTemplates: 'Предустановленные шаблоны',
+    myTemplates: 'Мои шаблоны',
+    noCustomTemplates: 'Нет сохранённых шаблонов',
+    templateMinimalist: 'Минималист',
+    templateMinimalistDesc: 'Чистый и простой дизайн без лишних элементов',
+    templateTaskPlanner: 'Планировщик задач',
+    templateTaskPlannerDesc: 'Максимальное пространство для задач с чекбоксами',
+    templateFamilyCalendar: 'Семейный календарь',
+    templateFamilyCalendarDesc: 'Яркий дизайн с праздниками и выходными',
+    templateLoaded: 'Шаблон загружен',
+    templateSaved: 'Шаблон сохранён',
+    templateDeleted: 'Шаблон удалён',
+
+    // API Праздников
+    syncHolidays: 'Синхронизировать праздники',
+    syncingHolidays: 'Синхронизация...',
+    holidaysSynced: 'Праздники загружены из API',
+    holidaysSyncError: 'Ошибка загрузки праздников',
+    syncFromAPI: 'Загрузить из API',
+
+    // Импорт календаря
+    importCalendar: 'Импорт календаря',
+    importFromICS: 'Импорт из .ics файла',
+    selectICSFile: 'Выберите .ics файл',
+    importing: 'Импорт...',
+    importSuccess: 'Календарь импортирован успешно',
+    importError: 'Ошибка импорта календаря',
+    eventsImported: 'событий импортировано',
+    noEventsFound: 'События не найдены в файле',
+    invalidICSFile: 'Неверный формат .ics файла',
+
+    // Виджеты
+    widgets: 'Виджеты',
+    notes: 'Заметки',
+    habitTracker: 'Трекер привычек',
+    addNote: 'Добавить заметку',
+    noteText: 'Текст заметки',
+    noteAdded: 'Заметка добавлена',
+    noteDeleted: 'Заметка удалена',
+    noNotes: 'Нет заметок',
+    addHabit: 'Добавить привычку',
+    habitName: 'Название привычки',
+    habitAdded: 'Привычка добавлена',
+    habitDeleted: 'Привычка удалена',
+    noHabits: 'Нет привычек',
+    habitCompleted: 'Привычка выполнена',
+    habitUncompleted: 'Выполнение отменено',
+    completedDays: 'Выполнено дней',
+    currentStreak: 'Текущая серия',
+    bestStreak: 'Лучшая серия',
+    days: 'дней',
+
+    // Повторяющиеся события
+    recurringEvents: 'Повторяющиеся события',
+    addRecurringEvent: 'Добавить событие',
+    eventTitle: 'Название события',
+    startDate: 'Дата начала',
+    endDate: 'Дата окончания',
+    noEndDate: 'Без даты окончания',
+    repeatPattern: 'Повторение',
+    daily: 'Ежедневно',
+    weekly: 'Еженедельно',
+    monthly: 'Ежемесячно',
+    yearly: 'Ежегодно',
+    repeatEvery: 'Повторять каждые',
+    day_one: 'день',
+    day_few: 'дня',
+    day_many: 'дней',
+    week_one: 'неделю',
+    week_few: 'недели',
+    week_many: 'недель',
+    month_one: 'месяц',
+    month_few: 'месяца',
+    month_many: 'месяцев',
+    year_one: 'год',
+    year_few: 'года',
+    year_many: 'лет',
+    eventAdded: 'Событие добавлено',
+    eventDeleted: 'Событие удалено',
+    noRecurringEvents: 'Нет повторяющихся событий',
+
+    // Месяцы
+    months: [
+      'Январь',
+      'Февраль',
+      'Март',
+      'Апрель',
+      'Май',
+      'Июнь',
+      'Июль',
+      'Август',
+      'Сентябрь',
+      'Октябрь',
+      'Ноябрь',
+      'Декабрь',
+    ],
+
+    // Дни недели
+    daysShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    daysFull: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
+
+    // Подвал
+    footer: '✦ Планируй • Достигай • Отмечай ✦',
+
+    // Планировщики
+    yearPlanner: 'Годовой планировщик',
+    weekPlanner: 'Недельный планировщик',
+
+    // Уведомления
+    calendarExportedPDF: 'Календарь экспортирован в PDF',
+    calendarExportedPNG: 'Календарь экспортирован в PNG',
+    holidaysExported: 'праздников экспортировано в ICS',
+    calendarNotFound: 'Календарь не найден',
+    errorExportPDF: 'Ошибка экспорта в PDF',
+    errorExportPNG: 'Ошибка экспорта в PNG',
+    noActiveHolidays: 'Нет активных праздников для экспорта',
+    errorExportHolidays: 'Ошибка экспорта праздников',
+    holidayAdded: 'Праздник добавлен',
+    holidayDeleted: 'Праздник удален',
+    fillDateAndName: 'Пожалуйста, заполните дату и название праздника',
+
+    // Часы
+    hour: 'ч',
+
+    // Языки
+    language: 'Язык',
+  },
+
+  en: {
+    // Header
+    appTitle: 'Calendar Generator',
+    appSubtitle: 'Create the perfect calendar for planning',
+
+    // View modes
+    viewMode: 'View Mode',
+    year: 'Year',
+    month: 'Month',
+    week: 'Week',
+    day: 'Day',
+
+    // Themes
+    colorTheme: 'Color Theme',
+    darkMode: 'Dark Mode',
+
+    // Additional settings
+    additionalSettings: 'Additional Settings',
+    orientation: 'Orientation',
+    portrait: 'Portrait',
+    landscape: 'Landscape',
+    taskLines: 'Task Lines',
+    showCheckboxes: 'Show Checkboxes',
+    contrastWeekends: 'Contrast Weekends',
+    headerAlignment: 'Header Alignment',
+    left: 'Left',
+    center: 'Center',
+    right: 'Right',
+    hidden: 'Hidden',
+    customSubtitle: 'Custom Subtitle',
+
+    // Holidays
+    holidays: 'Holidays',
+    selectCountries: 'Select Countries',
+    customHolidays: 'Custom Holidays',
+    addHoliday: 'Add Holiday',
+    date: 'Date',
+    holidayName: 'Holiday Name',
+    noHolidaysSelected: 'No holidays selected',
+
+    // Export
+    exportCalendar: 'Export Calendar',
+    exportHint: 'PDF/PNG - for printing and saving, iCal - for importing holidays to calendar',
+
+    // Buttons
+    print: 'Print',
+    add: 'Add',
+    delete: 'Delete',
+    faq: 'Frequently Asked Questions',
+
+    // Control Panel Sections
+    displaySettings: 'Display Settings',
+    calendarSettings: 'Calendar Settings',
+    exportAndActions: 'Export & Actions',
+
+    // Templates
+    templates: 'Templates',
+    templateName: 'Template Name',
+    saveAsTemplate: 'Save as Template',
+    loadTemplate: 'Load',
+    deleteTemplate: 'Delete',
+    predefinedTemplates: 'Predefined Templates',
+    myTemplates: 'My Templates',
+    noCustomTemplates: 'No saved templates',
+    templateMinimalist: 'Minimalist',
+    templateMinimalistDesc: 'Clean and simple design without unnecessary elements',
+    templateTaskPlanner: 'Task Planner',
+    templateTaskPlannerDesc: 'Maximum space for tasks with checkboxes',
+    templateFamilyCalendar: 'Family Calendar',
+    templateFamilyCalendarDesc: 'Bright design with holidays and weekends',
+    templateLoaded: 'Template loaded',
+    templateSaved: 'Template saved',
+    templateDeleted: 'Template deleted',
+
+    // Holidays API
+    syncHolidays: 'Sync Holidays',
+    syncingHolidays: 'Syncing...',
+    holidaysSynced: 'Holidays loaded from API',
+    holidaysSyncError: 'Error loading holidays',
+    syncFromAPI: 'Load from API',
+
+    // Calendar Import
+    importCalendar: 'Import Calendar',
+    importFromICS: 'Import from .ics file',
+    selectICSFile: 'Select .ics file',
+    importing: 'Importing...',
+    importSuccess: 'Calendar imported successfully',
+    importError: 'Error importing calendar',
+    eventsImported: 'events imported',
+    noEventsFound: 'No events found in file',
+    invalidICSFile: 'Invalid .ics file format',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notes',
+    habitTracker: 'Habit Tracker',
+    addNote: 'Add Note',
+    noteText: 'Note text',
+    noteAdded: 'Note added',
+    noteDeleted: 'Note deleted',
+    noNotes: 'No notes',
+    addHabit: 'Add Habit',
+    habitName: 'Habit name',
+    habitAdded: 'Habit added',
+    habitDeleted: 'Habit deleted',
+    noHabits: 'No habits',
+    habitCompleted: 'Habit completed',
+    habitUncompleted: 'Completion cancelled',
+    completedDays: 'Completed days',
+    currentStreak: 'Current streak',
+    bestStreak: 'Best streak',
+    days: 'days',
+
+    // Recurring Events
+    recurringEvents: 'Recurring Events',
+    addRecurringEvent: 'Add Event',
+    eventTitle: 'Event title',
+    startDate: 'Start date',
+    endDate: 'End date',
+    noEndDate: 'No end date',
+    repeatPattern: 'Repeat',
+    daily: 'Daily',
+    weekly: 'Weekly',
+    monthly: 'Monthly',
+    yearly: 'Yearly',
+    repeatEvery: 'Repeat every',
+    day_one: 'day',
+    day_few: 'days',
+    day_many: 'days',
+    week_one: 'week',
+    week_few: 'weeks',
+    week_many: 'weeks',
+    month_one: 'month',
+    month_few: 'months',
+    month_many: 'months',
+    year_one: 'year',
+    year_few: 'years',
+    year_many: 'years',
+    eventAdded: 'Event added',
+    eventDeleted: 'Event deleted',
+    noRecurringEvents: 'No recurring events',
+
+    // Months
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+
+    // Days of week
+    daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    daysFull: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+
+    // Footer
+    footer: '✦ Plan • Achieve • Celebrate ✦',
+
+    // Planners
+    yearPlanner: 'Year Planner',
+    weekPlanner: 'Week Planner',
+
+    // Notifications
+    calendarExportedPDF: 'Calendar exported to PDF',
+    calendarExportedPNG: 'Calendar exported to PNG',
+    holidaysExported: 'holidays exported to ICS',
+    calendarNotFound: 'Calendar not found',
+    errorExportPDF: 'Error exporting to PDF',
+    errorExportPNG: 'Error exporting to PNG',
+    noActiveHolidays: 'No active holidays to export',
+    errorExportHolidays: 'Error exporting holidays',
+    holidayAdded: 'Holiday added',
+    holidayDeleted: 'Holiday deleted',
+    fillDateAndName: 'Please fill in date and holiday name',
+
+    // Hour
+    hour: 'h',
+
+    // Languages
+    language: 'Language',
+  },
+
+  es: {
+    // Encabezado
+    appTitle: 'Generador de Calendarios',
+    appSubtitle: 'Crea el calendario perfecto para planificar',
+
+    // Modos de vista
+    viewMode: 'Modo de Vista',
+    year: 'Año',
+    month: 'Mes',
+    week: 'Semana',
+    day: 'Día',
+
+    // Temas
+    colorTheme: 'Tema de Color',
+    darkMode: 'Modo Oscuro',
+
+    // Configuración adicional
+    additionalSettings: 'Configuración Adicional',
+    orientation: 'Orientación',
+    portrait: 'Vertical',
+    landscape: 'Horizontal',
+    taskLines: 'Líneas de Tareas',
+    showCheckboxes: 'Mostrar Casillas',
+    contrastWeekends: 'Fines de Semana Contrastados',
+    headerAlignment: 'Alineación del Encabezado',
+    left: 'Izquierda',
+    center: 'Centro',
+    right: 'Derecha',
+    hidden: 'Ocultar',
+    customSubtitle: 'Subtítulo Personalizado',
+
+    // Días festivos
+    holidays: 'Días Festivos',
+    selectCountries: 'Seleccionar Países',
+    customHolidays: 'Días Festivos Personalizados',
+    addHoliday: 'Agregar Día Festivo',
+    date: 'Fecha',
+    holidayName: 'Nombre del Día Festivo',
+    noHolidaysSelected: 'No hay días festivos seleccionados',
+
+    // Exportar
+    exportCalendar: 'Exportar Calendario',
+    exportHint: 'PDF/PNG - para imprimir y guardar, iCal - para importar festivos al calendario',
+
+    // Botones
+    print: 'Imprimir',
+    add: 'Agregar',
+    delete: 'Eliminar',
+    faq: 'Preguntas Frecuentes',
+
+    // Secciones del Panel de Control
+    displaySettings: 'Configuración de Visualización',
+    calendarSettings: 'Configuración del Calendario',
+    exportAndActions: 'Exportar y Acciones',
+
+    // Plantillas
+    templates: 'Plantillas',
+    templateName: 'Nombre de Plantilla',
+    saveAsTemplate: 'Guardar como Plantilla',
+    loadTemplate: 'Cargar',
+    deleteTemplate: 'Eliminar',
+    predefinedTemplates: 'Plantillas Predefinidas',
+    myTemplates: 'Mis Plantillas',
+    noCustomTemplates: 'No hay plantillas guardadas',
+    templateMinimalist: 'Minimalista',
+    templateMinimalistDesc: 'Diseño limpio y simple sin elementos innecesarios',
+    templateTaskPlanner: 'Planificador de Tareas',
+    templateTaskPlannerDesc: 'Máximo espacio para tareas con casillas de verificación',
+    templateFamilyCalendar: 'Calendario Familiar',
+    templateFamilyCalendarDesc: 'Diseño brillante con días festivos y fines de semana',
+    templateLoaded: 'Plantilla cargada',
+    templateSaved: 'Plantilla guardada',
+    templateDeleted: 'Plantilla eliminada',
+
+    // API de Festivos
+    syncHolidays: 'Sincronizar Festivos',
+    syncingHolidays: 'Sincronizando...',
+    holidaysSynced: 'Festivos cargados desde API',
+    holidaysSyncError: 'Error al cargar festivos',
+    syncFromAPI: 'Cargar desde API',
+
+    // Importar Calendario
+    importCalendar: 'Importar Calendario',
+    importFromICS: 'Importar desde archivo .ics',
+    selectICSFile: 'Seleccione archivo .ics',
+    importing: 'Importando...',
+    importSuccess: 'Calendario importado exitosamente',
+    importError: 'Error al importar calendario',
+    eventsImported: 'eventos importados',
+    noEventsFound: 'No se encontraron eventos en el archivo',
+    invalidICSFile: 'Formato de archivo .ics inválido',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notas',
+    habitTracker: 'Rastreador de Hábitos',
+    addNote: 'Agregar Nota',
+    noteText: 'Texto de la nota',
+    noteAdded: 'Nota agregada',
+    noteDeleted: 'Nota eliminada',
+    noNotes: 'No hay notas',
+    addHabit: 'Agregar Hábito',
+    habitName: 'Nombre del hábito',
+    habitAdded: 'Hábito agregado',
+    habitDeleted: 'Hábito eliminado',
+    noHabits: 'No hay hábitos',
+    habitCompleted: 'Hábito completado',
+    habitUncompleted: 'Completación cancelada',
+    completedDays: 'Días completados',
+    currentStreak: 'Racha actual',
+    bestStreak: 'Mejor racha',
+    days: 'días',
+
+    // Eventos Recurrentes
+    recurringEvents: 'Eventos Recurrentes',
+    addRecurringEvent: 'Agregar Evento',
+    eventTitle: 'Título del evento',
+    startDate: 'Fecha de inicio',
+    endDate: 'Fecha de fin',
+    noEndDate: 'Sin fecha de fin',
+    repeatPattern: 'Repetir',
+    daily: 'Diariamente',
+    weekly: 'Semanalmente',
+    monthly: 'Mensualmente',
+    yearly: 'Anualmente',
+    repeatEvery: 'Repetir cada',
+    day_one: 'día',
+    day_few: 'días',
+    day_many: 'días',
+    week_one: 'semana',
+    week_few: 'semanas',
+    week_many: 'semanas',
+    month_one: 'mes',
+    month_few: 'meses',
+    month_many: 'meses',
+    year_one: 'año',
+    year_few: 'años',
+    year_many: 'años',
+    eventAdded: 'Evento agregado',
+    eventDeleted: 'Evento eliminado',
+    noRecurringEvents: 'No hay eventos recurrentes',
+
+    // Meses
+    months: [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ],
+
+    // Días de la semana
+    daysShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+    daysFull: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+
+    // Pie de página
+    footer: '✦ Planifica • Logra • Celebra ✦',
+
+    // Planificadores
+    yearPlanner: 'Planificador Anual',
+    weekPlanner: 'Planificador Semanal',
+
+    // Notificaciones
+    calendarExportedPDF: 'Calendario exportado a PDF',
+    calendarExportedPNG: 'Calendario exportado a PNG',
+    holidaysExported: 'festivos exportados a ICS',
+    calendarNotFound: 'Calendario no encontrado',
+    errorExportPDF: 'Error al exportar a PDF',
+    errorExportPNG: 'Error al exportar a PNG',
+    noActiveHolidays: 'No hay festivos activos para exportar',
+    errorExportHolidays: 'Error al exportar festivos',
+    holidayAdded: 'Día festivo agregado',
+    holidayDeleted: 'Día festivo eliminado',
+    fillDateAndName: 'Por favor, rellene la fecha y el nombre del festivo',
+
+    // Hora
+    hour: 'h',
+
+    // Idiomas
+    language: 'Idioma',
+  },
+
+  pt: {
+    // Cabeçalho
+    appTitle: 'Gerador de Calendários',
+    appSubtitle: 'Crie o calendário perfeito para planejamento',
+
+    // Modos de visualização
+    viewMode: 'Modo de Visualização',
+    year: 'Ano',
+    month: 'Mês',
+    week: 'Semana',
+    day: 'Dia',
+
+    // Temas
+    colorTheme: 'Tema de Cor',
+    darkMode: 'Modo Escuro',
+
+    // Configurações adicionais
+    additionalSettings: 'Configurações Adicionais',
+    orientation: 'Orientação',
+    portrait: 'Retrato',
+    landscape: 'Paisagem',
+    taskLines: 'Linhas de Tarefas',
+    showCheckboxes: 'Mostrar Caixas de Seleção',
+    contrastWeekends: 'Fins de Semana Contrastados',
+    headerAlignment: 'Alinhamento do Cabeçalho',
+    left: 'Esquerda',
+    center: 'Centro',
+    right: 'Direita',
+    hidden: 'Ocultar',
+    customSubtitle: 'Subtítulo Personalizado',
+
+    // Feriados
+    holidays: 'Feriados',
+    selectCountries: 'Selecionar Países',
+    customHolidays: 'Feriados Personalizados',
+    addHoliday: 'Adicionar Feriado',
+    date: 'Data',
+    holidayName: 'Nome do Feriado',
+    noHolidaysSelected: 'Nenhum feriado selecionado',
+
+    // Exportar
+    exportCalendar: 'Exportar Calendário',
+    exportHint: 'PDF/PNG - para imprimir e salvar, iCal - para importar feriados ao calendário',
+
+    // Botões
+    print: 'Imprimir',
+    add: 'Adicionar',
+    delete: 'Excluir',
+    faq: 'Perguntas Frequentes',
+
+    // Seções do Painel de Controle
+    displaySettings: 'Configurações de Exibição',
+    calendarSettings: 'Configurações do Calendário',
+    exportAndActions: 'Exportar e Ações',
+
+    // Modelos
+    templates: 'Modelos',
+    templateName: 'Nome do Modelo',
+    saveAsTemplate: 'Salvar como Modelo',
+    loadTemplate: 'Carregar',
+    deleteTemplate: 'Excluir',
+    predefinedTemplates: 'Modelos Predefinidos',
+    myTemplates: 'Meus Modelos',
+    noCustomTemplates: 'Nenhum modelo salvo',
+    templateMinimalist: 'Minimalista',
+    templateMinimalistDesc: 'Design limpo e simples sem elementos desnecessários',
+    templateTaskPlanner: 'Planejador de Tarefas',
+    templateTaskPlannerDesc: 'Máximo espaço para tarefas com caixas de seleção',
+    templateFamilyCalendar: 'Calendário Familiar',
+    templateFamilyCalendarDesc: 'Design brilhante com feriados e fins de semana',
+    templateLoaded: 'Modelo carregado',
+    templateSaved: 'Modelo salvo',
+    templateDeleted: 'Modelo excluído',
+
+    // API de Feriados
+    syncHolidays: 'Sincronizar Feriados',
+    syncingHolidays: 'Sincronizando...',
+    holidaysSynced: 'Feriados carregados da API',
+    holidaysSyncError: 'Erro ao carregar feriados',
+    syncFromAPI: 'Carregar da API',
+
+    // Importar Calendário
+    importCalendar: 'Importar Calendário',
+    importFromICS: 'Importar de arquivo .ics',
+    selectICSFile: 'Selecione arquivo .ics',
+    importing: 'Importando...',
+    importSuccess: 'Calendário importado com sucesso',
+    importError: 'Erro ao importar calendário',
+    eventsImported: 'eventos importados',
+    noEventsFound: 'Nenhum evento encontrado no arquivo',
+    invalidICSFile: 'Formato de arquivo .ics inválido',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notas',
+    habitTracker: 'Rastreador de Hábitos',
+    addNote: 'Adicionar Nota',
+    noteText: 'Texto da nota',
+    noteAdded: 'Nota adicionada',
+    noteDeleted: 'Nota excluída',
+    noNotes: 'Nenhuma nota',
+    addHabit: 'Adicionar Hábito',
+    habitName: 'Nome do hábito',
+    habitAdded: 'Hábito adicionado',
+    habitDeleted: 'Hábito excluído',
+    noHabits: 'Nenhum hábito',
+    habitCompleted: 'Hábito completado',
+    habitUncompleted: 'Conclusão cancelada',
+    completedDays: 'Dias completados',
+    currentStreak: 'Sequência atual',
+    bestStreak: 'Melhor sequência',
+    days: 'dias',
+
+    // Eventos Recorrentes
+    recurringEvents: 'Eventos Recorrentes',
+    addRecurringEvent: 'Adicionar Evento',
+    eventTitle: 'Título do evento',
+    startDate: 'Data de início',
+    endDate: 'Data de término',
+    noEndDate: 'Sem data de término',
+    repeatPattern: 'Repetir',
+    daily: 'Diariamente',
+    weekly: 'Semanalmente',
+    monthly: 'Mensalmente',
+    yearly: 'Anualmente',
+    repeatEvery: 'Repetir a cada',
+    day_one: 'dia',
+    day_few: 'dias',
+    day_many: 'dias',
+    week_one: 'semana',
+    week_few: 'semanas',
+    week_many: 'semanas',
+    month_one: 'mês',
+    month_few: 'meses',
+    month_many: 'meses',
+    year_one: 'ano',
+    year_few: 'anos',
+    year_many: 'anos',
+    eventAdded: 'Evento adicionado',
+    eventDeleted: 'Evento excluído',
+    noRecurringEvents: 'Nenhum evento recorrente',
+
+    // Meses
+    months: [
+      'Janeiro',
+      'Fevereiro',
+      'Março',
+      'Abril',
+      'Maio',
+      'Junho',
+      'Julho',
+      'Agosto',
+      'Setembro',
+      'Outubro',
+      'Novembro',
+      'Dezembro',
+    ],
+
+    // Dias da semana
+    daysShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+    daysFull: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+
+    // Rodapé
+    footer: '✦ Planeje • Conquiste • Comemore ✦',
+
+    // Planejadores
+    yearPlanner: 'Planejador Anual',
+    weekPlanner: 'Planejador Semanal',
+
+    // Notificações
+    calendarExportedPDF: 'Calendário exportado para PDF',
+    calendarExportedPNG: 'Calendário exportado para PNG',
+    holidaysExported: 'feriados exportados para ICS',
+    calendarNotFound: 'Calendário não encontrado',
+    errorExportPDF: 'Erro ao exportar para PDF',
+    errorExportPNG: 'Erro ao exportar para PNG',
+    noActiveHolidays: 'Nenhum feriado ativo para exportar',
+    errorExportHolidays: 'Erro ao exportar feriados',
+    holidayAdded: 'Feriado adicionado',
+    holidayDeleted: 'Feriado excluído',
+    fillDateAndName: 'Por favor, preencha a data e o nome do feriado',
+
+    // Hora
+    hour: 'h',
+
+    // Idiomas
+    language: 'Idioma',
+  },
+
+  de: {
+    // Kopfzeile
+    appTitle: 'Kalender Generator',
+    appSubtitle: 'Erstellen Sie den perfekten Kalender für die Planung',
+
+    // Ansichtsmodi
+    viewMode: 'Ansichtsmodus',
+    year: 'Jahr',
+    month: 'Monat',
+    week: 'Woche',
+    day: 'Tag',
+
+    // Themen
+    colorTheme: 'Farbthema',
+    darkMode: 'Dunkler Modus',
+
+    // Zusätzliche Einstellungen
+    additionalSettings: 'Zusätzliche Einstellungen',
+    orientation: 'Ausrichtung',
+    portrait: 'Hochformat',
+    landscape: 'Querformat',
+    taskLines: 'Aufgabenzeilen',
+    showCheckboxes: 'Kontrollkästchen anzeigen',
+    contrastWeekends: 'Kontrastierende Wochenenden',
+    headerAlignment: 'Kopfzeilenausrichtung',
+    left: 'Links',
+    center: 'Mitte',
+    right: 'Rechts',
+    hidden: 'Verbergen',
+    customSubtitle: 'Benutzerdefinierter Untertitel',
+
+    // Feiertage
+    holidays: 'Feiertage',
+    selectCountries: 'Länder auswählen',
+    customHolidays: 'Benutzerdefinierte Feiertage',
+    addHoliday: 'Feiertag hinzufügen',
+    date: 'Datum',
+    holidayName: 'Name des Feiertags',
+    noHolidaysSelected: 'Keine Feiertage ausgewählt',
+
+    // Exportieren
+    exportCalendar: 'Kalender exportieren',
+    exportHint: 'PDF/PNG - zum Drucken und Speichern, iCal - zum Importieren von Feiertagen',
+
+    // Schaltflächen
+    print: 'Drucken',
+    add: 'Hinzufügen',
+    delete: 'Löschen',
+    faq: 'Häufig gestellte Fragen',
+
+    // Bedienfeld-Abschnitte
+    displaySettings: 'Anzeigeeinstellungen',
+    calendarSettings: 'Kalendereinstellungen',
+    exportAndActions: 'Export & Aktionen',
+
+    // Vorlagen
+    templates: 'Vorlagen',
+    templateName: 'Vorlagenname',
+    saveAsTemplate: 'Als Vorlage speichern',
+    loadTemplate: 'Laden',
+    deleteTemplate: 'Löschen',
+    predefinedTemplates: 'Vordefinierte Vorlagen',
+    myTemplates: 'Meine Vorlagen',
+    noCustomTemplates: 'Keine gespeicherten Vorlagen',
+    templateMinimalist: 'Minimalistisch',
+    templateMinimalistDesc: 'Sauberes und einfaches Design ohne unnötige Elemente',
+    templateTaskPlanner: 'Aufgabenplaner',
+    templateTaskPlannerDesc: 'Maximaler Platz für Aufgaben mit Kontrollkästchen',
+    templateFamilyCalendar: 'Familienkalender',
+    templateFamilyCalendarDesc: 'Helles Design mit Feiertagen und Wochenenden',
+    templateLoaded: 'Vorlage geladen',
+    templateSaved: 'Vorlage gespeichert',
+    templateDeleted: 'Vorlage gelöscht',
+
+    // Feiertage-API
+    syncHolidays: 'Feiertage synchronisieren',
+    syncingHolidays: 'Synchronisiere...',
+    holidaysSynced: 'Feiertage von API geladen',
+    holidaysSyncError: 'Fehler beim Laden der Feiertage',
+    syncFromAPI: 'Von API laden',
+
+    // Kalender importieren
+    importCalendar: 'Kalender importieren',
+    importFromICS: 'Aus .ics-Datei importieren',
+    selectICSFile: '.ics-Datei auswählen',
+    importing: 'Importiere...',
+    importSuccess: 'Kalender erfolgreich importiert',
+    importError: 'Fehler beim Importieren des Kalenders',
+    eventsImported: 'Ereignisse importiert',
+    noEventsFound: 'Keine Ereignisse in der Datei gefunden',
+    invalidICSFile: 'Ungültiges .ics-Dateiformat',
+
+    // Widgets
+    widgets: 'Widgets',
+    notes: 'Notizen',
+    habitTracker: 'Gewohnheitstracker',
+    addNote: 'Notiz hinzufügen',
+    noteText: 'Notiztext',
+    noteAdded: 'Notiz hinzugefügt',
+    noteDeleted: 'Notiz gelöscht',
+    noNotes: 'Keine Notizen',
+    addHabit: 'Gewohnheit hinzufügen',
+    habitName: 'Gewohnheitsname',
+    habitAdded: 'Gewohnheit hinzugefügt',
+    habitDeleted: 'Gewohnheit gelöscht',
+    noHabits: 'Keine Gewohnheiten',
+    habitCompleted: 'Gewohnheit abgeschlossen',
+    habitUncompleted: 'Abschluss abgebrochen',
+    completedDays: 'Abgeschlossene Tage',
+    currentStreak: 'Aktuelle Serie',
+    bestStreak: 'Beste Serie',
+    days: 'Tage',
+
+    // Wiederkehrende Ereignisse
+    recurringEvents: 'Wiederkehrende Ereignisse',
+    addRecurringEvent: 'Ereignis hinzufügen',
+    eventTitle: 'Ereignistitel',
+    startDate: 'Startdatum',
+    endDate: 'Enddatum',
+    noEndDate: 'Kein Enddatum',
+    repeatPattern: 'Wiederholen',
+    daily: 'Täglich',
+    weekly: 'Wöchentlich',
+    monthly: 'Monatlich',
+    yearly: 'Jährlich',
+    repeatEvery: 'Wiederholen alle',
+    day_one: 'Tag',
+    day_few: 'Tage',
+    day_many: 'Tage',
+    week_one: 'Woche',
+    week_few: 'Wochen',
+    week_many: 'Wochen',
+    month_one: 'Monat',
+    month_few: 'Monate',
+    month_many: 'Monate',
+    year_one: 'Jahr',
+    year_few: 'Jahre',
+    year_many: 'Jahre',
+    eventAdded: 'Ereignis hinzugefügt',
+    eventDeleted: 'Ereignis gelöscht',
+    noRecurringEvents: 'Keine wiederkehrenden Ereignisse',
+
+    // Monate
+    months: [
+      'Januar',
+      'Februar',
+      'März',
+      'April',
+      'Mai',
+      'Juni',
+      'Juli',
+      'August',
+      'September',
+      'Oktober',
+      'November',
+      'Dezember',
+    ],
+
+    // Wochentage
+    daysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    daysFull: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+
+    // Fußzeile
+    footer: '✦ Planen • Erreichen • Feiern ✦',
+
+    // Planer
+    yearPlanner: 'Jahresplaner',
+    weekPlanner: 'Wochenplaner',
+
+    // Benachrichtigungen
+    calendarExportedPDF: 'Kalender als PDF exportiert',
+    calendarExportedPNG: 'Kalender als PNG exportiert',
+    holidaysExported: 'Feiertage als ICS exportiert',
+    calendarNotFound: 'Kalender nicht gefunden',
+    errorExportPDF: 'Fehler beim Exportieren als PDF',
+    errorExportPNG: 'Fehler beim Exportieren als PNG',
+    noActiveHolidays: 'Keine aktiven Feiertage zum Exportieren',
+    errorExportHolidays: 'Fehler beim Exportieren von Feiertagen',
+    holidayAdded: 'Feiertag hinzugefügt',
+    holidayDeleted: 'Feiertag gelöscht',
+    fillDateAndName: 'Bitte Datum und Name des Feiertags ausfüllen',
+
+    // Stunde
+    hour: 'Uhr',
+
+    // Sprachen
+    language: 'Sprache',
+  },
+};
+
+export const languages = [
+  { code: 'ru', name: 'Русский', flag: '🇷🇺' },
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+];
