@@ -44,7 +44,11 @@ const AppContent = () => {
           <h1>✦ {t('appTitle')} ✦</h1>
           <p>{t('appSubtitle')}</p>
           <div className="header-buttons">
-            <button className="pricing-button" onClick={() => setShowPricing(true)} title="Pricing">
+            <button
+              className="pricing-button"
+              onClick={() => setShowPricing(true)}
+              title={t('pricing')}
+            >
               {isPro || isBusiness ? '⭐ Pro' : '💎 Upgrade'}
             </button>
             <button className="faq-button" onClick={() => setShowFAQ(true)} title={t('faq')}>

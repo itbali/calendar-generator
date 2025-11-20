@@ -87,7 +87,7 @@ export const SubscriptionProvider = ({ children }) => {
   };
 
   // Проверка доступа к функции
-  const hasFeature = (feature) => {
+  const hasFeature = feature => {
     const limits = getLimits();
     return limits[feature] === true || limits[feature] === Infinity;
   };
@@ -109,7 +109,7 @@ export const SubscriptionProvider = ({ children }) => {
   };
 
   // Функция для демо: переключение подписки
-  const upgradeTo = (tier) => {
+  const upgradeTo = tier => {
     setSubscription(tier);
   };
 
@@ -130,7 +130,9 @@ export const SubscriptionProvider = ({ children }) => {
     getRemainingCount,
     upgradeTo,
     startTrial,
-    isPro: getCurrentTier() === SUBSCRIPTION_TIERS.PRO || getCurrentTier() === SUBSCRIPTION_TIERS.BUSINESS,
+    isPro:
+      getCurrentTier() === SUBSCRIPTION_TIERS.PRO ||
+      getCurrentTier() === SUBSCRIPTION_TIERS.BUSINESS,
     isBusiness: getCurrentTier() === SUBSCRIPTION_TIERS.BUSINESS,
     isFree: getCurrentTier() === SUBSCRIPTION_TIERS.FREE && !isTrialActive(),
   };

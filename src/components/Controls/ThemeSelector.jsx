@@ -60,12 +60,7 @@ const ThemeSelector = () => {
         </label>
       </div>
 
-      {showPaywall && (
-        <Paywall
-          feature="premiumThemes"
-          onClose={() => setShowPaywall(false)}
-        />
-      )}
+      {showPaywall && <Paywall feature="premiumThemes" onClose={() => setShowPaywall(false)} />}
     </>
   );
 };

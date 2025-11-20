@@ -42,6 +42,10 @@ export const translations = {
     // Экспорт
     exportCalendar: 'Экспорт календаря',
     exportHint: 'PDF/PNG - для печати и сохранения, iCal - для импорта праздников в календарь',
+    exportToPDFTitle: 'Экспорт календаря в PDF',
+    exportToPNGTitle: 'Экспорт календаря в PNG',
+    exportToICalTitle: 'Экспорт праздников в iCalendar',
+    exportICalButton: '📅 iCal',
 
     // Кнопки
     print: 'Печать',
@@ -187,6 +191,9 @@ export const translations = {
     // Языки
     language: 'Язык',
 
+    // UI
+    pricing: 'Цены',
+
     // Pricing Page
     pricingTitle: 'Выберите свой план',
     pricingSubtitle: 'Разблокируйте премиум функции для максимальной продуктивности',
@@ -231,7 +238,8 @@ export const translations = {
     pricingFAQ1Q: 'Могу ли я отменить в любое время?',
     pricingFAQ1A: 'Да, вы можете отменить подписку в любое время без дополнительных комиссий.',
     pricingFAQ2Q: 'Что происходит после пробного периода?',
-    pricingFAQ2A: 'После окончания пробного периода с вас будет автоматически списана оплата. Вы можете отменить в любое время.',
+    pricingFAQ2A:
+      'После окончания пробного периода с вас будет автоматически списана оплата. Вы можете отменить в любое время.',
     pricingFAQ3Q: 'Могу ли я изменить план?',
     pricingFAQ3A: 'Да, вы можете в любое время перейти на другой план с пропорциональной оплатой.',
 
@@ -260,7 +268,8 @@ export const translations = {
 
     // Template Limits
     templateLimitReached: 'Достигнут лимит шаблонов',
-    templateLimitMessage: 'В бесплатной версии доступно до 3 шаблонов. Перейдите на Pro для безлимитных шаблонов.',
+    templateLimitMessage:
+      'В бесплатной версии доступно до 3 шаблонов. Перейдите на Pro для безлимитных шаблонов.',
   },
 
   en: {
@@ -306,6 +315,10 @@ export const translations = {
     // Export
     exportCalendar: 'Export Calendar',
     exportHint: 'PDF/PNG - for printing and saving, iCal - for importing holidays to calendar',
+    exportToPDFTitle: 'Export calendar to PDF',
+    exportToPNGTitle: 'Export calendar to PNG',
+    exportToICalTitle: 'Export holidays to iCalendar',
+    exportICalButton: '📅 iCal',
 
     // Buttons
     print: 'Print',
@@ -451,6 +464,9 @@ export const translations = {
     // Languages
     language: 'Language',
 
+    // UI
+    pricing: 'Pricing',
+
     // Pricing Page
     pricingTitle: 'Choose Your Plan',
     pricingSubtitle: 'Unlock premium features for maximum productivity',
@@ -487,7 +503,8 @@ export const translations = {
     pricingFAQ1Q: 'Can I cancel anytime?',
     pricingFAQ1A: 'Yes, you can cancel your subscription at any time without additional fees.',
     pricingFAQ2Q: 'What happens after the trial?',
-    pricingFAQ2A: 'After the trial period, you will be automatically charged. You can cancel anytime.',
+    pricingFAQ2A:
+      'After the trial period, you will be automatically charged. You can cancel anytime.',
     pricingFAQ3Q: 'Can I change my plan?',
     pricingFAQ3A: 'Yes, you can upgrade or downgrade your plan at any time with prorated billing.',
     proPlan: 'Pro Plan',
@@ -511,7 +528,8 @@ export const translations = {
     paywallDefaultTitle: 'Premium Feature',
     paywallDefaultDesc: 'This feature is available only in Pro and Business plans',
     templateLimitReached: 'Template Limit Reached',
-    templateLimitMessage: 'Free version allows up to 3 templates. Upgrade to Pro for unlimited templates.',
+    templateLimitMessage:
+      'Free version allows up to 3 templates. Upgrade to Pro for unlimited templates.',
   },
 
   es: {
@@ -557,6 +575,10 @@ export const translations = {
     // Exportar
     exportCalendar: 'Exportar Calendario',
     exportHint: 'PDF/PNG - para imprimir y guardar, iCal - para importar festivos al calendario',
+    exportToPDFTitle: 'Exportar calendario a PDF',
+    exportToPNGTitle: 'Exportar calendario a PNG',
+    exportToICalTitle: 'Exportar festivos a iCalendar',
+    exportICalButton: '📅 iCal',
 
     // Botones
     print: 'Imprimir',
@@ -702,6 +724,9 @@ export const translations = {
     // Idiomas
     language: 'Idioma',
 
+    // UI
+    pricing: 'Precios',
+
     // Pricing Page
     pricingTitle: 'Elige tu Plan',
     pricingSubtitle: 'Desbloquea funciones premium para máxima productividad',
@@ -738,9 +763,11 @@ export const translations = {
     pricingFAQ1Q: '¿Puedo cancelar en cualquier momento?',
     pricingFAQ1A: 'Sí, puedes cancelar tu suscripción en cualquier momento sin cargos adicionales.',
     pricingFAQ2Q: '¿Qué pasa después de la prueba?',
-    pricingFAQ2A: 'Después del período de prueba, se te cobrará automáticamente. Puedes cancelar en cualquier momento.',
+    pricingFAQ2A:
+      'Después del período de prueba, se te cobrará automáticamente. Puedes cancelar en cualquier momento.',
     pricingFAQ3Q: '¿Puedo cambiar mi plan?',
-    pricingFAQ3A: 'Sí, puedes actualizar o reducir tu plan en cualquier momento con facturación proporcional.',
+    pricingFAQ3A:
+      'Sí, puedes actualizar o reducir tu plan en cualquier momento con facturación proporcional.',
     proPlan: 'Plan Pro',
     businessPlan: 'Plan Business',
     paywallUpgradeButton: 'Actualizar a Pro',
@@ -762,7 +789,8 @@ export const translations = {
     paywallDefaultTitle: 'Función Premium',
     paywallDefaultDesc: 'Esta función está disponible solo en planes Pro y Business',
     templateLimitReached: 'Límite de Plantillas Alcanzado',
-    templateLimitMessage: 'La versión gratuita permite hasta 3 plantillas. Actualiza a Pro para plantillas ilimitadas.',
+    templateLimitMessage:
+      'La versión gratuita permite hasta 3 plantillas. Actualiza a Pro para plantillas ilimitadas.',
   },
 
   pt: {
@@ -808,6 +836,10 @@ export const translations = {
     // Exportar
     exportCalendar: 'Exportar Calendário',
     exportHint: 'PDF/PNG - para imprimir e salvar, iCal - para importar feriados ao calendário',
+    exportToPDFTitle: 'Exportar calendário para PDF',
+    exportToPNGTitle: 'Exportar calendário para PNG',
+    exportToICalTitle: 'Exportar feriados para iCalendar',
+    exportICalButton: '📅 iCal',
 
     // Botões
     print: 'Imprimir',
@@ -953,6 +985,9 @@ export const translations = {
     // Idiomas
     language: 'Idioma',
 
+    // UI
+    pricing: 'Preços',
+
     // Pricing Page
     pricingTitle: 'Escolha seu Plano',
     pricingSubtitle: 'Desbloqueie recursos premium para máxima produtividade',
@@ -964,12 +999,12 @@ export const translations = {
     pricingFreePrice: '$0',
     pricingFreeFeature1: 'Calendários básicos',
     pricingFreeFeature2: '3 modelos personalizados',
-    pricingFreeFeature3: 'Exportar com marca d\'água',
+    pricingFreeFeature3: "Exportar com marca d'água",
     pricingFreeFeature4: '5 temas básicos',
     pricingFreeFeature5: 'Widgets básicos',
     pricingFreeCTA: 'Começar Grátis',
     pricingProName: 'Pro',
-    pricingProFeature1: 'Exportar sem marca d\'água',
+    pricingProFeature1: "Exportar sem marca d'água",
     pricingProFeature2: 'Modelos ilimitados',
     pricingProFeature3: '50+ temas premium',
     pricingProFeature4: 'Sincronização na nuvem',
@@ -989,17 +1024,19 @@ export const translations = {
     pricingFAQ1Q: 'Posso cancelar a qualquer momento?',
     pricingFAQ1A: 'Sim, você pode cancelar sua assinatura a qualquer momento sem taxas adicionais.',
     pricingFAQ2Q: 'O que acontece após o teste?',
-    pricingFAQ2A: 'Após o período de teste, você será cobrado automaticamente. Você pode cancelar a qualquer momento.',
+    pricingFAQ2A:
+      'Após o período de teste, você será cobrado automaticamente. Você pode cancelar a qualquer momento.',
     pricingFAQ3Q: 'Posso mudar meu plano?',
-    pricingFAQ3A: 'Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento com cobrança proporcional.',
+    pricingFAQ3A:
+      'Sim, você pode fazer upgrade ou downgrade do seu plano a qualquer momento com cobrança proporcional.',
     proPlan: 'Plano Pro',
     businessPlan: 'Plano Business',
     paywallUpgradeButton: 'Atualizar para Pro',
     paywallBenefit1: 'Teste grátis de 14 dias',
     paywallBenefit2: 'Cancelar a qualquer momento',
     paywallBenefit3: 'Acesso instantâneo',
-    paywallExportTitle: 'Exportar Sem Marca d\'Água',
-    paywallExportDesc: 'Obtenha exportações profissionais de alta qualidade sem marcas d\'água',
+    paywallExportTitle: "Exportar Sem Marca d'Água",
+    paywallExportDesc: "Obtenha exportações profissionais de alta qualidade sem marcas d'água",
     paywallThemesTitle: 'Temas Premium',
     paywallThemesDesc: 'Acesso a 50+ temas profissionais e construtor de temas personalizados',
     paywallCloudTitle: 'Sincronização na Nuvem',
@@ -1013,7 +1050,8 @@ export const translations = {
     paywallDefaultTitle: 'Recurso Premium',
     paywallDefaultDesc: 'Este recurso está disponível apenas nos planos Pro e Business',
     templateLimitReached: 'Limite de Modelos Atingido',
-    templateLimitMessage: 'A versão gratuita permite até 3 modelos. Atualize para Pro para modelos ilimitados.',
+    templateLimitMessage:
+      'A versão gratuita permite até 3 modelos. Atualize para Pro para modelos ilimitados.',
   },
 
   de: {
@@ -1059,6 +1097,10 @@ export const translations = {
     // Exportieren
     exportCalendar: 'Kalender exportieren',
     exportHint: 'PDF/PNG - zum Drucken und Speichern, iCal - zum Importieren von Feiertagen',
+    exportToPDFTitle: 'Kalender als PDF exportieren',
+    exportToPNGTitle: 'Kalender als PNG exportieren',
+    exportToICalTitle: 'Feiertage als iCalendar exportieren',
+    exportICalButton: '📅 iCal',
 
     // Schaltflächen
     print: 'Drucken',
@@ -1204,6 +1246,9 @@ export const translations = {
     // Sprachen
     language: 'Sprache',
 
+    // UI
+    pricing: 'Preise',
+
     // Pricing Page
     pricingTitle: 'Wählen Sie Ihren Plan',
     pricingSubtitle: 'Schalten Sie Premium-Funktionen für maximale Produktivität frei',
@@ -1252,7 +1297,8 @@ export const translations = {
     paywallExportTitle: 'Export Ohne Wasserzeichen',
     paywallExportDesc: 'Erhalten Sie professionelle hochwertige Exporte ohne Wasserzeichen',
     paywallThemesTitle: 'Premium-Themen',
-    paywallThemesDesc: 'Zugriff auf 50+ professionelle Themen und benutzerdefinierten Theme-Builder',
+    paywallThemesDesc:
+      'Zugriff auf 50+ professionelle Themen und benutzerdefinierten Theme-Builder',
     paywallCloudTitle: 'Cloud-Synchronisierung',
     paywallCloudDesc: 'Synchronisieren Sie Ihre Kalender auf allen Ihren Geräten',
     paywallAnalyticsTitle: 'Erweiterte Analysen',
@@ -1264,7 +1310,8 @@ export const translations = {
     paywallDefaultTitle: 'Premium-Funktion',
     paywallDefaultDesc: 'Diese Funktion ist nur in Pro- und Business-Plänen verfügbar',
     templateLimitReached: 'Vorlagenlimit Erreicht',
-    templateLimitMessage: 'Die kostenlose Version erlaubt bis zu 3 Vorlagen. Upgraden Sie auf Pro für unbegrenzte Vorlagen.',
+    templateLimitMessage:
+      'Die kostenlose Version erlaubt bis zu 3 Vorlagen. Upgraden Sie auf Pro für unbegrenzte Vorlagen.',
   },
 };
 

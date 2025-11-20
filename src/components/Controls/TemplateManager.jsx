@@ -161,7 +161,10 @@ const TemplateManager = () => {
           {t('saveAsTemplate')}
           <span className="template-limit-hint">
             {' '}
-            ({customTemplates.length}/{getRemainingCount('maxCustomTemplates', customTemplates.length) + customTemplates.length})
+            ({customTemplates.length}/
+            {getRemainingCount('maxCustomTemplates', customTemplates.length) +
+              customTemplates.length}
+            )
           </span>
         </label>
         <div className="save-template-form">

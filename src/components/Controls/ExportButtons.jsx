@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useSubscription } from '../../context/SubscriptionContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { exportToPNG, exportToPDF, exportToICS } from '../../utils/exportUtils';
 
 const ExportButtons = () => {
   const { orientation, year, getAllHolidays, showToast, enabledHolidays } = useCalendar();
   const { hasFeature } = useSubscription();
+  const { t } = useLanguage();
   const [isExporting, setIsExporting] = useState(false);
 
   const handleExportPDF = async () => {
@@ -76,37 +78,35 @@ const ExportButtons = () => {
 
   return (
     <div className="export-section">
-      <label className="section-label">Экспорт календаря</label>
+      <label className="section-label">{t('exportCalendar')}</label>
       <div className="export-buttons">
         <button
           onClick={handleExportPDF}
           disabled={isExporting}
           className="export-btn export-pdf"
-          title="Экспорт календаря в PDF"
+          title={t('exportToPDFTitle')}
         >
-          {isExporting ? '⏳ Экспорт...' : '📄 PDF'}
+          {isExporting ? '⏳ ' + t('importing') : '📄 PDF'}
         </button>
 
         <button
           onClick={handleExportPNG}
           disabled={isExporting}
           className="export-btn export-png"
-          title="Экспорт календаря в PNG"
+          title={t('exportToPNGTitle')}
         >
-          {isExporting ? '⏳ Экспорт...' : '🖼️ PNG'}
+          {isExporting ? '⏳ ' + t('importing') : '🖼️ PNG'}
         </button>
 
         <button
           onClick={handleExportICS}
           className="export-btn export-ics"
-          title="Экспорт праздников в iCalendar"
+          title={t('exportToICalTitle')}
         >
-          📅 iCal
+          {t('exportICalButton')}
         </button>
       </div>
-      <p className="export-hint">
-        PDF/PNG - для печати и сохранения, iCal - для импорта праздников в календарь
-      </p>
+      <p className="export-hint">{t('exportHint')}</p>
     </div>
   );
 };

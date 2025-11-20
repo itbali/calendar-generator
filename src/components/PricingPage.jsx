@@ -62,7 +62,7 @@ const PricingPage = ({ onClose }) => {
     },
   ];
 
-  const handleSelectPlan = (planId) => {
+  const handleSelectPlan = planId => {
     if (planId === SUBSCRIPTION_TIERS.FREE) {
       upgradeTo(SUBSCRIPTION_TIERS.FREE);
       onClose?.();
@@ -78,7 +78,7 @@ const PricingPage = ({ onClose }) => {
     }
   };
 
-  const isCurrentPlan = (planId) => {
+  const isCurrentPlan = planId => {
     if (planId === SUBSCRIPTION_TIERS.FREE) return !isPro && !isBusiness;
     if (planId === SUBSCRIPTION_TIERS.PRO) return isPro && !isBusiness;
     if (planId === SUBSCRIPTION_TIERS.BUSINESS) return isBusiness;
