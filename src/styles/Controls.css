@@ -1009,3 +1009,137 @@ body.dark-mode .import-ics-btn:hover {
   border-color: #666;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* Mobile responsive for controls */
+@media (max-width: 768px) {
+  .controls {
+    padding: 20px 15px;
+  }
+
+  .controls .collapsible-header {
+    padding: 15px 20px;
+    font-size: 15px;
+  }
+
+  .controls .collapsible-content {
+    padding: 15px 20px;
+  }
+
+  .control-group select,
+  .control-group input[type='number'],
+  .control-group input[type='date'],
+  .control-group input[type='text'] {
+    min-width: 120px;
+    font-size: 13px;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .countries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+  }
+
+  .template-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .export-buttons {
+    flex-direction: column;
+  }
+
+  .export-btn {
+    width: 100%;
+  }
+
+  .sync-holidays-section {
+    flex-direction: column;
+  }
+
+  .sync-holidays-btn,
+  .import-ics-btn {
+    width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    padding: 15px 10px;
+  }
+
+  .controls .collapsible-header {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .controls .collapsible-content {
+    padding: 12px 15px;
+  }
+
+  .control-group label {
+    font-size: 13px;
+  }
+
+  .control-group select,
+  .control-group input[type='number'],
+  .control-group input[type='date'],
+  .control-group input[type='text'] {
+    min-width: 100px;
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .color-themes {
+    gap: 10px;
+  }
+
+  .theme-option {
+    width: 38px;
+    height: 38px;
+  }
+
+  .theme-preview {
+    width: 34px;
+    height: 34px;
+  }
+
+  .countries-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .country-checkbox {
+    padding: 10px;
+  }
+
+  .custom-holiday-form {
+    flex-direction: column;
+  }
+
+  .custom-holiday-form input[type='date'],
+  .custom-holiday-form input[type='text'] {
+    width: 100%;
+  }
+
+  .custom-holiday-form button {
+    width: 100%;
+  }
+
+  .template-card {
+    padding: 12px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}

@@ -205,6 +205,83 @@ body.dark-mode .collapse-icon {
   color: #999;
 }
 
+/* Mobile responsive for FAQ */
+@media (max-width: 768px) {
+  .faq-modal {
+    max-width: 95%;
+    max-height: 85vh;
+  }
+
+  .faq-header {
+    padding: 16px 20px;
+  }
+
+  .faq-header h2 {
+    font-size: 20px;
+  }
+
+  .faq-content {
+    padding: 16px 20px;
+  }
+
+  .collapsible-header {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .collapsible-content {
+    padding: 14px 16px;
+  }
+
+  .collapsible-content p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-modal {
+    max-width: 98%;
+    max-height: 90vh;
+    border-radius: 8px;
+  }
+
+  .faq-header {
+    padding: 12px 15px;
+  }
+
+  .faq-header h2 {
+    font-size: 18px;
+  }
+
+  .faq-close {
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+
+  .faq-content {
+    padding: 12px 15px;
+  }
+
+  .collapsible-section {
+    margin-bottom: 10px;
+  }
+
+  .collapsible-header {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .collapsible-content {
+    padding: 12px 14px;
+  }
+
+  .collapsible-content p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
 /* Print hide */
 @media print {
   .faq-overlay,
