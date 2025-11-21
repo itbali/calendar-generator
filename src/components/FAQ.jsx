@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import CollapsibleSection from './CollapsibleSection';
 
 const FAQ = ({ onClose }) => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   const faqData = {
     ru: [
@@ -184,7 +184,7 @@ const FAQ = ({ onClose }) => {
     <div className="faq-overlay" onClick={onClose}>
       <div className="faq-modal" onClick={e => e.stopPropagation()}>
         <div className="faq-header">
-          <h2>❓ FAQ</h2>
+          <h2>❓ {t('faq')}</h2>
           <button className="faq-close" onClick={onClose}>
             ✕
           </button>

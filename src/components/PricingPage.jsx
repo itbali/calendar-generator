@@ -1,11 +1,12 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { useSubscription, SUBSCRIPTION_TIERS } from '../context/SubscriptionContext';
+import { useSubscription } from '../context/SubscriptionContext';
+import { SUBSCRIPTION_TIERS } from '../context/subscriptionConstants';
 import '../styles/Pricing.css';
 
 const PricingPage = ({ onClose }) => {
   const { t } = useLanguage();
-  const { subscription, upgradeTo, isPro, isBusiness, startTrial } = useSubscription();
+  const { upgradeTo, isPro, isBusiness, startTrial } = useSubscription();
 
   const plans = [
     {
@@ -62,7 +63,7 @@ const PricingPage = ({ onClose }) => {
     },
   ];
 
-  const handleSelectPlan = (planId) => {
+  const handleSelectPlan = planId => {
     if (planId === SUBSCRIPTION_TIERS.FREE) {
       upgradeTo(SUBSCRIPTION_TIERS.FREE);
       onClose?.();
@@ -78,7 +79,7 @@ const PricingPage = ({ onClose }) => {
     }
   };
 
-  const isCurrentPlan = (planId) => {
+  const isCurrentPlan = planId => {
     if (planId === SUBSCRIPTION_TIERS.FREE) return !isPro && !isBusiness;
     if (planId === SUBSCRIPTION_TIERS.PRO) return isPro && !isBusiness;
     if (planId === SUBSCRIPTION_TIERS.BUSINESS) return isBusiness;

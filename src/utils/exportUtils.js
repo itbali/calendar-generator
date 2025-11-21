@@ -57,7 +57,11 @@ export const exportToPNG = async (calendarElement, addWatermark = false) => {
 /**
  * Экспорт календаря в PDF
  */
-export const exportToPDF = async (calendarElement, orientation = 'portrait', addWatermark = false) => {
+export const exportToPDF = async (
+  calendarElement,
+  orientation = 'portrait',
+  addWatermark = false
+) => {
   try {
     const canvas = await html2canvas(calendarElement, {
       scale: 2,

@@ -1,11 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { useCalendar } from '../context/CalendarContext';
 import { themes } from '../utils/constants';
 
 export const useTheme = () => {
-  const { theme, contrastWeekends, darkMode } = useCalendar();
+  const { theme, contrastWeekends, darkMode, setDarkMode } = useCalendar();
 
+  // Слушаем изменения системной темы
   useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    const handleThemeChange = e => {
+      // Обновляем тему только если пользователь не установил явно свою предпочтительную тему
+      const savedSettings = localStorage.getItem('calendar-settings');
+      const settings = savedSettings ? JSON.parse(savedSettings) : null;
+
+      // Если darkMode не был явно установлен пользователем, используем системную тему
+      if (!settings || settings.darkMode === undefined) {
+        setDarkMode(e.matches);
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleThemeChange);
+    return () => mediaQuery.removeEventListener('change', handleThemeChange);
+  }, [setDarkMode]);
+
+  // Используем useLayoutEffect для синхронного применения темы ДО рендера
+  // Это предотвращает мерцание при загрузке страницы
+  useLayoutEffect(() => {
     const selectedTheme = themes[theme];
     if (!selectedTheme) return;
 
