@@ -1,10 +1,11 @@
 import React from 'react';
-import { dayNamesFull } from '../../utils/constants';
+import { useLanguage } from '../../context/LanguageContext';
 import { getMondayOfWeek } from '../../utils/dateUtils';
 
 const WeekCalendar = ({ startDate, taskLines, showCheckbox }) => {
   const date = new Date(startDate);
   const monday = getMondayOfWeek(date);
+  const { translations } = useLanguage();
 
   return (
     <div className="week-view">
@@ -19,7 +20,7 @@ const WeekCalendar = ({ startDate, taskLines, showCheckbox }) => {
 
         return (
           <div key={i} className={`week-column ${isWeekend ? 'weekend' : ''}`}>
-            <div className="week-column-header">{dayNamesFull[(dayNameIndex + 1) % 7 || 0]}</div>
+            <div className="week-column-header">{translations.daysFull[(dayNameIndex + 1) % 7 || 0]}</div>
             <div className="week-column-date">{currentDay.getDate()}</div>
             <div className="week-column-content">
               <div className="task-lines">

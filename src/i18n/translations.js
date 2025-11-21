@@ -24,11 +24,19 @@ export const translations = {
     showCheckboxes: 'Показать чекбоксы',
     contrastWeekends: 'Контрастные выходные',
     headerAlignment: 'Выравнивание заголовка',
+    calendarHeader: 'Заголовок календаря',
     left: 'Слева',
     center: 'По центру',
     right: 'Справа',
-    hidden: 'Скрыть',
+    hidden: 'Скрыт',
     customSubtitle: 'Пользовательский подзаголовок',
+    customSubtitlePlaceholder: 'Текст под заголовком (необязательно)',
+    weekStartLabel: 'Неделя (начало)',
+    dayStartTime: 'Начало дня',
+    dayEndTime: 'Конец дня',
+    checkboxesBeforeLines: 'Чекбоксы перед строками',
+    taskLinesLabel: 'Строк для дел:',
+    orientationLabel: 'Ориентация:',
 
     // Праздники
     holidays: 'Праздники',
@@ -184,6 +192,9 @@ export const translations = {
     holidayAdded: 'Праздник добавлен',
     holidayDeleted: 'Праздник удален',
     fillDateAndName: 'Пожалуйста, заполните дату и название праздника',
+    pleaseSelectWeekStart: 'Пожалуйста, выберите дату начала недели',
+    pleaseSelectDate: 'Пожалуйста, выберите дату',
+    startTimeBeforeEndTime: 'Время начала должно быть раньше времени конца',
 
     // Часы
     hour: 'ч',
@@ -297,11 +308,19 @@ export const translations = {
     showCheckboxes: 'Show Checkboxes',
     contrastWeekends: 'Contrast Weekends',
     headerAlignment: 'Header Alignment',
+    calendarHeader: 'Calendar Header',
     left: 'Left',
     center: 'Center',
     right: 'Right',
     hidden: 'Hidden',
     customSubtitle: 'Custom Subtitle',
+    customSubtitlePlaceholder: 'Text under the header (optional)',
+    weekStartLabel: 'Week (start)',
+    dayStartTime: 'Day Start',
+    dayEndTime: 'Day End',
+    checkboxesBeforeLines: 'Checkboxes before lines',
+    taskLinesLabel: 'Task lines:',
+    orientationLabel: 'Orientation:',
 
     // Holidays
     holidays: 'Holidays',
@@ -457,6 +476,9 @@ export const translations = {
     holidayAdded: 'Holiday added',
     holidayDeleted: 'Holiday deleted',
     fillDateAndName: 'Please fill in date and holiday name',
+    pleaseSelectWeekStart: 'Please select week start date',
+    pleaseSelectDate: 'Please select a date',
+    startTimeBeforeEndTime: 'Start time must be before end time',
 
     // Hour
     hour: 'h',
@@ -557,11 +579,19 @@ export const translations = {
     showCheckboxes: 'Mostrar Casillas',
     contrastWeekends: 'Fines de Semana Contrastados',
     headerAlignment: 'Alineación del Encabezado',
+    calendarHeader: 'Encabezado del Calendario',
     left: 'Izquierda',
     center: 'Centro',
     right: 'Derecha',
     hidden: 'Ocultar',
     customSubtitle: 'Subtítulo Personalizado',
+    customSubtitlePlaceholder: 'Texto bajo el encabezado (opcional)',
+    weekStartLabel: 'Semana (inicio)',
+    dayStartTime: 'Inicio del Día',
+    dayEndTime: 'Fin del Día',
+    checkboxesBeforeLines: 'Casillas antes de las líneas',
+    taskLinesLabel: 'Líneas de tareas:',
+    orientationLabel: 'Orientación:',
 
     // Días festivos
     holidays: 'Días Festivos',
@@ -717,6 +747,9 @@ export const translations = {
     holidayAdded: 'Día festivo agregado',
     holidayDeleted: 'Día festivo eliminado',
     fillDateAndName: 'Por favor, rellene la fecha y el nombre del festivo',
+    pleaseSelectWeekStart: 'Por favor, seleccione la fecha de inicio de la semana',
+    pleaseSelectDate: 'Por favor, seleccione una fecha',
+    startTimeBeforeEndTime: 'La hora de inicio debe ser anterior a la hora de fin',
 
     // Hora
     hour: 'h',
@@ -818,11 +851,19 @@ export const translations = {
     showCheckboxes: 'Mostrar Caixas de Seleção',
     contrastWeekends: 'Fins de Semana Contrastados',
     headerAlignment: 'Alinhamento do Cabeçalho',
+    calendarHeader: 'Cabeçalho do Calendário',
     left: 'Esquerda',
     center: 'Centro',
     right: 'Direita',
     hidden: 'Ocultar',
     customSubtitle: 'Subtítulo Personalizado',
+    customSubtitlePlaceholder: 'Texto sob o cabeçalho (opcional)',
+    weekStartLabel: 'Semana (início)',
+    dayStartTime: 'Início do Dia',
+    dayEndTime: 'Fim do Dia',
+    checkboxesBeforeLines: 'Caixas de seleção antes das linhas',
+    taskLinesLabel: 'Linhas de tarefas:',
+    orientationLabel: 'Orientação:',
 
     // Feriados
     holidays: 'Feriados',
@@ -978,6 +1019,9 @@ export const translations = {
     holidayAdded: 'Feriado adicionado',
     holidayDeleted: 'Feriado excluído',
     fillDateAndName: 'Por favor, preencha a data e o nome do feriado',
+    pleaseSelectWeekStart: 'Por favor, selecione a data de início da semana',
+    pleaseSelectDate: 'Por favor, selecione uma data',
+    startTimeBeforeEndTime: 'A hora de início deve ser anterior à hora de fim',
 
     // Hora
     hour: 'h',
@@ -1079,11 +1123,19 @@ export const translations = {
     showCheckboxes: 'Kontrollkästchen anzeigen',
     contrastWeekends: 'Kontrastierende Wochenenden',
     headerAlignment: 'Kopfzeilenausrichtung',
+    calendarHeader: 'Kalender-Kopfzeile',
     left: 'Links',
     center: 'Mitte',
     right: 'Rechts',
     hidden: 'Verbergen',
     customSubtitle: 'Benutzerdefinierter Untertitel',
+    customSubtitlePlaceholder: 'Text unter der Kopfzeile (optional)',
+    weekStartLabel: 'Woche (Start)',
+    dayStartTime: 'Tagesbeginn',
+    dayEndTime: 'Tagesende',
+    checkboxesBeforeLines: 'Kontrollkästchen vor den Zeilen',
+    taskLinesLabel: 'Aufgabenzeilen:',
+    orientationLabel: 'Ausrichtung:',
 
     // Feiertage
     holidays: 'Feiertage',
@@ -1239,6 +1291,9 @@ export const translations = {
     holidayAdded: 'Feiertag hinzugefügt',
     holidayDeleted: 'Feiertag gelöscht',
     fillDateAndName: 'Bitte Datum und Name des Feiertags ausfüllen',
+    pleaseSelectWeekStart: 'Bitte wählen Sie das Startdatum der Woche',
+    pleaseSelectDate: 'Bitte wählen Sie ein Datum',
+    startTimeBeforeEndTime: 'Die Startzeit muss vor der Endzeit liegen',
 
     // Stunde
     hour: 'Uhr',

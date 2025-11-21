@@ -1,10 +1,12 @@
 import React from 'react';
-import { monthNames } from '../../utils/constants';
+import { useLanguage } from '../../context/LanguageContext';
 
 const YearCalendar = ({ taskLines, showCheckbox }) => {
+  const { translations } = useLanguage();
+
   return (
     <div className="year-grid">
-      {monthNames.map((monthName, index) => (
+      {translations.months.map((monthName, index) => (
         <div key={index} className="month-mini">
           <div className="month-title">{monthName}</div>
           <div className="goal-lines">

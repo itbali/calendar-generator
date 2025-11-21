@@ -1,11 +1,12 @@
 import React from 'react';
 import { useCalendar } from '../../context/CalendarContext';
-import { dayNames } from '../../utils/constants';
+import { useLanguage } from '../../context/LanguageContext';
 import { getDaysInMonth, getFirstDayOfMonth } from '../../utils/dateUtils';
 import TaskLines from './TaskLines';
 
 const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
   const { isHoliday } = useCalendar();
+  const { translations } = useLanguage();
   const daysInMonth = getDaysInMonth(year, month);
   let firstDay = getFirstDayOfMonth(year, month);
 
@@ -40,7 +41,7 @@ const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
               return (
                 <td key={col} className={cellClasses.join(' ')}>
                   <div className="date-number">
-                    {currentDay} <span className="weekday">{dayNames[dayOfWeek]}</span>
+                    {currentDay} <span className="weekday">{translations.daysShort[dayOfWeek]}</span>
                   </div>
                   {holiday && <div className="holiday-name">{holiday.name}</div>}
                   <TaskLines count={taskLines} showCheckbox={showCheckbox} />
