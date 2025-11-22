@@ -4,6 +4,7 @@ import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { SubscriptionProvider, useSubscription } from './context/SubscriptionContext';
 import Controls from './components/Controls/Controls';
 import CalendarPreview from './components/Calendar/CalendarPreview';
+import FloatingLanguageSelector from './components/FloatingLanguageSelector';
 import Toast from './components/Toast';
 import ErrorBoundary from './components/ErrorBoundary';
 import FAQ from './components/FAQ';
@@ -18,6 +19,7 @@ import './styles/ErrorBoundary.css';
 import './styles/FAQ.css';
 import './styles/Pricing.css';
 import './styles/Paywall.css';
+import './styles/FloatingLanguageSelector.css';
 
 const AppContent = () => {
   const { orientation } = useCalendar();
@@ -59,6 +61,7 @@ const AppContent = () => {
         <Controls />
         <CalendarPreview />
       </div>
+      <FloatingLanguageSelector />
       <Toast />
       {showFAQ && <FAQ onClose={() => setShowFAQ(false)} />}
       {showPricing && <PricingPage onClose={() => setShowPricing(false)} />}

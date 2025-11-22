@@ -1,6 +1,6 @@
 import React from 'react';
 import { useCalendar } from '../../context/CalendarContext';
-import { monthNames, dayNamesFull } from '../../utils/constants';
+import { useLanguage } from '../../context/LanguageContext';
 import { getMondayOfWeek } from '../../utils/dateUtils';
 import MonthCalendar from './MonthCalendar';
 import YearCalendar from './YearCalendar';
@@ -22,6 +22,7 @@ const CalendarPreview = () => {
     customSubtitle,
     showToast,
   } = useCalendar();
+  const { t, translations } = useLanguage();
 
   const getHeaderClass = () => {
     return headerAlignment === 'hidden'
@@ -35,7 +36,7 @@ const CalendarPreview = () => {
         return (
           <div className="calendar-wrapper">
             <div className={getHeaderClass()}>
-              <h2>{monthNames[month]}</h2>
+              <h2>{translations.months[month]}</h2>
               <div className="year">{customSubtitle || year}</div>
             </div>
             <MonthCalendar
@@ -44,7 +45,7 @@ const CalendarPreview = () => {
               taskLines={taskLines}
               showCheckbox={showCheckboxes}
             />
-            <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
+            <div className="calendar-footer">{t('footer')}</div>
           </div>
         );
 
@@ -53,16 +54,16 @@ const CalendarPreview = () => {
           <div className="calendar-wrapper">
             <div className={getHeaderClass()}>
               <h2>{year}</h2>
-              <div className="year">{customSubtitle || 'Годовой планировщик'}</div>
+              <div className="year">{customSubtitle || t('yearPlanner')}</div>
             </div>
             <YearCalendar taskLines={taskLines} showCheckbox={showCheckboxes} />
-            <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
+            <div className="calendar-footer">{t('footer')}</div>
           </div>
         );
 
       case 'week': {
         if (!weekStart) {
-          showToast('Пожалуйста, выберите дату начала недели', 'error');
+          showToast(t('pleaseSelectWeekStart'), 'error');
           return null;
         }
         const monday = getMondayOfWeek(new Date(weekStart));
@@ -73,28 +74,28 @@ const CalendarPreview = () => {
           <div className="calendar-wrapper">
             <div className={getHeaderClass()}>
               <h2>
-                {monday.getDate()} {monthNames[monday.getMonth()]} - {endDate.getDate()}{' '}
-                {monthNames[endDate.getMonth()]} {monday.getFullYear()}
+                {monday.getDate()} {translations.months[monday.getMonth()]} - {endDate.getDate()}{' '}
+                {translations.months[endDate.getMonth()]} {monday.getFullYear()}
               </h2>
-              <div className="year">{customSubtitle || 'Недельный планировщик'}</div>
+              <div className="year">{customSubtitle || t('weekPlanner')}</div>
             </div>
             <WeekCalendar
               startDate={weekStart}
               taskLines={taskLines}
               showCheckbox={showCheckboxes}
             />
-            <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
+            <div className="calendar-footer">{t('footer')}</div>
           </div>
         );
       }
 
       case 'day': {
         if (!dayDate) {
-          showToast('Пожалуйста, выберите дату', 'error');
+          showToast(t('pleaseSelectDate'), 'error');
           return null;
         }
         if (dayStart >= dayEnd) {
-          showToast('Время начала должно быть раньше времени конца', 'error');
+          showToast(t('startTimeBeforeEndTime'), 'error');
           return null;
         }
 
@@ -106,13 +107,13 @@ const CalendarPreview = () => {
             {headerAlignment !== 'hidden' && (
               <div className={getHeaderClass()}>
                 <h2>
-                  {date.getDate()} {monthNames[date.getMonth()]} {date.getFullYear()}
+                  {date.getDate()} {translations.months[date.getMonth()]} {date.getFullYear()}
                 </h2>
-                <div className="year">{customSubtitle || dayNamesFull[dayOfWeek]}</div>
+                <div className="year">{customSubtitle || translations.daysFull[dayOfWeek]}</div>
               </div>
             )}
             <DayCalendar startHour={dayStart} endHour={dayEnd} showCheckbox={showCheckboxes} />
-            <div className="calendar-footer">✦ Планируй • Достигай • Отмечай ✦</div>
+            <div className="calendar-footer">{t('footer')}</div>
           </div>
         );
       }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCalendar } from '../../context/CalendarContext';
+import { useLanguage } from '../../context/LanguageContext';
 import { monthNames } from '../../utils/constants';
 
 const ViewModeSelector = () => {
@@ -19,21 +20,22 @@ const ViewModeSelector = () => {
     dayEnd,
     setDayEnd,
   } = useCalendar();
+  const { t, translations } = useLanguage();
 
   return (
     <div className="control-row">
       <div className="control-group">
-        <label>Режим отображения</label>
+        <label>{t('viewMode')}</label>
         <select value={viewMode} onChange={e => setViewMode(e.target.value)}>
-          <option value="year">Год</option>
-          <option value="month">Месяц</option>
-          <option value="week">Неделя</option>
-          <option value="day">День</option>
+          <option value="year">{t('year')}</option>
+          <option value="month">{t('month')}</option>
+          <option value="week">{t('week')}</option>
+          <option value="day">{t('day')}</option>
         </select>
       </div>
 
       <div className="control-group">
-        <label>Год</label>
+        <label>{t('year')}</label>
         <input
           type="number"
           value={year}
@@ -45,9 +47,9 @@ const ViewModeSelector = () => {
 
       {(viewMode === 'month' || viewMode === 'week') && (
         <div className="control-group">
-          <label>Месяц</label>
+          <label>{t('month')}</label>
           <select value={month} onChange={e => setMonth(parseInt(e.target.value))}>
-            {monthNames.map((name, index) => (
+            {translations.months.map((name, index) => (
               <option key={index} value={index}>
                 {name}
               </option>
@@ -58,7 +60,7 @@ const ViewModeSelector = () => {
 
       {viewMode === 'week' && (
         <div className="control-group">
-          <label>Неделя (начало)</label>
+          <label>{t('weekStartLabel')}</label>
           <input type="date" value={weekStart} onChange={e => setWeekStart(e.target.value)} />
         </div>
       )}
@@ -66,12 +68,12 @@ const ViewModeSelector = () => {
       {viewMode === 'day' && (
         <>
           <div className="control-group">
-            <label>День</label>
+            <label>{t('day')}</label>
             <input type="date" value={dayDate} onChange={e => setDayDate(e.target.value)} />
           </div>
 
           <div className="control-group">
-            <label>Начало дня</label>
+            <label>{t('dayStartTime')}</label>
             <select value={dayStart} onChange={e => setDayStart(parseInt(e.target.value))}>
               {Array.from({ length: 13 }, (_, i) => (
                 <option key={i} value={i}>
@@ -82,7 +84,7 @@ const ViewModeSelector = () => {
           </div>
 
           <div className="control-group">
-            <label>Конец дня</label>
+            <label>{t('dayEndTime')}</label>
             <select value={dayEnd} onChange={e => setDayEnd(parseInt(e.target.value))}>
               {Array.from({ length: 12 }, (_, i) => {
                 const hour = i + 12;

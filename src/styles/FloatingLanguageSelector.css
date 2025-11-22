@@ -1,0 +1,175 @@
+/* Плавающий переключатель языка */
+.floating-language-selector {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Кнопка переключателя */
+.language-toggle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2c5f7c, #4a7c95);
+  border: 3px solid white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0;
+}
+
+.language-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.language-toggle.open {
+  background: linear-gradient(135deg, #4a7c95, #2c5f7c);
+}
+
+.language-flag {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.language-chevron {
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+
+.language-toggle.open .language-chevron {
+  font-size: 24px;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+
+/* Меню с языками */
+.language-menu {
+  position: absolute;
+  right: 60px;
+  top: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  min-width: 150px;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Опции языка */
+.language-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  text-align: left;
+  font-size: 15px;
+}
+
+.language-option:hover {
+  background: linear-gradient(135deg, #e8f4f8, #d4e8f0);
+  transform: translateX(-4px);
+}
+
+.language-option.active {
+  background: linear-gradient(135deg, #2c5f7c, #4a7c95);
+  color: white;
+  font-weight: 600;
+}
+
+.language-option.active:hover {
+  background: linear-gradient(135deg, #4a7c95, #2c5f7c);
+}
+
+.language-option .language-flag {
+  font-size: 20px;
+}
+
+.language-name {
+  font-size: 14px;
+}
+
+/* Темная тема */
+body.dark-mode .language-toggle {
+  background: linear-gradient(135deg, #1a3a4a, #2c5f7c);
+  border-color: #2c5f7c;
+}
+
+body.dark-mode .language-menu {
+  background: #1a1a1a;
+  border: 1px solid #333;
+}
+
+body.dark-mode .language-option {
+  color: #e0e0e0;
+}
+
+body.dark-mode .language-option:hover {
+  background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+}
+
+body.dark-mode .language-option.active {
+  background: linear-gradient(135deg, #2c5f7c, #1a3a4a);
+  color: white;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .floating-language-selector {
+    right: 15px;
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+
+  .language-toggle {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+  }
+
+  .language-menu {
+    right: 55px;
+    bottom: 0;
+    top: auto;
+  }
+}
+
+/* Для печати - скрыть */
+@media print {
+  .floating-language-selector {
+    display: none !important;
+  }
+}

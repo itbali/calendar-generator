@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCalendar } from '../../context/CalendarContext';
+import { useLanguage } from '../../context/LanguageContext';
 
 const AdditionalSettings = () => {
   const {
@@ -17,30 +18,31 @@ const AdditionalSettings = () => {
     setCustomSubtitle,
     viewMode,
   } = useCalendar();
+  const { t } = useLanguage();
 
   return (
     <>
       <div className="control-group">
-        <label>Заголовок календаря</label>
+        <label>{t('calendarHeader')}</label>
         <div className="control-row">
           <select value={headerAlignment} onChange={e => setHeaderAlignment(e.target.value)}>
-            <option value="left">Слева</option>
-            <option value="center">По центру</option>
-            <option value="right">Справа</option>
-            <option value="hidden">Скрыт</option>
+            <option value="left">{t('left')}</option>
+            <option value="center">{t('center')}</option>
+            <option value="right">{t('right')}</option>
+            <option value="hidden">{t('hidden')}</option>
           </select>
           <input
             type="text"
             value={customSubtitle}
             onChange={e => setCustomSubtitle(e.target.value)}
-            placeholder="Текст под заголовком (необязательно)"
+            placeholder={t('customSubtitlePlaceholder')}
             style={{ flex: 1, minWidth: '200px' }}
           />
         </div>
       </div>
 
       <div className="control-group">
-        <label>Дополнительные настройки</label>
+        <label>{t('additionalSettings')}</label>
         <div className="settings-grid">
           <div className="checkbox-group">
             <input
@@ -49,7 +51,7 @@ const AdditionalSettings = () => {
               checked={showCheckboxes}
               onChange={e => setShowCheckboxes(e.target.checked)}
             />
-            <label htmlFor="showCheckboxes">Чекбоксы перед строками</label>
+            <label htmlFor="showCheckboxes">{t('checkboxesBeforeLines')}</label>
           </div>
           <div className="checkbox-group">
             <input
@@ -58,22 +60,22 @@ const AdditionalSettings = () => {
               checked={contrastWeekends}
               onChange={e => setContrastWeekends(e.target.checked)}
             />
-            <label htmlFor="contrastWeekends">Контрастные выходные</label>
+            <label htmlFor="contrastWeekends">{t('contrastWeekends')}</label>
           </div>
           <div className="setting-item">
-            <label htmlFor="orientation">Ориентация:</label>
+            <label htmlFor="orientation">{t('orientationLabel')}</label>
             <select
               id="orientation"
               value={orientation}
               onChange={e => setOrientation(e.target.value)}
             >
-              <option value="portrait">Книжная</option>
-              <option value="landscape">Альбомная</option>
+              <option value="portrait">{t('portrait')}</option>
+              <option value="landscape">{t('landscape')}</option>
             </select>
           </div>
           {viewMode !== 'day' && (
             <div className="setting-item">
-              <label htmlFor="taskLines">Строк для дел:</label>
+              <label htmlFor="taskLines">{t('taskLinesLabel')}</label>
               <input
                 type="number"
                 id="taskLines"

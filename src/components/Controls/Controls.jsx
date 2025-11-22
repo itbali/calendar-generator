@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../../context/LanguageContext';
 import CollapsibleSection from '../CollapsibleSection';
-import LanguageSelector from './LanguageSelector';
 import ViewModeSelector from './ViewModeSelector';
 import ThemeSelector from './ThemeSelector';
 import AdditionalSettings from './AdditionalSettings';
@@ -24,7 +23,6 @@ const Controls = () => {
       </CollapsibleSection>
 
       <CollapsibleSection title={t('displaySettings')} defaultOpen={true}>
-        <LanguageSelector />
         <ViewModeSelector />
         <ThemeSelector />
       </CollapsibleSection>

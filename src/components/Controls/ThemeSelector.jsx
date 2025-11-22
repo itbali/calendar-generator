@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useSubscription } from '../../context/SubscriptionContext';
+import { useLanguage } from '../../context/LanguageContext';
 import Paywall from '../Paywall';
 
 const ThemeSelector = () => {
   const { theme, setTheme, darkMode, setDarkMode } = useCalendar();
   const { hasFeature } = useSubscription();
+  const { t } = useLanguage();
   const [showPaywall, setShowPaywall] = useState(false);
 
   const themes = [
@@ -27,7 +29,7 @@ const ThemeSelector = () => {
   return (
     <>
       <div className="control-group">
-        <label>Цветовая тема</label>
+        <label>{t('colorTheme')}</label>
         <div className="color-themes">
           {themes.map(({ value, gradient, isPremium }) => (
             <label
@@ -56,7 +58,7 @@ const ThemeSelector = () => {
       <div className="control-group">
         <label>
           <input type="checkbox" checked={darkMode} onChange={e => setDarkMode(e.target.checked)} />
-          Темная тема
+          {t('darkMode')}
         </label>
       </div>
 
