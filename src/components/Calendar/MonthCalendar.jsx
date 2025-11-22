@@ -6,7 +6,7 @@ import TaskLines from './TaskLines';
 
 const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
   const { isHoliday } = useCalendar();
-  const { translations } = useLanguage();
+  const { translations, t } = useLanguage();
   const daysInMonth = getDaysInMonth(year, month);
   let firstDay = getFirstDayOfMonth(year, month);
 
@@ -43,7 +43,11 @@ const MonthCalendar = ({ year, month, taskLines, showCheckbox }) => {
                   <div className="date-number">
                     {currentDay} <span className="weekday">{translations.daysShort[dayOfWeek]}</span>
                   </div>
-                  {holiday && <div className="holiday-name">{holiday.name}</div>}
+                  {holiday && (
+                    <div className="holiday-name">
+                      {holiday.nameKey ? t(holiday.nameKey) : holiday.name}
+                    </div>
+                  )}
                   <TaskLines count={taskLines} showCheckbox={showCheckbox} />
                 </td>
               );

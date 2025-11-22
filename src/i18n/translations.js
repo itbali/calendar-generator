@@ -202,6 +202,78 @@ export const translations = {
     // Языки
     language: 'Язык',
 
+    // Названия стран
+    countryRussia: 'Россия',
+    countryUSA: 'США',
+    countryUK: 'Великобритания',
+    countryGermany: 'Германия',
+    countryFrance: 'Франция',
+    countrySpain: 'Испания',
+    countryItaly: 'Италия',
+    countryChina: 'Китай',
+    countryJapan: 'Япония',
+
+    // Праздники России
+    holidayNewYear: 'Новый год',
+    holidayNewYearHolidays: 'Новогодние каникулы',
+    holidayChristmas: 'Рождество Христово',
+    holidayDefenderDay: 'День защитника Отечества',
+    holidayWomenDay: 'Международный женский день',
+    holidaySpringLabor: 'Праздник Весны и Труда',
+    holidayVictoryDay: 'День Победы',
+    holidayRussiaDay: 'День России',
+    holidayUnityDay: 'День народного единства',
+
+    // Праздники США
+    holidayIndependenceDay: 'День независимости',
+    holidayChristmasDay: 'Рождество',
+    holidayVeteransDay: 'День ветеранов',
+    holidayValentinesDay: 'День святого Валентина',
+    holidayHalloween: 'Хэллоуин',
+
+    // Праздники Великобритании
+    holidayBoxingDay: 'День подарков',
+    holidayStPatricksDay: 'День святого Патрика',
+
+    // Праздники Германии
+    holidayNewYearDE: 'Новый год',
+    holidayLaborDayDE: 'День труда',
+    holidayGermanUnityDay: 'День немецкого единства',
+    holidayChristmasDE: 'Рождество',
+    holidaySecondChristmasDay: 'Второй день Рождества',
+
+    // Праздники Франции
+    holidayNewYearFR: 'Новый год',
+    holidayLaborDayFR: 'День труда',
+    holidayVictory1945: 'День Победы 1945',
+    holidayNationalDay: 'Национальный праздник',
+    holidayChristmasFR: 'Рождество',
+
+    // Праздники Испании
+    holidayNewYearES: 'Новый год',
+    holidayThreeKingsDay: 'День трёх королей',
+    holidayLaborDayES: 'День труда',
+    holidayNationalDayES: 'Национальный праздник',
+    holidayChristmasES: 'Рождество',
+
+    // Праздники Италии
+    holidayNewYearIT: 'Новый год',
+    holidayEpiphany: 'Богоявление',
+    holidayLiberationDay: 'День освобождения',
+    holidayLaborDayIT: 'День трудящихся',
+    holidayChristmasIT: 'Рождество',
+
+    // Праздники Китая
+    holidayNewYearCN: 'Новый год',
+    holidayLaborDayCN: 'День труда',
+    holidayNationalDayCN: 'Национальный день',
+
+    // Праздники Японии
+    holidayNewYearJP: 'Новый год',
+    holidayFoundationDay: 'День основания государства',
+    holidayConstitutionDay: 'День Конституции',
+    holidayEmperorBirthday: 'День рождения императора',
+
     // UI
     pricing: 'Цены',
 
@@ -486,6 +558,78 @@ export const translations = {
     // Languages
     language: 'Language',
 
+    // Country names
+    countryRussia: 'Russia',
+    countryUSA: 'USA',
+    countryUK: 'United Kingdom',
+    countryGermany: 'Germany',
+    countryFrance: 'France',
+    countrySpain: 'Spain',
+    countryItaly: 'Italy',
+    countryChina: 'China',
+    countryJapan: 'Japan',
+
+    // Russian holidays
+    holidayNewYear: "New Year's Day",
+    holidayNewYearHolidays: 'New Year Holidays',
+    holidayChristmas: 'Christmas',
+    holidayDefenderDay: "Defender of the Fatherland Day",
+    holidayWomenDay: "International Women's Day",
+    holidaySpringLabor: 'Spring and Labour Day',
+    holidayVictoryDay: 'Victory Day',
+    holidayRussiaDay: 'Russia Day',
+    holidayUnityDay: 'Unity Day',
+
+    // USA holidays
+    holidayIndependenceDay: 'Independence Day',
+    holidayChristmasDay: 'Christmas Day',
+    holidayVeteransDay: 'Veterans Day',
+    holidayValentinesDay: "Valentine's Day",
+    holidayHalloween: 'Halloween',
+
+    // UK holidays
+    holidayBoxingDay: 'Boxing Day',
+    holidayStPatricksDay: "St. Patrick's Day",
+
+    // German holidays
+    holidayNewYearDE: "New Year's Day",
+    holidayLaborDayDE: 'Labour Day',
+    holidayGermanUnityDay: 'German Unity Day',
+    holidayChristmasDE: 'Christmas',
+    holidaySecondChristmasDay: 'Second Christmas Day',
+
+    // French holidays
+    holidayNewYearFR: "New Year's Day",
+    holidayLaborDayFR: 'Labour Day',
+    holidayVictory1945: 'Victory 1945',
+    holidayNationalDay: 'National Day',
+    holidayChristmasFR: 'Christmas',
+
+    // Spanish holidays
+    holidayNewYearES: "New Year's Day",
+    holidayThreeKingsDay: 'Three Kings Day',
+    holidayLaborDayES: 'Labour Day',
+    holidayNationalDayES: 'National Day',
+    holidayChristmasES: 'Christmas',
+
+    // Italian holidays
+    holidayNewYearIT: "New Year's Day",
+    holidayEpiphany: 'Epiphany',
+    holidayLiberationDay: 'Liberation Day',
+    holidayLaborDayIT: "Workers' Day",
+    holidayChristmasIT: 'Christmas',
+
+    // Chinese holidays
+    holidayNewYearCN: "New Year's Day",
+    holidayLaborDayCN: 'Labour Day',
+    holidayNationalDayCN: 'National Day',
+
+    // Japanese holidays
+    holidayNewYearJP: "New Year's Day",
+    holidayFoundationDay: 'Foundation Day',
+    holidayConstitutionDay: 'Constitution Day',
+    holidayEmperorBirthday: "Emperor's Birthday",
+
     // UI
     pricing: 'Pricing',
 
@@ -756,6 +900,78 @@ export const translations = {
 
     // Idiomas
     language: 'Idioma',
+
+    // Nombres de países
+    countryRussia: 'Rusia',
+    countryUSA: 'EE.UU.',
+    countryUK: 'Reino Unido',
+    countryGermany: 'Alemania',
+    countryFrance: 'Francia',
+    countrySpain: 'España',
+    countryItaly: 'Italia',
+    countryChina: 'China',
+    countryJapan: 'Japón',
+
+    // Festivos rusos
+    holidayNewYear: 'Año Nuevo',
+    holidayNewYearHolidays: 'Vacaciones de Año Nuevo',
+    holidayChristmas: 'Navidad',
+    holidayDefenderDay: 'Día del Defensor de la Patria',
+    holidayWomenDay: 'Día Internacional de la Mujer',
+    holidaySpringLabor: 'Día de la Primavera y el Trabajo',
+    holidayVictoryDay: 'Día de la Victoria',
+    holidayRussiaDay: 'Día de Rusia',
+    holidayUnityDay: 'Día de la Unidad Nacional',
+
+    // Festivos estadounidenses
+    holidayIndependenceDay: 'Día de la Independencia',
+    holidayChristmasDay: 'Navidad',
+    holidayVeteransDay: 'Día de los Veteranos',
+    holidayValentinesDay: 'Día de San Valentín',
+    holidayHalloween: 'Halloween',
+
+    // Festivos británicos
+    holidayBoxingDay: 'Día de San Esteban',
+    holidayStPatricksDay: 'Día de San Patricio',
+
+    // Festivos alemanes
+    holidayNewYearDE: 'Año Nuevo',
+    holidayLaborDayDE: 'Día del Trabajo',
+    holidayGermanUnityDay: 'Día de la Unidad Alemana',
+    holidayChristmasDE: 'Navidad',
+    holidaySecondChristmasDay: 'Segundo día de Navidad',
+
+    // Festivos franceses
+    holidayNewYearFR: 'Año Nuevo',
+    holidayLaborDayFR: 'Día del Trabajo',
+    holidayVictory1945: 'Victoria 1945',
+    holidayNationalDay: 'Día Nacional',
+    holidayChristmasFR: 'Navidad',
+
+    // Festivos españoles
+    holidayNewYearES: 'Año Nuevo',
+    holidayThreeKingsDay: 'Día de Reyes',
+    holidayLaborDayES: 'Día del Trabajo',
+    holidayNationalDayES: 'Fiesta Nacional',
+    holidayChristmasES: 'Navidad',
+
+    // Festivos italianos
+    holidayNewYearIT: 'Año Nuevo',
+    holidayEpiphany: 'Epifanía',
+    holidayLiberationDay: 'Día de la Liberación',
+    holidayLaborDayIT: 'Día de los Trabajadores',
+    holidayChristmasIT: 'Navidad',
+
+    // Festivos chinos
+    holidayNewYearCN: 'Año Nuevo',
+    holidayLaborDayCN: 'Día del Trabajo',
+    holidayNationalDayCN: 'Día Nacional',
+
+    // Festivos japoneses
+    holidayNewYearJP: 'Año Nuevo',
+    holidayFoundationDay: 'Día de la Fundación',
+    holidayConstitutionDay: 'Día de la Constitución',
+    holidayEmperorBirthday: 'Cumpleaños del Emperador',
 
     // UI
     pricing: 'Precios',
@@ -1029,6 +1245,78 @@ export const translations = {
     // Idiomas
     language: 'Idioma',
 
+    // Nomes de países
+    countryRussia: 'Rússia',
+    countryUSA: 'EUA',
+    countryUK: 'Reino Unido',
+    countryGermany: 'Alemanha',
+    countryFrance: 'França',
+    countrySpain: 'Espanha',
+    countryItaly: 'Itália',
+    countryChina: 'China',
+    countryJapan: 'Japão',
+
+    // Feriados russos
+    holidayNewYear: 'Ano Novo',
+    holidayNewYearHolidays: 'Férias de Ano Novo',
+    holidayChristmas: 'Natal',
+    holidayDefenderDay: 'Dia do Defensor da Pátria',
+    holidayWomenDay: 'Dia Internacional da Mulher',
+    holidaySpringLabor: 'Dia da Primavera e do Trabalho',
+    holidayVictoryDay: 'Dia da Vitória',
+    holidayRussiaDay: 'Dia da Rússia',
+    holidayUnityDay: 'Dia da Unidade Nacional',
+
+    // Feriados americanos
+    holidayIndependenceDay: 'Dia da Independência',
+    holidayChristmasDay: 'Natal',
+    holidayVeteransDay: 'Dia dos Veteranos',
+    holidayValentinesDay: 'Dia dos Namorados',
+    holidayHalloween: 'Halloween',
+
+    // Feriados britânicos
+    holidayBoxingDay: 'Boxing Day',
+    holidayStPatricksDay: 'Dia de São Patrício',
+
+    // Feriados alemães
+    holidayNewYearDE: 'Ano Novo',
+    holidayLaborDayDE: 'Dia do Trabalho',
+    holidayGermanUnityDay: 'Dia da Unidade Alemã',
+    holidayChristmasDE: 'Natal',
+    holidaySecondChristmasDay: 'Segundo dia de Natal',
+
+    // Feriados franceses
+    holidayNewYearFR: 'Ano Novo',
+    holidayLaborDayFR: 'Dia do Trabalho',
+    holidayVictory1945: 'Vitória 1945',
+    holidayNationalDay: 'Dia Nacional',
+    holidayChristmasFR: 'Natal',
+
+    // Feriados espanhóis
+    holidayNewYearES: 'Ano Novo',
+    holidayThreeKingsDay: 'Dia de Reis',
+    holidayLaborDayES: 'Dia do Trabalho',
+    holidayNationalDayES: 'Dia Nacional',
+    holidayChristmasES: 'Natal',
+
+    // Feriados italianos
+    holidayNewYearIT: 'Ano Novo',
+    holidayEpiphany: 'Epifania',
+    holidayLiberationDay: 'Dia da Libertação',
+    holidayLaborDayIT: 'Dia dos Trabalhadores',
+    holidayChristmasIT: 'Natal',
+
+    // Feriados chineses
+    holidayNewYearCN: 'Ano Novo',
+    holidayLaborDayCN: 'Dia do Trabalho',
+    holidayNationalDayCN: 'Dia Nacional',
+
+    // Feriados japoneses
+    holidayNewYearJP: 'Ano Novo',
+    holidayFoundationDay: 'Dia da Fundação',
+    holidayConstitutionDay: 'Dia da Constituição',
+    holidayEmperorBirthday: 'Aniversário do Imperador',
+
     // UI
     pricing: 'Preços',
 
@@ -1300,6 +1588,78 @@ export const translations = {
 
     // Sprachen
     language: 'Sprache',
+
+    // Ländernamen
+    countryRussia: 'Russland',
+    countryUSA: 'USA',
+    countryUK: 'Vereinigtes Königreich',
+    countryGermany: 'Deutschland',
+    countryFrance: 'Frankreich',
+    countrySpain: 'Spanien',
+    countryItaly: 'Italien',
+    countryChina: 'China',
+    countryJapan: 'Japan',
+
+    // Russische Feiertage
+    holidayNewYear: 'Neujahr',
+    holidayNewYearHolidays: 'Neujahrsferien',
+    holidayChristmas: 'Weihnachten',
+    holidayDefenderDay: 'Tag des Verteidigers des Vaterlandes',
+    holidayWomenDay: 'Internationaler Frauentag',
+    holidaySpringLabor: 'Frühlings- und Arbeitstag',
+    holidayVictoryDay: 'Tag des Sieges',
+    holidayRussiaDay: 'Tag Russlands',
+    holidayUnityDay: 'Tag der Einheit',
+
+    // Amerikanische Feiertage
+    holidayIndependenceDay: 'Unabhängigkeitstag',
+    holidayChristmasDay: 'Weihnachten',
+    holidayVeteransDay: 'Veteranentag',
+    holidayValentinesDay: 'Valentinstag',
+    holidayHalloween: 'Halloween',
+
+    // Britische Feiertage
+    holidayBoxingDay: 'Boxing Day',
+    holidayStPatricksDay: 'St. Patrick\'s Day',
+
+    // Deutsche Feiertage
+    holidayNewYearDE: 'Neujahr',
+    holidayLaborDayDE: 'Tag der Arbeit',
+    holidayGermanUnityDay: 'Tag der Deutschen Einheit',
+    holidayChristmasDE: 'Weihnachten',
+    holidaySecondChristmasDay: 'Zweiter Weihnachtstag',
+
+    // Französische Feiertage
+    holidayNewYearFR: 'Neujahr',
+    holidayLaborDayFR: 'Tag der Arbeit',
+    holidayVictory1945: 'Sieg 1945',
+    holidayNationalDay: 'Nationalfeiertag',
+    holidayChristmasFR: 'Weihnachten',
+
+    // Spanische Feiertage
+    holidayNewYearES: 'Neujahr',
+    holidayThreeKingsDay: 'Dreikönigstag',
+    holidayLaborDayES: 'Tag der Arbeit',
+    holidayNationalDayES: 'Nationalfeiertag',
+    holidayChristmasES: 'Weihnachten',
+
+    // Italienische Feiertage
+    holidayNewYearIT: 'Neujahr',
+    holidayEpiphany: 'Dreikönigstag',
+    holidayLiberationDay: 'Tag der Befreiung',
+    holidayLaborDayIT: 'Tag der Arbeit',
+    holidayChristmasIT: 'Weihnachten',
+
+    // Chinesische Feiertage
+    holidayNewYearCN: 'Neujahr',
+    holidayLaborDayCN: 'Tag der Arbeit',
+    holidayNationalDayCN: 'Nationalfeiertag',
+
+    // Japanische Feiertage
+    holidayNewYearJP: 'Neujahr',
+    holidayFoundationDay: 'Gründungstag',
+    holidayConstitutionDay: 'Tag der Verfassung',
+    holidayEmperorBirthday: 'Geburtstag des Kaisers',
 
     // UI
     pricing: 'Preise',
