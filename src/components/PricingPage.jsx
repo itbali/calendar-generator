@@ -1,4 +1,5 @@
 import React from 'react';
+import { Sprout, Star, Rocket, Check, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useSubscription } from '../context/SubscriptionContext';
 import { SUBSCRIPTION_TIERS } from '../context/subscriptionConstants';
@@ -14,7 +15,7 @@ const PricingPage = ({ onClose }) => {
       name: t('pricingFreeName'),
       price: t('pricingFreePrice'),
       period: '',
-      icon: '🌱',
+      icon: <Sprout size={24} />,
       features: [
         t('pricingFreeFeature1'),
         t('pricingFreeFeature2'),
@@ -30,7 +31,7 @@ const PricingPage = ({ onClose }) => {
       name: t('pricingProName'),
       price: '$12.99',
       period: t('pricingPerMonth'),
-      icon: '⭐',
+      icon: <Star size={24} />,
       features: [
         t('pricingProFeature1'),
         t('pricingProFeature2'),
@@ -48,7 +49,7 @@ const PricingPage = ({ onClose }) => {
       name: t('pricingBusinessName'),
       price: '$24.99',
       period: t('pricingPerMonth'),
-      icon: '🚀',
+      icon: <Rocket size={24} />,
       features: [
         t('pricingBusinessFeature1'),
         t('pricingBusinessFeature2'),
@@ -93,7 +94,7 @@ const PricingPage = ({ onClose }) => {
           <h2>{t('pricingTitle')}</h2>
           <p className="pricing-subtitle">{t('pricingSubtitle')}</p>
           <button className="pricing-close" onClick={onClose}>
-            ✕
+            <X size={20} />
           </button>
         </div>
 
@@ -121,7 +122,9 @@ const PricingPage = ({ onClose }) => {
                 <ul className="plan-features">
                   {plan.features.map((feature, index) => (
                     <li key={index}>
-                      <span className="check">✓</span>
+                      <span className="check">
+                        <Check size={16} />
+                      </span>
                       {feature}
                     </li>
                   ))}

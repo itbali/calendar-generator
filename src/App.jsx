@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Star, Gem, HelpCircle } from 'lucide-react';
 import { CalendarProvider, useCalendar } from './context/CalendarContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { SubscriptionProvider, useSubscription } from './context/SubscriptionContext';
@@ -51,10 +52,18 @@ const AppContent = () => {
               onClick={() => setShowPricing(true)}
               title={t('pricing')}
             >
-              {isPro || isBusiness ? '⭐ Pro' : '💎 Upgrade'}
+              {isPro || isBusiness ? (
+                <>
+                  <Star size={16} /> Pro
+                </>
+              ) : (
+                <>
+                  <Gem size={16} /> Upgrade
+                </>
+              )}
             </button>
             <button className="faq-button" onClick={() => setShowFAQ(true)} title={t('faq')}>
-              ❓
+              <HelpCircle size={16} />
             </button>
           </div>
         </div>

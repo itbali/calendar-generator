@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Sparkles, CheckSquare, Users, Save, ClipboardList, Trash2 } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useSubscription } from '../../context/SubscriptionContext';
@@ -121,7 +122,9 @@ const TemplateManager = () => {
             className="template-card predefined"
             onClick={() => handleLoadTemplate(predefinedTemplates.minimalist)}
           >
-            <div className="template-icon">✨</div>
+            <div className="template-icon">
+              <Sparkles size={24} />
+            </div>
             <div className="template-info">
               <div className="template-title">{t('templateMinimalist')}</div>
               <div className="template-desc">{t('templateMinimalistDesc')}</div>
@@ -133,7 +136,9 @@ const TemplateManager = () => {
             className="template-card predefined"
             onClick={() => handleLoadTemplate(predefinedTemplates.taskPlanner)}
           >
-            <div className="template-icon">✅</div>
+            <div className="template-icon">
+              <CheckSquare size={24} />
+            </div>
             <div className="template-info">
               <div className="template-title">{t('templateTaskPlanner')}</div>
               <div className="template-desc">{t('templateTaskPlannerDesc')}</div>
@@ -145,7 +150,9 @@ const TemplateManager = () => {
             className="template-card predefined"
             onClick={() => handleLoadTemplate(predefinedTemplates.familyCalendar)}
           >
-            <div className="template-icon">👨‍👩‍👧‍👦</div>
+            <div className="template-icon">
+              <Users size={24} />
+            </div>
             <div className="template-info">
               <div className="template-title">{t('templateFamilyCalendar')}</div>
               <div className="template-desc">{t('templateFamilyCalendarDesc')}</div>
@@ -176,7 +183,7 @@ const TemplateManager = () => {
             className="template-name-input"
           />
           <button onClick={handleSaveTemplate} className="btn btn-primary">
-            💾 {t('saveAsTemplate')}
+            <Save size={16} /> {t('saveAsTemplate')}
           </button>
         </div>
       </div>
@@ -190,7 +197,9 @@ const TemplateManager = () => {
           <div className="custom-templates-list">
             {customTemplates.map(template => (
               <div key={template.id} className="template-card custom">
-                <div className="template-icon">📋</div>
+                <div className="template-icon">
+                  <ClipboardList size={24} />
+                </div>
                 <div className="template-info">
                   <div className="template-title">{template.name}</div>
                   <div className="template-date">
@@ -208,7 +217,7 @@ const TemplateManager = () => {
                     onClick={() => handleDeleteTemplate(template.id)}
                     className="template-action-btn delete"
                   >
-                    🗑️
+                    <Trash2 size={16} />
                   </button>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { RefreshCw, Download } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { countries } from '../../utils/constants';
@@ -140,7 +141,7 @@ const HolidayManagement = () => {
             disabled={isSyncing || selectedCountries.size === 0}
             className="btn btn-primary sync-holidays-btn"
           >
-            🔄 {isSyncing ? t('syncingHolidays') : t('syncFromAPI')}
+            <RefreshCw size={16} /> {isSyncing ? t('syncingHolidays') : t('syncFromAPI')}
           </button>
 
           {/* Кнопка импорта из .ics файла */}
@@ -153,7 +154,7 @@ const HolidayManagement = () => {
               disabled={isImporting}
               style={{ display: 'none' }}
             />
-            📥 {isImporting ? t('importing') : t('importFromICS')}
+            <Download size={16} /> {isImporting ? t('importing') : t('importFromICS')}
           </label>
         </div>
 

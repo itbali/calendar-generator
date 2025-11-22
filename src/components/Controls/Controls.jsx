@@ -1,4 +1,5 @@
 import React from 'react';
+import { Printer } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import CollapsibleSection from '../CollapsibleSection';
 import ViewModeSelector from './ViewModeSelector';
@@ -43,7 +44,7 @@ const Controls = () => {
         <ExportButtons />
         <div className="action-buttons">
           <button className="btn btn-secondary" onClick={handlePrint}>
-            🖨️ {t('print')}
+            <Printer size={16} /> {t('print')}
           </button>
         </div>
       </CollapsibleSection>

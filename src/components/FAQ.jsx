@@ -1,4 +1,5 @@
 import React from 'react';
+import { HelpCircle, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import CollapsibleSection from './CollapsibleSection';
 
@@ -184,9 +185,12 @@ const FAQ = ({ onClose }) => {
     <div className="faq-overlay" onClick={onClose}>
       <div className="faq-modal" onClick={e => e.stopPropagation()}>
         <div className="faq-header">
-          <h2>❓ {t('faq')}</h2>
+          <h2>
+            <HelpCircle size={24} style={{ display: 'inline', verticalAlign: 'middle' }} />{' '}
+            {t('faq')}
+          </h2>
           <button className="faq-close" onClick={onClose}>
-            ✕
+            <X size={20} />
           </button>
         </div>
         <div className="faq-content">

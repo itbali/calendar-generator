@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FileText, Image, Clock, Calendar } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useSubscription } from '../../context/SubscriptionContext';
 import { useLanguage } from '../../context/LanguageContext';
@@ -86,7 +87,15 @@ const ExportButtons = () => {
           className="export-btn export-pdf"
           title={t('exportToPDFTitle')}
         >
-          {isExporting ? '⏳ ' + t('importing') : '📄 PDF'}
+          {isExporting ? (
+            <>
+              <Clock size={16} /> {t('importing')}
+            </>
+          ) : (
+            <>
+              <FileText size={16} /> PDF
+            </>
+          )}
         </button>
 
         <button
@@ -95,7 +104,15 @@ const ExportButtons = () => {
           className="export-btn export-png"
           title={t('exportToPNGTitle')}
         >
-          {isExporting ? '⏳ ' + t('importing') : '🖼️ PNG'}
+          {isExporting ? (
+            <>
+              <Clock size={16} /> {t('importing')}
+            </>
+          ) : (
+            <>
+              <Image size={16} /> PNG
+            </>
+          )}
         </button>
 
         <button
@@ -103,7 +120,7 @@ const ExportButtons = () => {
           className="export-btn export-ics"
           title={t('exportToICalTitle')}
         >
-          {t('exportICalButton')}
+          <Calendar size={16} /> {t('exportICalButton')}
         </button>
       </div>
       <p className="export-hint">{t('exportHint')}</p>

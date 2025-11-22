@@ -53,7 +53,7 @@ export const translations = {
     exportToPDFTitle: 'Экспорт календаря в PDF',
     exportToPNGTitle: 'Экспорт календаря в PNG',
     exportToICalTitle: 'Экспорт праздников в iCalendar',
-    exportICalButton: '📅 iCal',
+    exportICalButton: 'iCal',
 
     // Кнопки
     print: 'Печать',
@@ -409,7 +409,7 @@ export const translations = {
     exportToPDFTitle: 'Export calendar to PDF',
     exportToPNGTitle: 'Export calendar to PNG',
     exportToICalTitle: 'Export holidays to iCalendar',
-    exportICalButton: '📅 iCal',
+    exportICalButton: 'iCal',
 
     // Buttons
     print: 'Print',
@@ -752,7 +752,7 @@ export const translations = {
     exportToPDFTitle: 'Exportar calendario a PDF',
     exportToPNGTitle: 'Exportar calendario a PNG',
     exportToICalTitle: 'Exportar festivos a iCalendar',
-    exportICalButton: '📅 iCal',
+    exportICalButton: 'iCal',
 
     // Botones
     print: 'Imprimir',
@@ -1096,7 +1096,7 @@ export const translations = {
     exportToPDFTitle: 'Exportar calendário para PDF',
     exportToPNGTitle: 'Exportar calendário para PNG',
     exportToICalTitle: 'Exportar feriados para iCalendar',
-    exportICalButton: '📅 iCal',
+    exportICalButton: 'iCal',
 
     // Botões
     print: 'Imprimir',
@@ -1440,7 +1440,7 @@ export const translations = {
     exportToPDFTitle: 'Kalender als PDF exportieren',
     exportToPNGTitle: 'Kalender als PNG exportieren',
     exportToICalTitle: 'Feiertage als iCalendar exportieren',
-    exportICalButton: '📅 iCal',
+    exportICalButton: 'iCal',
 
     // Schaltflächen
     print: 'Drucken',
