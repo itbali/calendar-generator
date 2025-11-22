@@ -126,7 +126,7 @@ const HolidayManagement = () => {
                 />
                 <span className="country-flag">{country.flag}</span>
                 <label htmlFor={`country-${code}`} className="country-label">
-                  {country.name}
+                  {t(country.nameKey)}
                 </label>
               </div>
             );
@@ -177,10 +177,12 @@ const HolidayManagement = () => {
                   />
                   <div className="holiday-info">
                     <div className="holiday-date">{formatDateForDisplay(holiday.date)}</div>
-                    <div className="holiday-title">{holiday.name}</div>
+                    <div className="holiday-title">
+                      {holiday.nameKey ? t(holiday.nameKey) : holiday.name}
+                    </div>
                     {holiday.country !== 'custom' ? (
                       <div className="holiday-country">
-                        {countries[holiday.country].name} {countries[holiday.country].flag}
+                        {t(countries[holiday.country].nameKey)} {countries[holiday.country].flag}
                       </div>
                     ) : (
                       <div className="holiday-country">{t('customHolidays')}</div>

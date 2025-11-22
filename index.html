@@ -17,6 +17,24 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/vite.svg">
+
+  <!-- Prevent theme flash on load -->
+  <script>
+    (function() {
+      try {
+        const settings = JSON.parse(localStorage.getItem('calendar-settings'));
+        const prefersDark = settings?.darkMode !== undefined
+          ? settings.darkMode
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (prefersDark) {
+          document.body.classList.add('dark-mode');
+        }
+      } catch (e) {
+        // Ignore errors
+      }
+    })();
+  </script>
 </head>
 <body>
   <div id="root"></div>
