@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FileEdit, Trash2 } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -26,7 +27,10 @@ const NotesWidget = () => {
   return (
     <div className="notes-widget">
       <div className="widget-header">
-        <h3>📝 {t('notes')}</h3>
+        <h3>
+          <FileEdit size={20} style={{ display: 'inline', verticalAlign: 'middle' }} />{' '}
+          {t('notes')}
+        </h3>
       </div>
 
       <div className="add-note-section">
@@ -57,7 +61,7 @@ const NotesWidget = () => {
                   className="btn-delete-note"
                   title={t('delete')}
                 >
-                  🗑️
+                  <Trash2 size={16} />
                 </button>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { RefreshCw, Trash2 } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 
@@ -74,7 +75,10 @@ const RecurringEvents = () => {
   return (
     <div className="recurring-events-widget">
       <div className="widget-header">
-        <h3>🔄 {t('recurringEvents')}</h3>
+        <h3>
+          <RefreshCw size={20} style={{ display: 'inline', verticalAlign: 'middle' }} />{' '}
+          {t('recurringEvents')}
+        </h3>
       </div>
 
       <div className="add-recurring-event-section">
@@ -168,7 +172,7 @@ const RecurringEvents = () => {
                   className="btn-delete-event"
                   title={t('delete')}
                 >
-                  🗑️
+                  <Trash2 size={16} />
                 </button>
               </div>
               <div className="event-details">

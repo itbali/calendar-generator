@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FileText, Palette, Cloud, BarChart, Link, Bot, Star, Rocket, Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import PricingPage from './PricingPage';
 import '../styles/Paywall.css';
@@ -9,39 +10,39 @@ const Paywall = ({ feature, children, requiredTier = 'pro' }) => {
 
   const features = {
     exportWatermark: {
-      icon: '📄',
+      icon: <FileText size={48} />,
       title: t('paywallExportTitle'),
       description: t('paywallExportDesc'),
     },
     premiumThemes: {
-      icon: '🎨',
+      icon: <Palette size={48} />,
       title: t('paywallThemesTitle'),
       description: t('paywallThemesDesc'),
     },
     cloudSync: {
-      icon: '☁️',
+      icon: <Cloud size={48} />,
       title: t('paywallCloudTitle'),
       description: t('paywallCloudDesc'),
     },
     analytics: {
-      icon: '📊',
+      icon: <BarChart size={48} />,
       title: t('paywallAnalyticsTitle'),
       description: t('paywallAnalyticsDesc'),
     },
     integrations: {
-      icon: '🔗',
+      icon: <Link size={48} />,
       title: t('paywallIntegrationsTitle'),
       description: t('paywallIntegrationsDesc'),
     },
     aiAssistant: {
-      icon: '🤖',
+      icon: <Bot size={48} />,
       title: t('paywallAITitle'),
       description: t('paywallAIDesc'),
     },
   };
 
   const featureInfo = features[feature] || {
-    icon: '⭐',
+    icon: <Star size={48} />,
     title: t('paywallDefaultTitle'),
     description: t('paywallDefaultDesc'),
   };
@@ -58,7 +59,15 @@ const Paywall = ({ feature, children, requiredTier = 'pro' }) => {
             <p className="paywall-description">{featureInfo.description}</p>
 
             <div className="paywall-badge">
-              {requiredTier === 'business' ? '🚀 ' + t('businessPlan') : '⭐ ' + t('proPlan')}
+              {requiredTier === 'business' ? (
+                <>
+                  <Rocket size={16} /> {t('businessPlan')}
+                </>
+              ) : (
+                <>
+                  <Star size={16} /> {t('proPlan')}
+                </>
+              )}
             </div>
 
             <button className="paywall-cta" onClick={() => setShowPricing(true)}>
@@ -67,15 +76,21 @@ const Paywall = ({ feature, children, requiredTier = 'pro' }) => {
 
             <div className="paywall-benefits">
               <div className="benefit">
-                <span className="benefit-check">✓</span>
+                <span className="benefit-check">
+                  <Check size={16} />
+                </span>
                 {t('paywallBenefit1')}
               </div>
               <div className="benefit">
-                <span className="benefit-check">✓</span>
+                <span className="benefit-check">
+                  <Check size={16} />
+                </span>
                 {t('paywallBenefit2')}
               </div>
               <div className="benefit">
-                <span className="benefit-check">✓</span>
+                <span className="benefit-check">
+                  <Check size={16} />
+                </span>
                 {t('paywallBenefit3')}
               </div>
             </div>

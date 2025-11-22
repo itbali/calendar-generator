@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckSquare, Check, Trash2 } from 'lucide-react';
 import { useCalendar } from '../../context/CalendarContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { MILLIS_PER_DAY } from '../../utils/recurringUtils';
@@ -85,7 +86,10 @@ const HabitTracker = () => {
   return (
     <div className="habit-tracker-widget">
       <div className="widget-header">
-        <h3>✅ {t('habitTracker')}</h3>
+        <h3>
+          <CheckSquare size={20} style={{ display: 'inline', verticalAlign: 'middle' }} />{' '}
+          {t('habitTracker')}
+        </h3>
       </div>
 
       <div className="add-habit-section">
@@ -120,7 +124,7 @@ const HabitTracker = () => {
                       className={`habit-checkbox ${isCompletedToday ? 'completed' : ''}`}
                       title={isCompletedToday ? t('habitUncompleted') : t('habitCompleted')}
                     >
-                      {isCompletedToday ? '✓' : ''}
+                      {isCompletedToday ? <Check size={16} /> : ''}
                     </button>
                     <span className="habit-name">{habit.name}</span>
                   </div>
@@ -129,7 +133,7 @@ const HabitTracker = () => {
                     className="btn-delete-habit"
                     title={t('delete')}
                   >
-                    🗑️
+                    <Trash2 size={16} />
                   </button>
                 </div>
                 <div className="habit-stats">
